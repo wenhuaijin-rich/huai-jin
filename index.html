@@ -3,1137 +3,1472 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>人生大结果测试 · 你早就拿到了什么大结果</title>
+<meta name="theme-color" content="#F7F5F1">
+<title>吃多了，天不会塌｜减脂心态小测试</title>
+<meta name="description" content="14 道题、3 分钟的小测试：从 217 道题的题库里随机抽题，帮你分清「你觉得的吃多」和「真的吃多」。它只描述状态，不给任何建议，也不构成诊断。">
 <style>
-  :root{
-    --bg:#FBF7EF;
-    --card:#FFFFFF;
-    --ink:#3A3630;
-    --ink-soft:#7C7568;
-    --line:#EAE2D3;
-    --coral:#E8705F;
-    --coral-soft:#FBEAE6;
-    --gold:#C9963F;
-    --gold-soft:#F7EEDD;
-    --green:#6E8B74;
-    --rose:#D66C7C;
-    --teal:#5E8A8C;
-    --shadow:0 10px 30px rgba(58,54,48,.08);
-    --radius:20px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
-    line-height:1.7;
-    min-height:100vh;
-  }
-  .serif{font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;}
-  .wrap{max-width:680px;margin:0 auto;padding:0 20px 60px;}
-  .page{display:none;animation:fadeIn .45s ease;}
-  .page.active{display:block;}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+/* ==========================================================
+   0. 变量与基础 —— 晨雾蓝 · 杏橘 · 暖白（安抚系）
+   ========================================================== */
+:root{
+  --paper:#F7F5F1;
+  --paper-2:#EFEAE3;
+  --card:#FFFEFB;
+  --ink:#2B2B28;
+  --ink-2:#5F5C55;
+  --ink-3:#928D82;
+  --line:#E3DDD2;
+  --line-2:#D5CDBF;
+  --teal:#44626D;
+  --teal-2:#5C7E88;
+  --teal-3:#A6BEC4;
+  --apricot:#E29A5B;
+  --apricot-soft:#F6E3D0;
+  --mist:#DDE6E8;
+  --radius:22px;
+  --radius-s:14px;
+  --shadow:0 1px 2px rgba(70,60,45,.04), 0 12px 32px -18px rgba(70,60,45,.26);
+  --font-sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --font-num:Georgia,"Times New Roman","Songti SC",serif;
+  --ease:cubic-bezier(.22,.75,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  font-family:var(--font-sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 540px at 85% -10%, #E7EFF0 0%, rgba(231,239,240,0) 60%),
+    radial-gradient(760px 520px at -14% 26%, #F3E7D9 0%, rgba(243,231,217,0) 58%),
+    radial-gradient(660px 460px at 50% 110%, #EDE6D8 0%, rgba(237,230,216,0) 60%);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.45;
+  background-image:radial-gradient(rgba(110,100,85,.10) 1px, transparent 1px);
+  background-size:3px 3px;mix-blend-mode:multiply;
+}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;}
+h1,h2,h3,h4,p,ul,ol{margin:0;}
+ul,ol{padding:0;list-style:none;}
+:focus-visible{outline:2px solid var(--teal-2);outline-offset:3px;border-radius:6px;}
 
-  /* ====== 首页 ====== */
-  .hero{padding-top:44px;text-align:center;}
-  .hero .tag{
-    display:inline-block;background:var(--coral-soft);color:var(--coral);
-    font-size:13px;letter-spacing:.12em;padding:5px 16px;border-radius:999px;font-weight:600;
-  }
-  .hero h1{
-    font-size:clamp(30px,7.4vw,44px);line-height:1.35;margin:20px 0 6px;font-weight:700;
-  }
-  .hero h1 .hl{color:var(--coral);position:relative;white-space:nowrap;}
-  .hero h1 .hl::after{
-    content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;
-    background:var(--gold-soft);z-index:-1;border-radius:4px;
-  }
-  .hero .sub{color:var(--ink-soft);font-size:15px;max-width:420px;margin:12px auto 0;}
-  .hero-art{margin:26px auto 6px;max-width:340px;}
-  .hero-art svg{width:100%;height:auto;display:block;}
+#app{position:relative;z-index:1;}
+.screen{display:none;}
+.screen.is-active{display:block;}
+.wrap{width:100%;max-width:760px;margin:0 auto;padding:0 22px;}
+.screen-inner{
+  min-height:100vh;min-height:100dvh;
+  display:flex;flex-direction:column;
+  padding-top:max(26px, env(safe-area-inset-top));
+  padding-bottom:max(30px, env(safe-area-inset-bottom));
+}
+.rise{animation:rise .62s var(--ease) both;}
+.rise-2{animation:rise .62s var(--ease) .08s both;}
+.rise-3{animation:rise .62s var(--ease) .16s both;}
+.rise-4{animation:rise .62s var(--ease) .24s both;}
+@keyframes rise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
 
-  .intro-card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:22px 24px;margin-top:22px;box-shadow:var(--shadow);text-align:left;
-  }
-  .intro-card h2{font-size:17px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-  .intro-card p{font-size:14.5px;color:var(--ink-soft);}
-  .intro-card p+p{margin-top:8px;}
-  .intro-card .quote{
-    border-left:3px solid var(--coral);padding:2px 0 2px 14px;margin-top:14px;
-    color:var(--ink);font-size:14.5px;
-  }
+/* ==========================================================
+   1. 通用元件
+   ========================================================== */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.16em;color:var(--teal-2);font-weight:600;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--teal-3);display:block;}
+.eyebrow.is-warm{color:#B26A32;}
+.eyebrow.is-warm::before{background:var(--apricot);opacity:.6;}
 
-  .dim-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
-  .dim-chip{
-    font-size:12.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);
-    background:var(--bg);color:var(--ink-soft);font-weight:500;
-  }
-  .dim-chip b{font-weight:600;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:0 26px;border-radius:999px;
+  font-size:16px;font-weight:600;letter-spacing:.02em;
+  transition:transform .2s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+  -webkit-tap-highlight-color:transparent;white-space:nowrap;
+}
+.btn:active{transform:scale(.975);}
+.btn-primary{background:var(--teal);color:#FBF9F4;box-shadow:0 10px 24px -12px rgba(68,98,109,.8);}
+.btn-primary:hover{background:#3B5862;box-shadow:0 16px 30px -14px rgba(68,98,109,.85);}
+.btn-ghost{background:transparent;color:var(--teal);border:1px solid var(--line-2);}
+.btn-ghost:hover{background:#fff;border-color:var(--teal-3);}
+.btn-text{min-height:44px;padding:0 14px;color:var(--ink-2);font-size:14.5px;font-weight:500;border-radius:999px;}
+.btn-text:hover{color:var(--teal);background:rgba(68,98,109,.06);}
+.btn[disabled]{opacity:.34;pointer-events:none;}
+.btn-block{width:100%;}
 
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    border:none;cursor:pointer;font-family:inherit;font-weight:600;
-    border-radius:999px;transition:transform .15s ease,box-shadow .15s ease,opacity .15s;
-  }
-  .btn:active{transform:scale(.96);}
-  .btn-primary{
-    background:linear-gradient(135deg,#EE7D64,#E05B4C);color:#fff;
-    font-size:17px;padding:15px 46px;box-shadow:0 8px 22px rgba(232,112,95,.35);
-    letter-spacing:.06em;
-  }
-  .btn-primary:hover{box-shadow:0 10px 26px rgba(232,112,95,.45);transform:translateY(-1px);}
-  .btn-ghost{
-    background:transparent;color:var(--ink-soft);font-size:14px;padding:10px 20px;
-    border:1px solid var(--line);background:var(--card);
-  }
-  .btn-ghost:hover{color:var(--ink);border-color:#D8CEBB;}
-  .cta-area{text-align:center;margin-top:26px;}
-  .cta-note{font-size:12.5px;color:var(--ink-soft);margin-top:12px;}
+/* ==========================================================
+   2. 首页
+   ========================================================== */
+.home-top{display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.brand{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--teal);}
+.brand-mark{width:26px;height:26px;flex:none;}
+.home-hero{flex:1;display:flex;flex-direction:column;justify-content:center;padding:22px 0 8px;}
+.hero-art{width:min(330px,76%);margin:0 auto 6px;}
+.hero-art svg{width:100%;height:auto;overflow:visible;}
+.breath{animation:breath 7s ease-in-out infinite;transform-origin:170px 148px;}
+@keyframes breath{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.045);opacity:.85;}}
+.wave{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 3.2s var(--ease) .4s forwards;}
+@keyframes draw{to{stroke-dashoffset:0;}}
+.home-title{
+  font-size:clamp(30px,8.4vw,46px);line-height:1.24;font-weight:800;letter-spacing:-.01em;margin-top:14px;
+}
+.home-title em{font-style:normal;position:relative;color:var(--teal);white-space:nowrap;}
+.home-title em::after{content:"";position:absolute;left:-2px;right:-2px;bottom:4px;height:9px;background:var(--apricot-soft);border-radius:3px;z-index:-1;}
+.home-sub{margin-top:18px;color:var(--ink-2);font-size:15.5px;line-height:1.85;max-width:34em;}
+.home-sub b{color:var(--ink);font-weight:700;}
+.home-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+.fact{font-size:12.5px;color:var(--teal-2);background:rgba(255,255,255,.7);border:1px solid var(--line);padding:6px 13px;border-radius:999px;backdrop-filter:blur(4px);}
+.home-cta{margin-top:28px;display:flex;flex-direction:column;gap:12px;}
+.home-cta .btn-primary{min-height:56px;font-size:16.5px;}
+.home-note{margin-top:16px;font-size:12.5px;color:var(--ink-3);line-height:1.7;display:flex;gap:8px;align-items:flex-start;}
+.home-note span{flex:1;}
+.home-note svg{width:15px;height:15px;flex:none;margin-top:4px;opacity:.7;}
+.home-foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-3);letter-spacing:.02em;line-height:1.8;}
 
-  /* ====== 入场验证 ====== */
-  .verify-card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:22px 24px 24px;margin-top:26px;box-shadow:var(--shadow);text-align:center;
-  }
-  .verify-card h2{font-size:17px;display:flex;align-items:center;justify-content:center;gap:8px;}
-  .verify-card .v-sub{font-size:13.5px;color:var(--ink-soft);margin-top:6px;}
-  .captcha{
-    display:flex;justify-content:center;gap:10px;margin:18px 0 14px;
-    padding:16px 12px;border-radius:16px;
-    background:
-      repeating-linear-gradient(35deg, rgba(232,112,95,.05) 0 6px, transparent 6px 14px),
-      var(--bg);
-    border:1px dashed #E0D5C0;user-select:none;
-    position:relative;overflow:hidden;
-  }
-  .captcha .noise{position:absolute;border-radius:50%;background:rgba(122,112,96,.18);}
-  .cap-digit{
-    width:52px;height:64px;background:var(--card);border-radius:12px;
-    border:1.5px solid var(--line);box-shadow:0 4px 10px rgba(58,54,48,.06);
-    display:flex;align-items:center;justify-content:center;
-    font-size:30px;font-weight:700;font-family:"Noto Serif SC","Songti SC",serif;
-    transform:rotate(var(--r,0deg)) translateY(var(--y,0px));
-  }
-  .code-input{
-    display:block;margin:0 auto;width:180px;text-align:center;letter-spacing:.5em;
-    font-size:22px;font-weight:700;font-family:inherit;color:var(--ink);
-    padding:10px 0 10px .5em;border:2px solid var(--line);border-radius:14px;
-    background:var(--bg);outline:none;transition:border-color .2s;
-  }
-  .code-input:focus{border-color:var(--coral);}
-  .code-input::placeholder{color:#C4BAA8;letter-spacing:0;font-size:14px;font-weight:400;}
-  .verify-btns{display:flex;justify-content:center;gap:10px;margin-top:14px;}
-  .verify-card.shake{animation:shake .4s ease;}
-  @keyframes shake{
-    20%{transform:translateX(-7px);}40%{transform:translateX(6px);}
-    60%{transform:translateX(-4px);}80%{transform:translateX(3px);}
-  }
+/* ==========================================================
+   3. 答题页
+   ========================================================== */
+.quiz-head{position:sticky;top:0;z-index:20;padding-top:6px;background:linear-gradient(var(--paper) 62%,rgba(247,245,241,0));}
+.quiz-head-row{display:flex;align-items:center;gap:12px;}
+.icon-btn{
+  width:42px;height:42px;flex:none;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--teal);background:rgba(255,255,255,.65);border:1px solid var(--line);
+  transition:background .2s,transform .2s;
+}
+.icon-btn:hover{background:#fff;}
+.icon-btn:active{transform:scale(.94);}
+.icon-btn svg{width:18px;height:18px;}
+.quiz-count{margin-left:auto;font-family:var(--font-num);font-size:15px;color:var(--ink-2);letter-spacing:.04em;}
+.quiz-count b{font-size:21px;color:var(--ink);font-weight:600;}
+.quiz-count i{font-style:normal;opacity:.45;margin:0 3px;}
+.bar{height:4px;border-radius:99px;background:var(--line);margin-top:14px;overflow:hidden;}
+.bar-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--teal-3),var(--teal));transition:width .5s var(--ease);}
+.dots{display:flex;gap:6px;margin-top:14px;padding-bottom:14px;overflow-x:auto;scrollbar-width:none;}
+.dots::-webkit-scrollbar{display:none;}
+.dot{
+  flex:none;width:20px;height:32px;border:0;background:transparent;
+  position:relative;transition:transform .22s var(--ease);padding:0;
+}
+.dot::after{
+  content:"";position:absolute;left:50%;top:50%;
+  width:7px;height:7px;border-radius:50%;background:var(--line-2);
+  transform:translate(-50%,-50%);
+  transition:background .22s var(--ease), box-shadow .22s var(--ease), width .22s, height .22s;
+}
+.dot.is-done::after{background:var(--teal-3);}
+.dot.is-current::after{background:var(--teal);width:9px;height:9px;box-shadow:0 0 0 3.5px rgba(68,98,109,.13);}
+.dot:hover::after{background:var(--teal-2);}
 
-  .disclaim{
-    margin-top:30px;font-size:12px;color:#B4AB9C;text-align:center;line-height:1.8;
-  }
+.quiz-body{flex:1;padding-top:6px;}
+.q-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 22px 22px;box-shadow:var(--shadow);position:relative;
+  animation:qin .42s var(--ease) both;
+}
+@keyframes qin{from{opacity:0;transform:translateY(12px) scale(.995);}to{opacity:1;transform:none;}}
+.q-card.shake{animation:shake .42s cubic-bezier(.36,.07,.19,.97) both;}
+@keyframes shake{
+  10%,90%{transform:translateX(-2px);}20%,80%{transform:translateX(4px);}
+  30%,50%,70%{transform:translateX(-6px);}40%,60%{transform:translateX(6px);}
+}
+.q-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11.5px;letter-spacing:.14em;color:var(--ink-3);font-weight:600;}
+.q-meta .q-dim{color:var(--teal-2);}
+.q-meta .q-sep{width:3px;height:3px;border-radius:50%;background:var(--line-2);}
+.q-text{margin-top:14px;font-size:clamp(19px,4.9vw,23px);line-height:1.55;font-weight:700;letter-spacing:-.005em;}
+.q-hint{margin-top:9px;font-size:13px;color:var(--ink-3);line-height:1.7;}
+.opts{margin-top:20px;display:flex;flex-direction:column;gap:10px;}
+.opt{
+  display:flex;align-items:flex-start;gap:13px;width:100%;text-align:left;
+  padding:15px 16px;border-radius:var(--radius-s);
+  background:#fff;border:1px solid var(--line);color:var(--ink);
+  font-size:15px;line-height:1.6;
+  transition:border-color .2s var(--ease), background .2s var(--ease), transform .18s var(--ease), box-shadow .2s var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.opt:hover{border-color:var(--teal-3);background:#FCFAF6;}
+.opt:active{transform:scale(.99);}
+.opt-key{
+  flex:none;width:26px;height:26px;border-radius:50%;
+  border:1px solid var(--line-2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-num);font-size:13px;color:var(--ink-3);
+  transition:all .2s var(--ease);margin-top:1px;
+}
+.opt-text{flex:1;}
+.opt.is-selected{border-color:var(--teal);background:#EDF3F3;box-shadow:0 0 0 1px var(--teal) inset;}
+.opt.is-selected .opt-key{background:var(--teal);border-color:var(--teal);color:#fff;}
+.opt.is-selected .opt-text{font-weight:600;}
+.quiz-foot{margin-top:24px;display:flex;align-items:center;gap:12px;}
+.quiz-foot .btn-next{flex:1;min-height:54px;}
+.quiz-foot .btn-text{flex:none;}
 
-  /* ====== 答题页 ====== */
-  .quiz-top{
-    position:sticky;top:0;z-index:20;background:rgba(251,247,239,.92);
-    backdrop-filter:blur(8px);padding:14px 0 10px;margin:0 -20px;padding-left:20px;padding-right:20px;
-    border-bottom:1px solid var(--line);
-  }
-  .quiz-top-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-soft);}
-  .quiz-top-row b{color:var(--ink);font-size:15px;}
-  .bar{height:8px;background:#EFE7D8;border-radius:99px;margin-top:10px;overflow:hidden;}
-  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#EE7D64,#E8705F);border-radius:99px;transition:width .35s ease;}
-  .dots{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;justify-content:center;}
-  .dot{
-    width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--card);
-    font-size:11px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;
-    font-family:inherit;transition:all .2s;padding:0;
-  }
-  .dot.answered{background:var(--coral);border-color:var(--coral);color:#fff;}
-  .dot.current{transform:scale(1.18);box-shadow:0 0 0 2px var(--coral-soft),0 0 0 3.5px var(--coral);}
-  .dot.warn{background:#F4B4A6;border-color:#F4B4A6;animation:pulse 1s ease infinite;}
-  @keyframes pulse{50%{transform:scale(1.15);}}
+/* ==========================================================
+   4. 结果页
+   ========================================================== */
+.res-head{padding:18px 0 0;}
+.res-title{font-size:clamp(26px,7vw,38px);line-height:1.3;font-weight:800;letter-spacing:-.01em;margin-top:12px;}
+.res-slogan{margin-top:12px;font-size:15.5px;color:var(--ink-2);line-height:1.8;}
+.profile{
+  margin-top:26px;border-radius:26px;
+  background:linear-gradient(160deg,#44626D 0%,#486973 46%,#557680 100%);
+  color:#F5F1E8;padding:24px 22px;position:relative;overflow:hidden;
+  box-shadow:0 30px 60px -34px rgba(56,86,96,.9);
+}
+.profile::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-90px;top:-110px;background:radial-gradient(circle at 30% 30%, rgba(233,226,209,.35), rgba(233,226,209,0));}
+.profile::after{content:"";position:absolute;left:-40px;bottom:-80px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(233,226,209,.22);}
+.p-top{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;}
+.p-code{font-family:var(--font-num);font-size:12px;letter-spacing:.24em;color:rgba(245,241,232,.62);}
+.p-badge{font-size:11px;letter-spacing:.1em;padding:5px 11px;border-radius:999px;background:rgba(233,226,209,.16);border:1px solid rgba(233,226,209,.3);color:#EFE7D6;white-space:nowrap;}
+.p-name{position:relative;font-size:clamp(28px,7.6vw,40px);font-weight:800;letter-spacing:.01em;line-height:1.25;margin-top:12px;}
+.p-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;position:relative;}
+.p-tag{font-size:11.5px;padding:4px 10px;border-radius:8px;background:rgba(255,255,255,.09);color:#EDE5D4;}
+.p-basis{margin-top:12px;font-size:11px;letter-spacing:.03em;color:rgba(245,241,232,.52);position:relative;}
+.p-basis::before{content:"判定依据 · ";opacity:.75;}
+.p-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(233,226,209,.18);position:relative;}
+.p-stat{text-align:center;}
+.p-stat b{display:block;font-family:var(--font-num);font-size:26px;font-weight:500;line-height:1.2;color:#FAF6ED;}
+.p-stat b i{font-style:normal;font-size:11px;opacity:.5;margin-left:2px;}
+.p-stat span{display:block;font-size:11px;color:rgba(245,241,232,.6);margin-top:4px;letter-spacing:.04em;}
 
-  .q-card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:30px 26px 26px;margin-top:22px;animation:fadeIn .35s ease;
-  }
-  .q-num{font-size:13px;color:var(--coral);font-weight:700;letter-spacing:.15em;}
-  .q-text{font-size:clamp(19px,4.6vw,23px);font-weight:700;line-height:1.6;margin:12px 0 24px;}
-  .opts{display:flex;flex-direction:column;gap:12px;}
-  .opt{
-    display:flex;align-items:center;gap:14px;text-align:left;width:100%;
-    background:var(--bg);border:1.5px solid var(--line);border-radius:16px;
-    padding:14px 18px;cursor:pointer;font-family:inherit;font-size:16px;color:var(--ink);
-    transition:all .18s ease;
-  }
-  .opt:hover{border-color:#E0C9AE;}
-  .opt .radio{
-    width:20px;height:20px;border-radius:50%;border:2px solid #D8CEBB;flex:none;
-    display:flex;align-items:center;justify-content:center;transition:all .18s;
-  }
-  .opt .radio::after{
-    content:"";width:9px;height:9px;border-radius:50%;background:#fff;transform:scale(0);transition:transform .18s;
-  }
-  .opt.picked{border-color:var(--coral);background:var(--coral-soft);font-weight:600;}
-  .opt.picked .radio{border-color:var(--coral);background:var(--coral);}
-  .opt.picked .radio::after{transform:scale(1);}
-  .opt .idx{font-size:12px;color:var(--ink-soft);flex:none;width:16px;}
+.type-intro{
+  margin-top:22px;padding:2px 0 2px 18px;border-left:2px solid var(--mist);
+  font-size:15px;line-height:1.95;color:var(--ink-2);
+}
+.type-intro b{color:var(--ink);font-weight:700;}
+.type-intro em{display:block;font-style:normal;font-size:11.5px;letter-spacing:.16em;color:#B26A32;margin-bottom:6px;font-weight:600;}
 
-  .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:12px;}
-  .quiz-nav .btn-ghost{min-width:104px;}
-  .quiz-nav .btn-primary{font-size:15px;padding:12px 30px;}
-  .quiz-nav .spacer{flex:1;}
+.block{margin-top:46px;}
+.block-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.block-num{font-family:var(--font-num);font-size:12px;color:#B26A32;letter-spacing:.16em;}
+.block-title{font-size:clamp(19px,4.6vw,22px);font-weight:800;letter-spacing:-.005em;line-height:1.4;}
+.block-desc{margin-top:10px;color:var(--ink-2);font-size:14.5px;line-height:1.85;}
+.block-desc b{color:var(--ink);font-weight:700;}
 
-  .toast{
-    position:fixed;left:50%;bottom:36px;transform:translateX(-50%) translateY(20px);
-    background:var(--ink);color:#fff;font-size:14px;padding:11px 22px;border-radius:99px;
-    opacity:0;pointer-events:none;transition:all .3s ease;z-index:99;max-width:86vw;text-align:center;
-  }
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+/* 定心丸 */
+.truths{margin-top:18px;display:flex;flex-direction:column;gap:12px;}
+.truth{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:19px 20px 17px;box-shadow:var(--shadow);position:relative;
+}
+.truth-h{display:flex;align-items:flex-start;gap:10px;font-size:15.5px;font-weight:800;line-height:1.5;}
+.truth-h .badge{
+  flex:none;font-size:10.5px;letter-spacing:.1em;color:#FBF9F4;background:var(--teal-2);
+  padding:3px 9px;border-radius:99px;margin-top:2px;font-weight:600;white-space:nowrap;
+}
+.truth p{margin-top:9px;font-size:14px;line-height:1.9;color:var(--ink-2);}
+.truth p b{color:var(--ink);font-weight:700;}
+.truth::before{
+  content:"";position:absolute;left:0;top:16px;bottom:16px;width:3px;
+  border-radius:99px;background:var(--mist);
+}
 
-  /* ====== 结果页 ====== */
-  .result-hero{text-align:center;padding-top:40px;}
-  .result-hero .kicker{
-    font-size:13px;letter-spacing:.2em;color:var(--ink-soft);margin-bottom:14px;
-  }
-  .type-badge{width:120px;margin:0 auto;display:block;}
-  .type-badge svg{width:100%;height:auto;}
-  .result-hero h1{font-size:clamp(26px,6.6vw,38px);margin-top:14px;line-height:1.4;}
-  .result-hero h1 .tname{color:var(--type,var(--coral));}
-  .result-hero .type-line{color:var(--ink-soft);font-size:15.5px;margin-top:8px;}
-  .level-pill{
-    display:inline-block;margin-top:16px;padding:7px 20px;border-radius:999px;
-    background:var(--gold-soft);color:#9A7327;font-weight:600;font-size:14px;
-  }
-  .tie-note{
-    margin:14px auto 0;max-width:440px;font-size:13.5px;color:var(--ink-soft);
-    background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:10px 16px;
-  }
+/* 维度条 */
+.dims{
+  margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 20px;box-shadow:var(--shadow);
+}
+.bar-row{display:grid;grid-template-columns:76px 1fr 42px;align-items:center;gap:10px;}
+.bar-row + .bar-row{margin-top:15px;}
+.bar-name{font-size:13.5px;font-weight:600;color:var(--ink);}
+.bar-track{height:8px;border-radius:99px;background:var(--paper-2);overflow:hidden;}
+.bar-in{display:block;height:100%;width:0;border-radius:99px;transition:width 1s var(--ease);}
+.bar-val{font-family:var(--font-num);font-size:14px;color:var(--ink-2);text-align:right;}
+.bar-in.lv-h{background:linear-gradient(90deg,var(--teal-3),var(--teal));}
+.bar-in.lv-m{background:linear-gradient(90deg,#E9C9A4,var(--apricot));}
+.bar-in.lv-l{background:linear-gradient(90deg,#EBBBA0,#C97B4E);}
+.dim-note{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:13.5px;line-height:1.85;color:var(--ink-2);}
+.dim-note b{color:var(--ink);font-weight:700;}
 
-  .panel{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:24px 24px 26px;margin-top:20px;
-  }
-  .panel h3{font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  .panel h3 .mini{width:22px;height:22px;flex:none;}
+/* 卡片 */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px 18px;box-shadow:var(--shadow);}
+.card + .card{margin-top:12px;}
+.card-h{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;}
+.card-h .pip{width:7px;height:7px;border-radius:50%;background:var(--teal-3);flex:none;}
+.card p{margin-top:10px;font-size:14.5px;line-height:1.9;color:var(--ink-2);}
+.card p b{color:var(--ink);font-weight:700;}
+.card.is-warm{background:#FDF6EE;border-color:#EFD9BF;}
+.card.is-warm .pip{background:var(--apricot);}
+.card.is-warm .card-h{color:#9A5A22;}
+.card.is-care{background:#F3F0FB;border-color:#DCD4EE;}
+.card.is-care .pip{background:#8B7BB8;}
+.card.is-care .card-h{color:#5D4E86;}
+.card.is-care p{color:#5C5870;}
+.card-tag{margin-left:auto;font-size:10.5px;letter-spacing:.1em;color:var(--ink-3);border:1px solid var(--line);padding:2px 8px;border-radius:99px;font-weight:600;white-space:nowrap;}
 
-  .balance-num{text-align:center;margin:4px 0 2px;}
-  .balance-num .big{font-size:46px;font-weight:700;color:var(--coral);font-family:"Noto Serif SC","Songti SC",serif;}
-  .balance-num .unit{font-size:16px;color:var(--ink-soft);}
-  .balance-cap{text-align:center;font-size:13px;color:var(--ink-soft);margin-bottom:14px;}
+/* 行动 */
+.plan-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px;}
+.plan-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:19px 20px;box-shadow:var(--shadow);}
+.plan-card h4{font-size:13px;letter-spacing:.1em;color:var(--teal-2);font-weight:700;display:flex;align-items:center;gap:8px;}
+.plan-card h4 svg{width:16px;height:16px;flex:none;}
+.plan-card ul{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
+.plan-card li{font-size:14px;line-height:1.8;color:var(--ink-2);padding-left:15px;position:relative;}
+.plan-card li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--line-2);}
+.plan-card li b{color:var(--ink);font-weight:700;}
 
-  .dim-row{margin-top:16px;}
-  .dim-row .dim-head{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px;}
-  .dim-row .dim-head .name{font-weight:600;}
-  .dim-row .dim-head .score{color:var(--ink-soft);font-variant-numeric:tabular-nums;}
-  .dim-bar{height:12px;background:#F2EBDD;border-radius:99px;overflow:hidden;}
-  .dim-bar i{display:block;height:100%;border-radius:99px;width:0;transition:width .9s cubic-bezier(.22,.9,.3,1);}
+.reminder{
+  margin-top:18px;padding:18px 20px;border-radius:var(--radius);
+  background:linear-gradient(135deg,#F3EDE0,#F7EDE0);border:1px solid #E8DCC6;
+  font-size:14.5px;line-height:1.9;color:#6B5537;
+}
+.reminder b{color:#8A5A22;}
+.disclaimer{
+  margin-top:26px;padding:18px;border-radius:var(--radius-s);
+  border:1px dashed var(--line-2);background:rgba(255,255,255,.45);
+  font-size:12.5px;line-height:1.9;color:var(--ink-3);
+}
+.disclaimer b{color:var(--ink-2);}
+.res-actions{margin-top:26px;display:flex;flex-direction:column;gap:10px;}
+.res-actions .row{display:flex;gap:10px;}
+.res-actions .row .btn{flex:1;}
+.res-foot{margin-top:26px;text-align:center;font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;}
 
-  .story{font-size:15px;color:var(--ink);}
-  .story p+p{margin-top:10px;}
-  .story .lead{color:var(--type,var(--coral));font-weight:700;}
+/* toast / modal */
+#toast{
+  position:fixed;left:50%;bottom:max(28px,env(safe-area-inset-bottom));z-index:80;
+  transform:translate(-50%,20px);background:rgba(43,43,40,.94);color:#F7F5F1;
+  font-size:13.5px;line-height:1.5;padding:11px 18px;border-radius:999px;
+  opacity:0;pointer-events:none;transition:opacity .26s var(--ease),transform .26s var(--ease);
+  max-width:calc(100vw - 44px);text-align:center;backdrop-filter:blur(6px);
+  box-shadow:0 12px 30px -12px rgba(0,0,0,.5);
+}
+#toast.is-show{opacity:1;transform:translate(-50%,0);}
+.modal{
+  position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(43,43,40,.42);backdrop-filter:blur(3px);
+  opacity:0;pointer-events:none;transition:opacity .24s var(--ease);
+}
+.modal.is-open{opacity:1;pointer-events:auto;}
+.modal-box{width:100%;max-width:340px;background:var(--card);border-radius:24px;padding:24px 22px 18px;transform:translateY(10px) scale(.98);transition:transform .28s var(--ease);box-shadow:0 30px 70px -30px rgba(0,0,0,.5);}
+.modal.is-open .modal-box{transform:none;}
+.modal-box h3{font-size:17px;font-weight:800;}
+.modal-box p{margin-top:8px;font-size:13.5px;color:var(--ink-2);line-height:1.8;}
+.modal-box .m-actions{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
 
-  .advice{list-style:none;}
-  .advice li{
-    display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:14.5px;
-  }
-  .advice li:last-child{border-bottom:none;padding-bottom:2px;}
-  .advice .no{
-    flex:none;width:24px;height:24px;border-radius:8px;background:var(--type,var(--coral));color:#fff;
-    font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;
-  }
-  .advice b{color:var(--type,var(--coral));}
-
-  .low-hint{margin-top:10px;}
-  .low-hint .lh-tag{
-    display:inline-block;font-size:12px;background:var(--gold-soft);color:#9A7327;
-    padding:3px 10px;border-radius:99px;margin-bottom:8px;font-weight:600;
-  }
-  .low-hint p{font-size:14px;color:var(--ink-soft);}
-
-  .quotecard{
-    margin-top:24px;padding:6px;border-radius:24px;
-    background:linear-gradient(135deg,var(--type,#E8705F),#C9963F);
-    box-shadow:0 12px 30px rgba(58,54,48,.14);
-  }
-  .quotecard .inner{
-    background:#FFFDF8;border-radius:19px;padding:26px 22px;text-align:center;position:relative;overflow:hidden;
-  }
-  .quotecard .inner::before{
-    content:"“";position:absolute;top:-14px;left:12px;font-size:90px;color:var(--type,var(--coral));opacity:.12;
-    font-family:"Noto Serif SC",serif;
-  }
-  .quotecard .qc-tag{font-size:12px;letter-spacing:.25em;color:var(--ink-soft);}
-  .quotecard .qc-main{font-size:clamp(19px,5vw,23px);font-weight:700;line-height:1.65;margin:12px 0 8px;font-family:"Noto Serif SC","Songti SC",serif;}
-  .quotecard .qc-sub{font-size:13px;color:var(--ink-soft);}
-  .quotecard .qc-foot{margin-top:16px;font-size:11.5px;color:#B4AB9C;letter-spacing:.08em;}
-
-  .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px;}
-  .result-actions .btn-primary{font-size:15px;padding:13px 32px;}
-  .result-actions .btn-ghost{font-size:15px;padding:13px 28px;border-radius:999px;}
-
-  footer{margin-top:44px;text-align:center;font-size:12px;color:#B4AB9C;line-height:1.9;}
-
-  @media (max-width:480px){
-    .q-card{padding:24px 18px 20px;}
-    .panel{padding:20px 16px 22px;}
-    .opt{padding:12px 14px;font-size:15px;}
-    .hero{padding-top:32px;}
-    .cap-digit{width:46px;height:58px;font-size:26px;}
-  }
+@media (min-width:640px){
+  .wrap{padding:0 32px;}
+  .screen-inner{padding-top:38px;padding-bottom:48px;}
+  .hero-art{width:min(340px,52%);margin:0 auto 0;}
+  .home-title{margin-top:22px;}
+  .q-card{padding:34px 34px 28px;}
+  .opt{padding:16px 18px;font-size:15.5px;}
+  .plan-grid{grid-template-columns:1fr 1fr;}
+  .p-stat b{font-size:28px;}
+  .truths{gap:14px;}
+  .res-actions{flex-direction:row;align-items:center;}
+  .res-actions .row{flex:1;}
+  .res-actions > .btn{flex:none;}
+  .quiz-foot .btn-next{flex:none;min-width:220px;margin-left:auto;}
+  .quiz-foot .btn-text{margin-right:auto;order:-1;}
+}
+@media (max-width:360px){
+  .opt{font-size:14.5px;padding:14px;}
+  .q-text{font-size:18px;}
+  .bar-row{grid-template-columns:70px 1fr 40px;}
+  .p-stat b{font-size:23px;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- ================= 首页 ================= -->
-  <section id="page-home" class="page active">
-    <div class="hero">
-      <span class="tag">原创趣味自评 · 每次随机抽 20 题 · 约 3 分钟</span>
-      <h1 class="serif">人人都想要<span class="hl">大结果</span><br>其实你早就拿到了一些</h1>
-      <p class="sub">不聊存款，不聊头衔。有些大结果早已悄悄来到你身上，只是你还没低头看见。花三分钟，把它们一件一件认出来。</p>
+<main id="app">
 
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg">
-          <!-- 台面 -->
-          <ellipse cx="170" cy="212" rx="128" ry="14" fill="#EFE7D6"/>
-          <!-- 奖杯 -->
-          <g stroke="#3A3630" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M132 66 h76 v30 a38 38 0 0 1 -76 0 z" fill="#F5C55C"/>
-            <path d="M132 74 c-18 2 -26 12 -22 24 c3 10 14 14 24 10" fill="none"/>
-            <path d="M208 74 c18 2 26 12 22 24 c-3 10 -14 14 -24 10" fill="none"/>
-            <rect x="160" y="132" width="20" height="26" fill="#F5C55C"/>
-            <path d="M144 196 c4 -20 8 -32 26 -32 c18 0 22 12 26 32 z" fill="#E8705F"/>
-            <rect x="132" y="196" width="76" height="12" rx="6" fill="#3A3630"/>
-            <circle cx="170" cy="97" r="14" fill="#FFFDF6"/>
-            <path d="M170 90 l2.6 5.4 6 .8 -4.4 4.2 1.1 5.9 -5.3 -2.9 -5.3 2.9 1.1 -5.9 -4.4 -4.2 6 -.8 z" fill="#E8705F" stroke="none"/>
-          </g>
-          <!-- 旁边的小盆栽：成长 -->
-          <g stroke="#3A3630" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M262 196 c0 -22 6 -34 14 -40" fill="none"/>
-            <path d="M276 156 c10 -14 26 -16 34 -12 c-2 12 -14 22 -30 20" fill="#6E8B74"/>
-            <path d="M272 172 c-12 -8 -24 -6 -30 2 c8 8 22 8 30 -2" fill="#8BAA90"/>
-            <path d="M248 196 h48 l-5 16 h-38 z" fill="#E8705F"/>
-          </g>
-          <!-- 小徽章与心愿便签 -->
-          <g stroke="#3A3630" stroke-width="3">
-            <circle cx="84" cy="186" r="17" fill="#F5C55C"/>
-            <path d="M84 178 v16 M78 183 c0 -3 2.5 -5 6 -5 s6 2 6 5 s-2.5 5 -6 5 s-6 2 -6 5 s2.5 5 6 5 s6 -2 6 -5" fill="none" stroke-width="2.4"/>
-            <circle cx="52" cy="168" r="11" fill="#FBEAE6"/>
-            <path d="M52 163 v10 M48 166 h8" stroke-width="2.2" fill="none"/>
-          </g>
-          <!-- 闪光 -->
-          <g fill="#E8705F">
-            <path d="M110 44 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z"/>
-            <path d="M236 60 l2.4 6.4 6.4 2.4 -6.4 2.4 -2.4 6.4 -2.4 -6.4 -6.4 -2.4 6.4 -2.4 z" fill="#C9963F"/>
-            <path d="M196 30 l1.8 4.8 4.8 1.8 -4.8 1.8 -1.8 4.8 -1.8 -4.8 -4.8 -1.8 4.8 -1.8 z" fill="#6E8B74"/>
-          </g>
-        </svg>
+  <!-- ============ 首页 ============ -->
+  <section class="screen is-active" id="screen-home">
+    <div class="screen-inner wrap">
+      <div class="home-top rise">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="15" stroke="#44626D" stroke-width="1.2" opacity=".35"/>
+            <circle cx="16" cy="16" r="7.5" stroke="#44626D" stroke-width="1.4" opacity=".6"/>
+            <circle cx="16" cy="16" r="3" fill="#E29A5B"/>
+          </svg>
+          <span>减脂心态小测试</span>
+        </div>
+        <span class="eyebrow is-warm" style="font-size:11px">NO.02</span>
       </div>
-    </div>
 
-    <div class="intro-card">
-      <h2><svg class="mini" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FBEAE6"/><path d="M12 7v5l3 3" stroke="#E8705F" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>这是个什么测试？</h2>
-      <p>生活里大家默认「大结果 = 加薪 + 升职」。但加薪有周期，升职有名额，真正陪你过日子的大结果，往往是另外几样东西——它们不敲锣打鼓，安安静静地陪了你很久：</p>
-      <div class="dim-preview">
-        <span class="dim-chip"><b>成事手感</b> · 事情到手里能落地</span>
-        <span class="dim-chip"><b>被人懂着</b> · 深夜有人接你电话</span>
-        <span class="dim-chip"><b>情绪自由</b> · 天塌了先吃口热的</span>
-        <span class="dim-chip"><b>越活越开阔</b> · 世界一直在变大</span>
-        <span class="dim-chip"><b>和自己和解</b> · 内耗欠费停机</span>
+      <div class="home-hero">
+        <div class="hero-art rise-2">
+          <svg viewBox="0 0 340 300" role="img" aria-label="抽象插画：锯齿波动的曲线逐渐化为平缓的呼吸圆环，寓意把焦虑放下">
+            <defs>
+              <linearGradient id="wg" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#E29A5B"/><stop offset="1" stop-color="#44626D"/>
+              </linearGradient>
+            </defs>
+            <circle cx="170" cy="150" r="112" fill="#EFE7D8" opacity=".55"/>
+            <g class="breath">
+              <circle cx="170" cy="148" r="86" fill="#FBF9F4" opacity=".6"/>
+              <circle cx="170" cy="148" r="66" fill="none" stroke="#44626D" stroke-opacity=".22" stroke-width="1" stroke-dasharray="2 7"/>
+              <circle cx="170" cy="148" r="46" fill="none" stroke="#44626D" stroke-opacity=".16" stroke-width="1" stroke-dasharray="2 7"/>
+            </g>
+            <path class="wave" d="M52 176 L74 148 L92 168 L112 140 L130 160 L152 144 L178 158 L206 150 L238 152 L266 149 L292 151"
+                  fill="none" stroke="url(#wg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="292" cy="151" r="4.5" fill="#44626D"/>
+            <path d="M226 92c0-22-12-34-26-39" stroke="#5C7E88" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <path d="M223 70c10-3 17-11 18-20-10-1-17 5-19 12" fill="#A6BEC4"/>
+            <path d="M212 79c-11-1-19-7-21-16 10-2 17 3 21 9" fill="#CBD9DB"/>
+            <circle cx="84" cy="90" r="3.2" fill="#E29A5B" opacity=".7"/>
+            <path d="M76 226h14l6-11 8 21 7-15 5 5h14" fill="none" stroke="#C97B4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+            <path d="M258 234l0 12M252 240l12 0" stroke="#44626D" stroke-width="1.4" stroke-linecap="round" opacity=".4"/>
+          </svg>
+        </div>
+
+        <h1 class="home-title rise-3">吃多了，<br><em>天不会塌</em></h1>
+        <p class="home-sub rise-3">
+          14 个问题，3 分钟。只是一个<b>小测试</b>：帮你分清<b>「你觉得的吃多」</b>和<b>「真的吃多」</b>，
+          看看最近的心累是正常波动，还是被几个误解放大了。它不给你方案，也不评价你——答完就有一面镜子。
+        </p>
+
+        <div class="home-facts rise-4">
+          <span class="fact">约 3 分钟 · 14 题</span>
+          <span class="fact">题库 217 道 · 每次不同</span>
+          <span class="fact">不给建议 · 不做评估</span>
+          <span class="fact">不联网 · 不上传</span>
+        </div>
       </div>
-      <p class="quote">20 道场景题，凭直觉选就行。没有正确答案，只有「太是我了」和「不许是」。每确认一条，都是一次小小的「原来我早就有了」。</p>
-    </div>
 
-    <!-- 入场验证 -->
-    <div class="verify-card" id="verify-card">
-      <h2><svg width="22" height="22" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="3" fill="#FBEAE6"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="#E8705F" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="12" cy="15" r="1.6" fill="#E8705F"/></svg>入场小验证</h2>
-      <p class="v-sub">这道门只拦「手滑」和「机器人」——输入下面 4 位数字就能进</p>
-      <div class="captcha" id="captcha" aria-label="验证码"></div>
-      <input class="code-input" id="code-input" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="输入 4 位数字">
-      <div class="verify-btns">
-        <button class="btn btn-ghost" id="btn-refresh-code">↻ 换一张</button>
+      <div class="home-cta rise-4">
+        <button class="btn btn-primary btn-block" id="btn-start" type="button">
+          开始测试
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p class="home-note">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8h.01M11 12h1v4h1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span>没有标准答案，也没有正确答案。按<b style="color:var(--teal)">最近两周的真实感受</b>选就好——这里不做评判。</span>
+        </p>
       </div>
-    </div>
 
-    <div class="cta-area">
-      <button class="btn btn-primary" id="btn-start">验证通过，认领我的大结果</button>
-      <p class="cta-note">题库 200 题，每次开测随机抽 20 题 · 答案仅保存在本页面 · 可返回修改、可重新测试</p>
-    </div>
-
-    <p class="disclaim">本测试为原创趣味自评，用于自我觉察与放松一刻，<br>不构成任何心理测评、诊断或医疗建议。</p>
-  </section>
-
-  <!-- ================= 答题页 ================= -->
-  <section id="page-quiz" class="page">
-    <div class="quiz-top">
-      <div class="quiz-top-row">
-        <span>第 <b id="q-cur">1</b> / <span id="q-total">20</span> 题</span>
-        <span>已答 <b id="q-done">0</b> 题</span>
-      </div>
-      <div class="bar"><i id="q-bar"></i></div>
-      <div class="dots" id="dots"></div>
-    </div>
-    <div class="q-card" id="q-card">
-      <div class="q-num" id="q-num">QUESTION 01</div>
-      <div class="q-text" id="q-text"></div>
-      <div class="opts" id="q-opts"></div>
-      <div class="quiz-nav">
-        <button class="btn btn-ghost" id="btn-prev">← 上一题</button>
-        <div class="spacer"></div>
-        <button class="btn btn-primary" id="btn-next">下一题 →</button>
+      <div class="home-foot">
+        这是一个原创的<b>小测试</b>，不是评估工具、不是咨询、也不是任何健康服务：它不提供饮食方案、训练计划或建议，内容仅基于公开的运动科学与营养常识，不构成医学诊断、心理评估或治疗建议，也不涉及任何产品推荐。
+        如果进食失控感强烈且持续、情绪长期低落，请优先寻求医生或专业心理支持的帮助。
       </div>
     </div>
   </section>
 
-  <!-- ================= 结果页 ================= -->
-  <section id="page-result" class="page">
-    <div class="result-hero">
-      <p class="kicker">YOUR BIG RESULT · 大结果盘点</p>
-      <div class="type-badge" id="type-badge"></div>
-      <h1 class="serif">你拿到的大结果是<br><span class="tname" id="type-name"></span></h1>
-      <p class="type-line" id="type-line"></p>
-      <div class="level-pill" id="level-pill"></div>
-      <div class="tie-note" id="tie-note" style="display:none;"></div>
-    </div>
+  <!-- ============ 答题页 ============ -->
+  <section class="screen" id="screen-quiz">
+    <div class="screen-inner wrap">
+      <div class="quiz-head">
+        <div class="quiz-head-row">
+          <button class="icon-btn" id="btn-back-home" type="button" aria-label="返回首页">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="quiz-count"><b id="q-now">01</b><i>/</i><span id="q-total">14</span></div>
+        </div>
+        <div class="bar"><div class="bar-fill" id="bar-fill"></div></div>
+        <div class="dots" id="dots" aria-label="题目导航"></div>
+      </div>
 
-    <div class="panel" id="panel-balance">
-      <h3><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FBEAE6"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="#E8705F" stroke-width="2"/><circle cx="12" cy="12" r="1.8" fill="#E8705F"/></svg>你的大结果盘点</h3>
-      <div class="balance-num"><span class="big" id="balance-total">0</span><span class="unit"> 分</span></div>
-      <p class="balance-cap">五维综合拥有指数 · 满分 100（这不是打分，是一次确认）</p>
-      <div id="dim-bars"></div>
-    </div>
+      <div class="quiz-body">
+        <div class="q-card" id="q-card">
+          <div class="q-meta">
+            <span class="q-dim" id="q-dim">情绪轻盈</span>
+            <span class="q-sep"></span>
+            <span id="q-label">Q01</span>
+          </div>
+          <h2 class="q-text" id="q-text">题目</h2>
+          <p class="q-hint" id="q-hint"></p>
+          <div class="opts" id="opts"></div>
+        </div>
+      </div>
 
-    <div class="panel">
-      <h3><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FBEAE6"/><path d="M8 13c1.5-4 6.5-4 8 0M8.5 9.5h.01M15.5 9.5h.01" stroke="#E8705F" stroke-width="2" fill="none" stroke-linecap="round"/></svg>你的结果解读</h3>
-      <div class="story" id="type-story"></div>
-    </div>
-
-    <div class="panel">
-      <h3><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FBEAE6"/><path d="M12 7v6M12 16.5h.01" stroke="#E8705F" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>下一步：让大结果继续长大</h3>
-      <ul class="advice" id="type-advice"></ul>
-      <div class="low-hint" id="low-hint" style="display:none;">
-        <span class="lh-tag" id="low-tag"></span>
-        <p id="low-text"></p>
+      <div class="quiz-foot">
+        <button class="btn btn-text" id="btn-prev" type="button">上一题</button>
+        <button class="btn btn-primary btn-next" id="btn-next" type="button">下一题</button>
       </div>
     </div>
-
-    <div class="quotecard" id="quotecard">
-      <div class="inner">
-        <p class="qc-tag">我的大结果 · 专属语录</p>
-        <p class="qc-main" id="qc-main"></p>
-        <p class="qc-sub" id="qc-sub"></p>
-        <p class="qc-foot">—— 人生大结果测试 · 原创趣味自评 ——</p>
-      </div>
-    </div>
-
-    <div class="result-actions">
-      <button class="btn btn-primary" id="btn-copy">复制我的战报</button>
-      <button class="btn btn-ghost" id="btn-retake">再测一次（换一批题）</button>
-    </div>
-
-    <footer>结果由你的答案实时计算，不随机 · 愿你把今天认领的大结果，常拿出来看看</footer>
   </section>
+
+  <!-- ============ 结果页 ============ -->
+  <section class="screen" id="screen-result">
+    <div class="screen-inner wrap">
+      <div class="res-head">
+        <div class="eyebrow is-warm">测试完成</div>
+        <h1 class="res-title" id="res-title">你的状态</h1>
+        <p class="res-slogan" id="res-slogan"></p>
+      </div>
+      <div id="res-body"></div>
+      <div class="res-actions" id="res-actions"></div>
+      <div class="res-foot">减脂心态小测试 · 每次从 217 道题库里随机抽 14 道；同一组选择，永远得到同一份结果</div>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <h3 id="modal-title">重新抽一组题？</h3>
+    <p>这次的答案会清空。重新开始会从题库里再抽 14 道，大概率和你刚做过的不一样。只想改某几题的话，用「修改答案」更合适。</p>
+    <div class="m-actions">
+      <button class="btn btn-primary btn-block" id="modal-cancel" type="button">继续看这份结果</button>
+      <button class="btn btn-ghost btn-block" id="modal-confirm" type="button">清空并重新抽题</button>
+    </div>
+  </div>
 </div>
 
-<div class="toast" id="toast"></div>
-
 <script>
-/* =====================================================
-   人生大结果测试 · 数据与逻辑
-   题库 200 题（五维各 40 题），每次开测每维随机抽 4 题、
-   共 20 题。计分：每题 1-5 分，每维满分 20，
-   维度得分 = 原始分 / 20 × 100。结果完全由答案计算。
-   入场验证：每次进入首页随机生成 4 位数字验证码。
-   ===================================================== */
-
-const LIKERT = [
-  {v:1, label:"完全不是我"},
-  {v:2, label:"不太像我"},
-  {v:3, label:"说不准，玄学"},
-  {v:4, label:"有点像我"},
-  {v:5, label:"太是我了"}
-];
-
-const DIMS = {
-  A:{name:"成事手感",   color:"#E8705F"},
-  B:{name:"被人懂着",   color:"#D66C7C"},
-  C:{name:"情绪自由",   color:"#6E8B74"},
-  D:{name:"越活越开阔", color:"#5E8A8C"},
-  E:{name:"和自己和解", color:"#C9963F"}
+var BANK = {
+/* ---------- 认知 C：体重数字 ---------- */
+scale:[
+ ['早上称体重，比昨晚重了 1.2 公斤，你心里第一句话更接近？','完了，昨天白控制了|有点慌，想着今天得少吃点|大概是晚饭和水，但还是会咯噔一下|晚上本来就比早上重，看明天早上的'],
+ ['连续三天，体重每天都比前一天高一点，你会怎么想？','一定是我哪里吃错了|是不是代谢变差了|可能最近吃得咸、睡得晚，再看一周|三天说明不了什么，我看周平均'],
+ ['你称体重的频率更接近哪一种？','一天好几次，有空就站上去|每天固定一次，涨了就难受|两三天一次，尽量挑心情好的时候|一周一两次，或者想起来才称'],
+ ['经期前那几天体重涨了 1 公斤，你会？','觉得自己又胖了，很沮丧|知道可能是水，但还是忍不住焦虑|会记下来，等过了这几天再看|这个规律我早就摸清了，不影响判断'],
+ ['前一天吃了咸的、重口的，第二天脸和手脚有点肿，你怎么解释？','肯定是胖了|后悔昨天那顿|应该是盐让身体存了水|水盐平衡而已，两天就回去了'],
+ ['开始练力量之后，体重比之前重了一点，你更接近哪种反应？','练出肌肉不是更重，白折腾|有点挫败，感觉努力没回报|知道肌肉和糖原会带水，先看围度|力量涨了、围度小了，这就是进步'],
+ ['早上秤上的数字，会在多大程度上决定你这一天的心情？','基本决定，涨了就一天不顺|影响挺大，要好一会儿才能缓过来|有一点影响，很快就过去了|基本不影响，该干嘛干嘛'],
+ ['家里换了一台新秤，数字比旧秤高 0.8 公斤，你会？','觉得旧秤骗了自己，很崩溃|纠结到底哪个准|知道不同秤有差异，看趋势就行|以同一台秤、同一时间的数据为准'],
+ ['晚上称比早上重了 1 公斤，你会怎么理解？','一天就胖了一公斤，太可怕了|说明今天吃多了|正常，一天里的吃喝都还在身上|体重本来就全天波动，我只认晨起那条线'],
+ ['体重掉了 1.5 公斤，但裤子腰围没变化，你觉得？','掉的就是脂肪，只是还没显出来|有点疑惑，是不是秤坏了|可能是水分，先别高兴太早|数字先动、围度后动，很常见'],
+ ['体重两周没动，你心里第一个念头更接近？','得再少吃一点，或者加练|是不是方法不对，想换一个|先看看这周吃得怎么样、睡得怎么样|两周的停顿很正常，先不动'],
+ ['出差或旅行一周回来，站在秤上发现重了 2 公斤，你会？','这一周全毁了，很自责|觉得之前的努力白费了|知道路上吃咸、久坐、没睡好都会浮肿|先恢复正常作息几天，再看真实数字']
+],
+/* ---------- 认知 C：算不算「吃多」 ---------- */
+over:[
+ ['和朋友吃火锅，吃到很饱，回家后你怎么想？','这顿得有好几千大卡，完了|明天得空一天胃|比平时多吃了些，但也就是一顿|吃饱了很正常，明天照常吃'],
+ ['晚上十点吃了点零食，你会怎么记账？','今天彻底破功了|有点后悔，想着要不要多动一会儿|记下来，明天正常吃|吃都吃了，不影响大局'],
+ ['聚餐吃到撑，第二天你会？','称体重、算热量、想办法补救|觉得前功尽弃|正常吃，多喝水|照常三餐，身体自己会调节'],
+ ['一整天没算热量、没记录，你的感受是？','很不安，觉得自己失控了|有点空，怕吃超了|偶尔不记也没关系|不记录也知道自己大概吃了什么'],
+ ['下午喝了一杯奶茶，你会怎么想？','这一杯毁了一天的努力|有点罪恶感，晚饭得省回来|喝了就喝了，晚饭正常吃|想喝就喝，本来也在计划里'],
+ ['自助餐吃到扶墙，回家路上你在想什么？','今晚得走一小时才行|明天一整天只吃一顿|吃多了，但一年也没几次|吃撑了不舒服，下次少拿一点'],
+ ['加班到十一点，顺手点了夜宵，第二天你会？','觉得作息和饮食全乱了|有点自责，想着要补回来|知道这是加班带来的，不算失控|加班吃夜宵很正常，先睡够'],
+ ['过年连着几天吃得比平时多，假期结束时你怎么看？','这几天得涨好几斤，很焦虑|要花一个月才能减回去|节日的吃法和平时不一样，会回去的|几天吃多，回到日常就恢复了'],
+ ['外卖一份吃完觉得还能再吃点，你会？','硬忍着，怕吃多|再加一份，吃完又后悔|看是不是真饿，饿就再吃点|吃饱了就停，剩下的留着'],
+ ['下午同事分了块蛋糕，你吃了，心里怎么想？','不该吃，今天又多摄入了|吃了就吃了，晚饭正常|一小块而已，不用算什么|开心最重要，本来也不是天天有'],
+ ['吃到最后一碗饭时其实已经饱了，你通常？','还是吃完，不吃完难受|勉强吃完，然后后悔|停下，剩下的留着|饱了就停，下顿再吃'],
+ ['如果有人问你「今天吃多了吗」，你更可能怎么答？','吃多了，我总是吃多|可能有点多，说不清|和平时差不多|吃得挺好，挺正常']
+],
+/* ---------- 认知 C：进度与速度 ---------- */
+progress:[
+ ['认真执行了四周，体重基本没变，你的解读是？','这方法对我没用|我不行，怎么都瘦不下来|可能脂肪在减、肌肉在长，看围度|四周太短，看八周的趋势'],
+ ['一周只掉了 0.3 公斤，你觉得？','太慢了，等于没效果|有点泄气，想加大力度|速度慢，但方向对|这个速度其实挺稳'],
+ ['刷到有人说两周瘦了 5 斤，你会？','怀疑自己是不是太没用|想照着她的方法试一遍|知道掉秤速度和起点有关|别人的进度和我没关系'],
+ ['体重卡在三周前的数字，你会？','必须做点什么，不能再等|开始怀疑这个方法|先看这周执行得怎么样|平台是正常的一段路'],
+ ['好不容易掉了 2 公斤，一周后又回来了，你怎么想？','全白费了，很挫败|我果然是反弹体质|掉的可能是水，回来也正常|看一个月的线，不看单点'],
+ ['刚开始那两周掉得很快，后面明显变慢，你会？','是不是方法失效了|觉得没希望了|越接近目标越慢，很正常|前期掉水、后期掉脂，节奏本来不同'],
+ ['有一周完全没称体重，你的感受是？','很不安，怕自己失控|有点想知道又有点怕|没什么，身体感觉更准|挺好的，少一个干扰源'],
+ ['离自己定的日期只剩两周，还差 3 公斤，你会？','开始少吃加练，拼一把|很焦虑，天天盯着秤|调整预期，日期是我自己定的|不赶，按自己的节奏来'],
+ ['体脂秤上的体脂率一周内变了 2%，你会？','相信它，说明我在瘦|很在意，天天测|知道家用秤的体脂误差很大|只看长期趋势，不看单次'],
+ ['体重掉了，但镜子里的自己没变化，你觉得？','是不是秤坏了|很失望，感觉白减|变化先从看不见的地方开始|再等等，围度会跟上'],
+ ['你心里「一个月该瘦多少」的预期是？','至少 8–10 斤，不然没意义|5 斤左右比较安心|3–4 斤，稳一点|能稳住就行，数字随它'],
+ ['翻看记录，发现有整整两周是空白的，你会？','觉得自己又废了|有点愧疚，不想看了|空着就空着，接着记|记录是给自己看的，断了就接上']
+],
+/* ---------- 认知 C：用什么衡量变化 ---------- */
+judge:[
+ ['你判断自己「有没有瘦」，最主要看什么？','体重秤上的数字|体重为主，偶尔量腰围|裤子和衣服的松紧|照片、围度、体力、精神的综合'],
+ ['同一角度拍的两张照片隔了一个月，你会怎么看？','看不出差别，就是没瘦|有点变化，但不确定|能看出一点线条变化|照片比体重更能说明问题'],
+ ['一条以前穿不上的裤子现在能穿了，但体重没变，你会？','体重没变，说明没瘦|有点困惑|这就是变紧致了|围度变了就是实打实的进步'],
+ ['深蹲的重量比上个月多了 5 公斤，你怎么看这件事？','和减脂没关系|说明我变壮了，可能更重|是好事，说明肌肉在进步|力量和围度都在变好'],
+ ['爬五楼不再喘了，你会把它算进「进步」里吗？','不算，跟瘦没关系|偶尔会想到|会，体能变好也是变化|当然算，这是身体在变强'],
+ ['朋友说「你好像瘦了」，你第一反应是？','是不是在客套|有点开心，但不太敢信|会开心，也会想是不是真的|谢谢，我自己也有感觉'],
+ ['早上照镜子觉得脸小了，晚上又觉得肿了，你会？','一天一个样，很烦躁|搞不清到底哪个是真的|知道早晚状态本来不同|以固定时间、固定光线的对比为准'],
+ ['你量腰围的频率和方式更接近？','很少量，只看体重|量过几次，位置不太固定|固定位置、固定时间量|每月量一次，和照片一起看'],
+ ['最近睡得更好、白天更有精神，你会把这算作成果吗？','不算，我只认体重|有一点，但不重要|算，状态好也是收获|当然算，这比数字重要'],
+ ['除了体重，你还会用什么判断自己的状态？','基本不用别的|偶尔看看镜子|衣服松紧、照片|围度、力量、睡眠、精力都看'],
+ ['衣服从 L 换到 M，但体重一模一样，你会？','体重没变，可能只是版型问题|有点疑惑|尺码变了就是瘦了|这是最直接的证据'],
+ ['拍照时你更在意什么？','哪个角度显瘦|和别人比谁更瘦|和上个月的自己比|记录真实的样子，方便以后对比']
+],
+/* ---------- 认知 C：水分与身体波动 ---------- */
+water:[
+ ['前一天米饭、面条比平时吃得多，第二天体重涨了，你会？','觉得自己吃主食吃胖了|有点后悔吃那么多主食|知道糖原会带水，涨的不是脂肪|碳水一克带三克水，正常'],
+ ['吃了顿咸的，第二天手指有点胀，你怎么想？','胖了|很懊恼|盐让身体存了水|多喝点水，两天就回去了'],
+ ['经期前两天体重涨了，还特别想吃甜的，你会？','觉得自己失控了|很烦躁，干脆不管了|知道这是激素带来的|这几天不称重，等结束再说'],
+ ['三天没上厕所，体重涨了 0.8 公斤，你会？','觉得自己胖了|很焦虑|肠道内容物的重量而已|解决了就回去了'],
+ ['坐了八小时飞机，落地后整个人肿了一圈，你会？','一出门就胖了|很沮丧|久坐和气压让水分滞留|过两天就消'],
+ ['蒸完桑拿轻了 0.6 公斤，你怎么看？','出汗就能瘦，太好了|觉得找到了捷径|掉的是水，喝回来就回来了|出汗不等于减脂'],
+ ['喝水多了，体重也上去了，你会？','连水都不敢多喝了|有点担心|水不产热，喝完就排掉|该喝就喝'],
+ ['练完腿第二天又酸又胀，体重也重了，你会？','练完反而胖了，很打击|有点疑惑|肌肉修复会存水|酸痛期的数字不作数'],
+ ['一天之内体重能差 1–2 公斤，你的理解是？','太不稳定了，身体是不是有问题|很困惑，不知道信哪个|这是正常的日夜波动|只认固定时间的那个数'],
+ ['称体重前你会特意先上厕所吗？','一定会，不然不敢上秤|会，能轻一点是一点|看情况，不影响判断|不会，没必要'],
+ ['运动出了很多汗，你觉得体重掉的部分是？','脂肪|主要是脂肪，也有水|大部分是水|水加一点脂肪，看不出比例'],
+ ['喝了两杯酒后第二天体重上涨，你会？','觉得自己喝胖了|很后悔|酒精让人脱水又滞留水分|酒的热量另说，这波是水']
+],
+/* ---------- 认知 C：身体信号 ---------- */
+signal:[
+ ['肚子饿了，但还没到饭点，你通常？','忍着，等到点再说|喝点水顶一顶|看饿的程度，真饿就吃点|饿了就吃，不用等到点'],
+ ['「嘴馋」和「真的饿」，你分得清吗？','基本分不清|大概能，但不准|大部分时候能|能，饿是胃空，馋是想吃某样东西'],
+ ['吃到什么程度你会停？','按分量吃完就停|吃到不饿|吃到舒服|吃到饱就停，剩下的留着'],
+ ['忙起来一整天只吃了一顿，你会？','觉得正好少摄入|有点饿，但忍着|晚上会补回来|尽量不让自己饿过头'],
+ ['下午三四点特别想吃甜的，你会怎么理解？','我太馋了，意志力差|肯定是血糖低|可能是午饭没吃够或没睡好|身体在提醒我该补点东西'],
+ ['运动完特别饿，你会？','忍住不吃，怕白练|有点纠结|正常吃，练完本来就容易饿|该吃就吃，练后那顿挺重要'],
+ ['睡前有点饿，你通常？','忍着睡，怕胖|喝口水|真的饿就吃一点|饿了就吃点，不影响'],
+ ['你吃饭的速度更接近？','很快，几分钟解决|偏快|中等|不快，能感觉到饱'],
+ ['有没有过「不饿但一直想吃」的时候？','经常，很难控制|有时候会|偶尔|很少'],
+ ['已经饱了，但桌上还有，你会？','继续吃，不吃完难受|勉强吃几口|停下|停下，留着下顿'],
+ ['你有多久没有真正感觉到「饿」了？','很久了，我一直在控制|不太记得|偶尔会有|每天都会有几次'],
+ ['你更喜欢哪种口味？','重口，越咸越香|偏咸|正常|清淡也能吃得香']
+]
 };
+BANK = Object.assign(BANK, {
+/* ---------- 情绪 E：自责 ---------- */
+blame:[
+ ['多吃了一顿之后，你心里对自己说的话更接近？','你怎么又管不住自己|今天算失败了，明天重来|吃多了而已，不是什么大事|这顿吃得挺开心，值了'],
+ ['原计划今天运动，结果没去，晚上你会？','觉得自己很没用|有点愧疚，想着明天补|明天找时间动一下|休息一天没什么'],
+ ['吃了自己清单上「不该吃」的东西，你会？','觉得自己破戒了，很失败|有一阵罪恶感|有点在意，但很快就过去|吃东西哪有该不该'],
+ ['体重涨了之后，你会怎么称呼自己？','会骂自己几句|会有点嫌弃自己|不会骂，只是有点闷|不会，涨了就是涨了'],
+ ['照镜子的时候，你脑子里的话更接近？','怎么看都不满意|这里不好那里也不好|还行，有个别地方想改|挺好的，没什么可挑'],
+ ['有人夸你身材好，你会？','觉得对方在客套|有点不好意思，不太信|接受，也开心|坦然收下'],
+ ['一天过得不太顺的时候，你对自己的评价会变得？','特别苛刻，什么都看不顺眼|比平时严厉|和平时差不多|会对自己宽容一点'],
+ ['如果昨天晚上吃多了，今天早上你的状态更像？','还在想这件事，心情不好|有点低落，慢慢缓过来|基本没事了|已经翻篇了'],
+ ['「我又没坚持住」这个念头，多久出现一次？','几乎每天|一周好几次|偶尔|很少'],
+ ['你会不会用「少吃一顿」或者「多练一次」来罚自己？','经常会|有时候会|想过，但没做|不会'],
+ ['你觉得自己「总是坚持不下来」，这种想法强吗？','很强，我确实这样|有一点|不太有|不这么看，断断续续也算在走'],
+ ['深夜一个人时，你对自己的评价通常？','比白天更糟|会想很多|和白天一样|挺平静的']
+],
+/* ---------- 情绪 E：身材满意 ---------- */
+satisfy:[
+ ['现在你对自己身材的感受更接近？','很不满意，很难接受|不满意，但还能忍|中性，偶尔在意|满意，只是想更健康一点'],
+ ['看到镜子里全身的自己，第一反应通常是？','先看到不满意的地方|会扫一眼，心里打分|看看整体，还行|没什么特别的感觉'],
+ ['需要拍全身照时，你会？','能躲就躲|有点抗拒，但还是拍|会拍，挑角度|无所谓，拍就拍'],
+ ['你会不会觉得「只有瘦下来，才有资格开心」？','经常这么想|有时候会|偶尔闪过|不会'],
+ ['别人看你的身材，你觉得他们在想什么？','肯定觉得我胖|可能会注意到|没想过|他们大概没在意'],
+ ['买衣服的时候，你的心情更接近？','很挑，怕显胖|有点压力|正常挑|看喜欢不喜欢'],
+ ['你对自己身上最在意的部位，关注程度是？','每天都会盯着看|经常会注意|偶尔会|不太在意'],
+ ['「瘦到多少我才满意」，你心里有明确数字吗？','有，而且必须达到|有，但可以商量|大概有个范围|没有，舒服就行'],
+ ['你怎么看自己身体「能做什么」这件事？','很少想，我只在意它好不好看|偶尔会想到|会，比如力气、耐力|会，身体能做很多事'],
+ ['夏天要穿短袖短裤时，你会？','很抗拒，尽量遮|有点不自在|正常穿|该怎么穿怎么穿'],
+ ['一天里你会审视自己身材多少次？','很多次|几次|偶尔|基本没有'],
+ ['如果体重和围度都不变了，你会停止在意吗？','不会，我会更焦虑|可能会|应该会放松很多|本来也没那么在意']
+],
+/* ---------- 情绪 E：比较 ---------- */
+compare:[
+ ['刷到身材很好的博主，你的感受更接近？','很羡慕，也有点沮丧|会对照自己，不太舒服|看看就过去了|会欣赏，但不影响我'],
+ ['身边朋友瘦了 5 斤，你会？','有点着急，觉得自己落后|会问她怎么做的|替她开心|和我关系不大'],
+ ['同事和你吃一样多，但比你瘦，你会？','觉得很不公平|有点想不通|知道人和人不一样|没想过这事'],
+ ['看到「一个月瘦 15 斤」的帖子，你会？','觉得别人都行，是我不行|想试试|半信半疑|知道那不是我想要的速度'],
+ ['你会拿现在的自己和几年前的自己比吗？','经常，越比越难受|有时候会|偶尔|会，但更多是感慨'],
+ ['看到别人打卡记录，你的第一反应？','觉得自己太差劲|会被激励一下|点个赞就过|不太看这些'],
+ ['家人拿你和别人比身材时，你会？','很难受，记很久|有点不舒服|当场怼回去，之后就忘|不太在意'],
+ ['群里有人晒体重，你会？','心里默默比较，然后低落|会看一眼自己的|不太参与|会替对方高兴'],
+ ['看到「理想身材」的照片，你会？','觉得自己永远达不到|会存下来当目标|参考一下|知道那是修图和角度'],
+ ['比较完之后，你通常会？','更焦虑，甚至想吃点什么|情绪低落一阵|该干嘛干嘛|没什么变化'],
+ ['你觉得自己在朋友里身材算？','偏差的那个|中等偏下|中等|没排过，也不重要'],
+ ['如果没人比较，你会不会轻松很多？','会，比较是主要压力源|可能会好一些|影响不大|本来也不太比']
+],
+/* ---------- 情绪 E：社交场合 ---------- */
+social:[
+ ['聚餐时朋友一直劝你多吃点，你会？','很难拒绝，吃了又后悔|会吃，但心里不安|吃一点，够了就停|想吃就吃，不想就说不'],
+ ['朋友过生日，蛋糕端上来，你会？','找理由不吃|吃一小口，怕多|正常吃一块|开心吃，生日一年一次'],
+ ['饭局上有酒，你会？','一口不喝，怕热量|喝了会有负担|喝一点，看场合|该喝就喝，开心就好'],
+ ['和朋友出去吃饭，点菜时你会？','尽量点最清淡的|会纠结很久|正常点，挑喜欢的|想吃什么点什么'],
+ ['家人说「你又不胖，别减了」，你会？','觉得他们不懂，很烦|嘴上应付，心里不认同|会觉得被关心|会认真聊两句'],
+ ['有人当面说「你最近好像胖了」，你会？','很难受，会记很久|有点尴尬|笑一下就过|不太当回事'],
+ ['别人送你零食或甜品，你会？','收下但不吃，觉得浪费也放着|有点为难|收下，想吃就吃|开心收下'],
+ ['公司团建、应酬比较多的时候，你会？','很焦虑，怕破坏计划|尽量少去|去了照常吃|没什么压力'],
+ ['旅行时当地美食很多，你会？','控制着吃，怕胖|吃一点，心里有负担|挑想吃的吃|放开吃，旅行就这一次'],
+ ['节日家里做了一大桌菜，你会？','只挑最清淡的几口|吃，但一直在算|正常吃|好好吃一顿'],
+ ['和别人一起吃饭时，你会不会在意对方怎么看你吃多少？','很在意|有点在意|偶尔想到|完全不在意'],
+ ['不想吃但不好意思拒绝时，你通常？','还是吃了|找借口推掉|直说不想吃|看情况，不会被为难']
+],
+/* ---------- 情绪 E：精力与情绪 ---------- */
+energy:[
+ ['最近两周，你整体的心情更接近？','一直有点低|时好时坏|大部分时候还行|挺平稳，也有开心的时候'],
+ ['最近的睡眠怎么样？','经常睡不好，或者睡不够|入睡有点难|还可以|睡得挺踏实'],
+ ['白天你的精力更像？','经常犯困，提不起劲|下午会垮一阵|够用|挺充足'],
+ ['压力大的时候，你会想吃东西吗？','很明显，靠吃缓解|有时候会|偶尔|不太会'],
+ ['累到不想动的时候，你会怎么想？','觉得自己懒，很自责|有点无奈|知道是累了|那就休息，正常'],
+ ['早上起床时的感觉更接近？','很沉，起不来|有点费劲|还行|比较清爽'],
+ ['情绪低落的频率大概是？','几乎每周都有几天|一个月几次|偶尔|很少'],
+ ['对以前喜欢的事，现在还有兴趣吗？','明显少了|少了一些|差不多|还是挺有兴趣'],
+ ['最近是不是特别容易觉得累？','是，比平时明显|有一点|还好|不觉得'],
+ ['你觉得自己现在的压力主要来自？','身材和体重|工作和生活|两者都有|没什么大压力'],
+ ['运动完之后，你的心情通常？','更累，没什么变化|有点轻松|会好一些|明显变好'],
+ ['一天结束时，你通常的感受是？','又没做好，有点沮丧|松一口气|还行，过完了一天|挺满足']
+],
+/* ---------- 情绪 E：对未来的担心 ---------- */
+future:[
+ ['想到「以后会不会反弹」，你的感受是？','很害怕，觉得自己一定会|有点担心|知道要看习惯，不太怕|没想过这个问题'],
+ ['一想到「以后都要算着吃」，你会？','很绝望，感觉一辈子被困住|有点抗拒|觉得没那么夸张|不打算那样生活'],
+ ['你相不相信自己这次能瘦下来？','不太相信|有点怀疑|相信，慢慢来|挺有信心的'],
+ ['快到过年、放假这种饭局多的日子，你会？','提前焦虑，怕失控|有点紧张|正常过|挺期待的'],
+ ['你觉得瘦下来之后的生活会是？','一切都会变好|会自信很多|会轻松一些|和现在差不多，但更健康'],
+ ['「只要停下来就会胖回去」，这个念头强吗？','非常强|有一点|不太强|不这么认为'],
+ ['如果这次又没成功，你会怎么想？','觉得自己彻底不行|会很受打击|会总结一下再试|失败了也正常'],
+ ['你会因为怕别人看出来「又在减肥」而不敢说吗？','会，怕被笑|有一点|不太在意|会大方说'],
+ ['你想象中的「理想状态」是？','一个具体的体重数字|一个具体的身材样子|一种身体轻松的感觉|能自在地吃和动'],
+ ['关于「维持体重」这件事，你？','觉得比减还难，很怕|没想过那么远|知道需要长期习惯|觉得是自然的事'],
+ ['如果三个月后体重只变了一点点，你会？','觉得这三个月白过了|有点失望|能接受|会看其他变化'],
+ ['你希望这次改变的是？','体重数字|外形|和食物的关系|整体状态和健康']
+]
+});
+BANK = Object.assign(BANK, {
+/* ---------- 行为 B：忍与失控 ---------- */
+binge:[
+ ['平时忍得比较严，某个晚上突然停不下来地吃，这种情况？','经常有|偶尔有|以前有，现在好多了|基本没有'],
+ ['周末比工作日吃得明显多，你会？','觉得一周的努力都白费|有点失控感|知道周末松一点很正常|周末本来就该放松'],
+ ['一个人在家的时候，你会不会吃得比平时多很多？','经常|有时候|偶尔|不会'],
+ ['吃到很撑了，但嘴巴还想继续，你通常？','继续吃，停不下来|再吃几口才停|能停下来|不会吃到撑'],
+ ['白天吃得很少，晚上就容易吃多，这种模式你有吗？','很明显|有时候|偶尔|没有'],
+ ['深夜起来找东西吃的情况？','有过好几次|偶尔|很少|没有'],
+ ['心情不好的时候，你会用吃东西来缓解吗？','经常会|有时候|偶尔|不太会'],
+ ['有没有过吃得太快，回过神已经吃了很多？','经常|有时候|偶尔|很少'],
+ ['吃完之后，你会把包装藏起来或者不想让人看到吗？','会|有时候会|很少|不会'],
+ ['「忍几天—吃很多—再忍几天」这个循环，你熟悉吗？','非常熟悉，一直在循环|有过几轮|以前是，现在好了|不熟悉'],
+ ['某些食物（甜食、零食、面包）一买回来就停不住？','是的，所以我不敢买|有时候会|偶尔|能控制量'],
+ ['白天控制得很好，一到晚上就失守，这种情况？','经常|一周有几次|偶尔|基本没有']
+],
+/* ---------- 行为 B：限制与补偿 ---------- */
+restrict:[
+ ['吃多之后的下一顿，你通常？','直接不吃，想抵掉|吃得很少|正常吃，稍微清淡点|照常吃'],
+ ['你吃主食（米饭、面条）的情况是？','几乎不吃|吃得很少|正常吃|正常吃，也会选粗粮'],
+ ['你会跳过早餐吗？','经常，觉得省一顿|有时候|偶尔|基本不跳'],
+ ['吃多之后，你会加练来「抵掉」吗？','一定会|有时候会|想过，但没做|不会'],
+ ['称完体重发现涨了，当天的饮食会？','立刻减量|比平时少吃|照常|照常，该吃吃'],
+ ['你吃东西时会区分「干净」和「不干净」吗？','非常严格，很多都不敢吃|比较在意|有一点|不太分这些'],
+ ['要出门、要拍照之前，你会提前少吃吗？','会，明显少吃|会稍微控制|看情况|不会'],
+ ['你有没有过一整天只吃一顿的时候？','经常|有时候|偶尔|没有'],
+ ['你会精确计算每一餐的热量吗？','几乎每餐都算|大致算|偶尔估一下|不算'],
+ ['吃完觉得有负担时，你会用运动来抵消吗？','经常|有时候|偶尔|不会'],
+ ['你有一份「绝对不能吃」的清单吗？','有，而且很严格|有几样|没有明确清单|没有，什么都能吃'],
+ ['饿了但忍着不吃，这种情况多吗？','很多，几乎每天|经常|偶尔|很少']
+],
+/* ---------- 行为 B：中断与恢复 ---------- */
+interrupt:[
+ ['出差或者连续加班，把你的节奏打断了，你通常？','整段放弃，等忙完再说|很自责，隔很久才重新开始|忙完那阵就接着动|尽量保留最低限度的习惯'],
+ ['生病停练了一周，恢复后你会？','觉得自己又回到原点|有点沮丧|从低强度重新开始|接着原来的进度'],
+ ['打卡断了好几天，你会？','干脆不打了|有点不想面对|补上或者接着记|断了就断了，继续'],
+ ['旅行回来，发现体重涨了、节奏乱了，你会？','觉得前功尽弃|很烦躁|花几天调回来|正常，回来就好'],
+ ['中断一周之后，重新开始对你来说？','非常难，往往就断了|有点难|还行|不难'],
+ ['中断的那段时间，你的饮食通常会？','彻底放开|比平时松很多|稍微松一点|基本照常'],
+ ['重新开始的时候，你会不会要求自己「从头再来」？','会，必须重头严格执行|会，但做不到|不会，接着来|不会，随时可以接上'],
+ ['计划被临时的事情打乱，你的感受是？','很挫败，一天都毁了|有点烦|调整一下就行|很正常'],
+ ['忙起来的时候，运动通常是？','第一个被砍掉的|会被砍掉一半|尽量保留一点|还是会挤时间'],
+ ['你最长的一次中断大概是？','几个月以上|一两个月|两三周|一周以内'],
+ ['重新开始那天，你通常怎么动？','直接上原来的强度|比原来轻一点|从很低的强度开始|随便动动，找感觉'],
+ ['中断后你会不会觉得「我已经不是那个自律的人了」？','会，很强烈|有点|偶尔|不会']
+],
+/* ---------- 行为 B：运动节奏 ---------- */
+move:[
+ ['最近一阶段，你的运动状态更接近？','基本没动，也提不起劲|想动，但总差一步没开始|有在动，但三天打鱼两天晒网|量不大，但稳定，每周都能动几次'],
+ ['你现在每周大概动几次？','几乎没有|一次|两三次|四次以上'],
+ ['你的运动强度通常是？','很轻，基本是散步|中等偏轻|中等，会出汗|有强度，会喘'],
+ ['你怎么看运动这件事？','是任务，做完才安心|是赎罪，吃多了就得练|是习惯|是让自己舒服的方式'],
+ ['有你自己真正喜欢的运动吗？','没有，都是为了消耗|说不上喜欢|有一两项还行|有，挺享受'],
+ ['「没时间运动」这句话，对你来说？','经常是真的|有时候是|不太是|不是，能挤出时间'],
+ ['你给自己定的运动计划，完成度大概？','几乎没有完成过|一半左右|大部分能完成|基本都能完成'],
+ ['运动完你会不会觉得「今天可以多吃点」？','会，而且吃得更多|有时候会|偶尔|不太会'],
+ ['状态好的时候，你会不会突然加大运动量？','会，然后累垮|有时候会|会稍微加一点|按计划来'],
+ ['你的运动里，力量训练占多少？','完全没有|很少|有一部分|占一半左右'],
+ ['运动完之后，你的成就感？','没有，只觉得累|有一点|挺明显|很强'],
+ ['状态很差的那天，你会？','干脆不动|勉强动一下|降低强度动一动|按低配版本动'],
+ ['如果某周只动了一次，你会怎么评价这一周？','失败|不太满意|还行|算动过了']
+],
+/* ---------- 行为 B：计划与执行 ---------- */
+plan:[
+ ['你给自己定的目标，通常是什么样？','很狠，要求每天做到|比较具体，但偏严|具体且能做到|比较松，能做多少算多少'],
+ ['你会用打卡或者记录来跟进度吗？','每天都必须打|经常打|偶尔记|不太记'],
+ ['你记录饮食的方式更接近？','每一口都记|大概记一下|只记特殊的日子|不记'],
+ ['制定计划的时候，你会？','一次把饮食运动全改|同时改好几件事|一次改一件|先做起来再说'],
+ ['你买过课程、装备或者办过卡吗？','买过很多，用得少|买过一些|买过，一直在用|很少买'],
+ ['你定的计划，通常能坚持多久？','几天|一两周|一个月左右|已经变成习惯了'],
+ ['执行出现偏差时，你会？','觉得计划废了|很烦躁|调整一下继续|很正常，接着做'],
+ ['你会定期回头看自己的执行情况吗？','从不|很少|偶尔|会，每周看一下'],
+ ['你的目标里有具体日期吗？','有，而且很紧|有，比较宽松|大概有个时间|没有，慢慢来'],
+ ['你的目标除了体重，还有别的吗？','没有，只盯体重|主要是体重|有围度或照片|有体能、睡眠、心情'],
+ ['计划没完成的时候，你会怎么调整？','加码，逼自己更狠|有点慌，换个方法|把目标调小一点|不改，继续做'],
+ ['如果只让你改一件事，你会选？','说不清，感觉都要改|少吃|多动|先固定一件事']
+],
+/* ---------- 行为 B：食物与情绪 ---------- */
+reward:[
+ ['完成一个阶段目标后，你会怎么奖励自己？','吃一顿好的|买点平时不敢吃的|买件衣服或者其他东西|没想过要奖励'],
+ ['心情差的时候，你最先想到的是？','吃点东西|找人聊聊|出去走走|睡一觉'],
+ ['累了的时候，你会用食物给自己「充电」吗？','经常会|有时候|偶尔|不太会'],
+ ['你会用食物来庆祝吗？','一定会|经常会|偶尔|不太会'],
+ ['逛超市时，你会不会顺手买很多零食？','会，而且很快吃完|会买一些|偶尔买|很少买'],
+ ['一个人待着的时候，你会不会「偷吃」点什么？','会|有时候|偶尔|不会'],
+ ['除了吃，你还有其他让自己放松的方式吗？','几乎没有|有一两个|有好几种|挺多的'],
+ ['吃完「安慰食物」之后，你的感受通常是？','更难受，然后自责|短暂舒服，之后有点后悔|舒服一阵|挺好，解决了当时的情绪'],
+ ['你会不会觉得「只有吃东西的时候是开心的」？','有时候会这么觉得|偶尔|很少|不会'],
+ ['压抑了一段时间之后，你会不会明显想吃东西？','会，而且很强烈|有时候|偶尔|不太会'],
+ ['周末的「放纵餐」，你通常？','吃到最后很难受|吃很多，但可控|正常吃一顿喜欢的|照常吃'],
+ ['如果不用食物奖励自己，你会不会觉得少了点什么？','会，很难想象|有点|还好|不会']
+]
+});
 
-/* ---------- 题库：200 题，每维 40 题 ---------- */
-const BANK = [
-  /* A 成事手感 · 40 题 */
-  {dim:"A", text:"交出去的活儿，我敢拍着胸口说「这版能打」。"},
-  {dim:"A", text:"半路想放弃的时候，我总能找到一个再撑一下的理由。"},
-  {dim:"A", text:"别人说「这事挺难的」，我第一反应是「那拆开看看」。"},
-  {dim:"A", text:"我手里至少有一件没人催、没人验收、我也做完了的事。"},
-  {dim:"A", text:"答应别人的事，我心里会排好顺序，很少掉链子。"},
-  {dim:"A", text:"遇到没做过的事，我会先动手试一小步，而不是先列一圈困难。"},
-  {dim:"A", text:"把一件事从「想」推到「做成」，这在我身上发生过不止一次。"},
-  {dim:"A", text:"开了头的事，大多数在我手里是有交代的。"},
-  {dim:"A", text:"我的待办清单越写越长，但完成的那一栏也没停下。"},
-  {dim:"A", text:"出问题的时候，我习惯先说「我来想办法」，而不是先找人背锅。"},
-  {dim:"A", text:"没人盯着的时候，我也能把该做的做完。"},
-  {dim:"A", text:"学新东西上手慢一点没关系，我会一直练到能用。"},
-  {dim:"A", text:"计划表上的事，我能真的执行，不只是写个好看。"},
-  {dim:"A", text:"我改过方案、返过工，但很少烂尾。"},
-  {dim:"A", text:"别人还在纠结要不要做，我已经试出个雏形了。"},
-  {dim:"A", text:"我会把大目标切成一张张小任务卡，一张张划掉。"},
-  {dim:"A", text:"资料查到一半卡住了，我会换个路子接着查。"},
-  {dim:"A", text:"桌面也许乱，但我手头的事是有秩序的。"},
-  {dim:"A", text:"我能忍受「枯燥但必要」的那部分工作。"},
-  {dim:"A", text:"做完一件事，我会顺手记下下次能做得好的点。"},
-  {dim:"A", text:"我不怕从头再来，反正方法已经攒下了。"},
-  {dim:"A", text:"交付之前，我会自己先挑三处毛病。"},
-  {dim:"A", text:"我说过「包在我身上」，然后真的办成了。"},
-  {dim:"A", text:"时间紧的时候，我反而能抓住重点。"},
-  {dim:"A", text:"我做东西有个习惯：先出一版能用的，再慢慢打磨。"},
-  {dim:"A", text:"我能一边做一边判断「这样下去行不行」。"},
-  {dim:"A", text:"半夜想到一个改进点，我会记下来，第二天真的去试。"},
-  {dim:"A", text:"我不需要掌声，也能把事做完。"},
-  {dim:"A", text:"我能同时推进几件事，还不忘掉其中任何一件。"},
-  {dim:"A", text:"遇到卡壳，我会休息一下再回来，而不是彻底撂挑子。"},
-  {dim:"A", text:"我做完的事，回头再看基本不用大返工。"},
-  {dim:"A", text:"我能接受「先完成，再完美」。"},
-  {dim:"A", text:"需要有人拿主意的事，我能推动到有人拿主意。"},
-  {dim:"A", text:"我的收藏夹里躺着教程，而且我真的照着做过。"},
-  {dim:"A", text:"我会把「以后再说」的事翻出来，挑一件今天就办。"},
-  {dim:"A", text:"一件事做到七成想放弃时，我会跟自己说「都到这里了」。"},
-  {dim:"A", text:"我敢在没人走过的路上，摸索出自己的做法。"},
-  {dim:"A", text:"做事之前我心里有数：哪步容易、哪步要留神。"},
-  {dim:"A", text:"我能为了一个长线目标，忍住眼前的诱惑。"},
-  {dim:"A", text:"回头看我做过的东西，会忍不住想「还不错嘛」。"},
-  /* B 被人懂着 · 40 题 */
-  {dim:"B", text:"低谷的时候，我清楚地知道深夜敢打给谁。"},
-  {dim:"B", text:"有人记得我不吃香菜、怕吵、睡得浅这种小事。"},
-  {dim:"B", text:"我能说出「我最近不太好」，而且不觉得丢人。"},
-  {dim:"B", text:"我能说出至少三个人各自擅长什么、最近在忙什么。"},
-  {dim:"B", text:"难过的时候，我能说清楚自己是哪一种难过。"},
-  {dim:"B", text:"我身边有人会对我说「你先照顾好自己，其他的放一放」。"},
-  {dim:"B", text:"和某几个朋友，很久不联系我也不担心关系变淡。"},
-  {dim:"B", text:"被安慰这件事在我身上是起效的，不是左耳进右耳出。"},
-  {dim:"B", text:"有人会主动问我「你那天说的那事后来怎么样了」。"},
-  {dim:"B", text:"我敢在朋友面前暴露自己的糗事。"},
-  {dim:"B", text:"我的相册里存着和朋友们的合照，而不只有风景。"},
-  {dim:"B", text:"遇到好事，我脑子里会立刻蹦出「要告诉谁」。"},
-  {dim:"B", text:"有人了解我的雷区，会提前帮我避开。"},
-  {dim:"B", text:"我能在别人面前掉眼泪，而不觉得没面子。"},
-  {dim:"B", text:"朋友做决定之前，会来问问我的看法。"},
-  {dim:"B", text:"有人知道我心里的软肋在哪，并且替我保密。"},
-  {dim:"B", text:"我收到过「看到这个就想到你」的消息。"},
-  {dim:"B", text:"我生病或状态差的时候，有人会真的来照顾我。"},
-  {dim:"B", text:"我分得清哪些朋友能聊正事、哪些能聊心事。"},
-  {dim:"B", text:"有人陪过我度过一段难捱的日子。"},
-  {dim:"B", text:"我敢跟朋友说「这次我需要你帮帮我」。"},
-  {dim:"B", text:"我的秘密有人保管，而且我知道它很安全。"},
-  {dim:"B", text:"群里接龙、拼单、约饭，总有人会想到我。"},
-  {dim:"B", text:"我能接住朋友的坏情绪，而不是急着给建议。"},
-  {dim:"B", text:"有人记得我的重要日子。"},
-  {dim:"B", text:"我和家里人能好好说上几句话，不全是客气。"},
-  {dim:"B", text:"我能说出一个「随时可以打扰」的人。"},
-  {dim:"B", text:"和朋友闹过别扭，我们知道怎么和好。"},
-  {dim:"B", text:"我被认真倾听过——对方不打断、不评判、不急着走。"},
-  {dim:"B", text:"有人夸过「跟你待着很舒服」。"},
-  {dim:"B", text:"我的玩笑话，总有人接得住。"},
-  {dim:"B", text:"我难过的时候不用装没事，因为装不过他们。"},
-  {dim:"B", text:"朋友会把好东西介绍给我，不求回报。"},
-  {dim:"B", text:"我知道谁会在我缺席的时候替我说话。"},
-  {dim:"B", text:"有人看见我的努力，并且说出口过。"},
-  {dim:"B", text:"我们之间有只有彼此才懂的暗号和梗。"},
-  {dim:"B", text:"我能跟不同的人聊到一起，找到共同话题。"},
-  {dim:"B", text:"我发过的动态，有人认真评论过。"},
-  {dim:"B", text:"紧张的场合里，我能找到那个让我安心的人。"},
-  {dim:"B", text:"「被记得」这件事，在我身上发生过很多次。"},
-  /* C 情绪自由 · 40 题 */
-  {dim:"C", text:"被否定之后，我会难受一阵，但不会连夜怀疑人生。"},
-  {dim:"C", text:"别人的情绪炸了，我能稳稳站在原地，不被点着。"},
-  {dim:"C", text:"我的快乐不太依赖别人今天对我的态度。"},
-  {dim:"C", text:"以前能让我破防的事，现在只剩一句「嗯，知道了」。"},
-  {dim:"C", text:"情绪上头的时候，我能先停三秒再开口。"},
-  {dim:"C", text:"一件事结果不理想，我会复盘，但不会骂自己一整晚。"},
-  {dim:"C", text:"我不太会因为别人的一句评价，反复回想一整天。"},
-  {dim:"C", text:"再难的日子落到我头上，我也能先安排好吃饭睡觉。"},
-  {dim:"C", text:"我分得清「我的事」和「别人的情绪」。"},
-  {dim:"C", text:"天气不好、运气不好，我心情也不至于跟着塌。"},
-  {dim:"C", text:"我能说出自己此刻的情绪，而不是只觉得「烦」。"},
-  {dim:"C", text:"吵架的时候，我能做到不翻旧账。"},
-  {dim:"C", text:"别人催我，我能稳住自己的节奏。"},
-  {dim:"C", text:"我知道做什么能把自己的电量充回来。"},
-  {dim:"C", text:"我能让一件事翻篇，而不是反刍一个星期。"},
-  {dim:"C", text:"面对突发状况，我的声音能保持平稳。"},
-  {dim:"C", text:"我不会因为对方语气重，就把内容也全盘否定。"},
-  {dim:"C", text:"我能在难过和生气之间，分清自己到底是哪个。"},
-  {dim:"C", text:"深夜情绪上头之后，第二天我照样起来过日子。"},
-  {dim:"C", text:"我不太需要别人哄，也能自己缓过来。"},
-  {dim:"C", text:"我能跟自己说「现在先不想这个」。"},
-  {dim:"C", text:"别人的顺遂让我羡慕，但不让我焦躁。"},
-  {dim:"C", text:"我情绪低的时候，会主动找出口，而不是硬扛。"},
-  {dim:"C", text:"被误解的时候，我能解释一次，然后放下。"},
-  {dim:"C", text:"我能接受「今天状态不好」，并且照样善待自己。"},
-  {dim:"C", text:"大场面之前我会紧张，但上了场就能稳住。"},
-  {dim:"C", text:"我不会把火撒在无辜的人身上。"},
-  {dim:"C", text:"我能在一堆事里，先照顾好自己的情绪。"},
-  {dim:"C", text:"别人的冷脸，我不会脑补成天塌了。"},
-  {dim:"C", text:"我的心情恢复得比以前快了。"},
-  {dim:"C", text:"我分得清「事实很糟」和「我感觉很糟」。"},
-  {dim:"C", text:"我不会在气头上做重要的决定。"},
-  {dim:"C", text:"我能在热闹里自在，也能在冷场里自洽。"},
-  {dim:"C", text:"坏消息来了，我能先稳住，再想下一步。"},
-  {dim:"C", text:"我不再需要向每个人证明自己。"},
-  {dim:"C", text:"别人向我倒苦水时，我知道什么时候该设边界。"},
-  {dim:"C", text:"我的睡眠不太容易被心事偷走。"},
-  {dim:"C", text:"我能在情绪的悬崖边，给自己踩一脚刹车。"},
-  {dim:"C", text:"我允许自己哭一场，哭完接着过。"},
-  {dim:"C", text:"我对自己说话的语气，比对朋友还温和。"},
-  /* D 越活越开阔 · 40 题 */
-  {dim:"D", text:"最近半年，我为一个纯粹感兴趣的东西熬过夜或花过钱。"},
-  {dim:"D", text:"我会认真听自己不同意的观点，还听得出点门道。"},
-  {dim:"D", text:"和一年前的自己比，我明显多懂了一些东西。"},
-  {dim:"D", text:"我承认「这个我不知道」，而且不觉得羞愧。"},
-  {dim:"D", text:"陌生领域的内容，我会主动点开看看，不怕看不懂。"},
-  {dim:"D", text:"隔一阵子，我就会冒出「原来是这样」的时刻。"},
-  {dim:"D", text:"我愿意为一个新尝试承担一点「学不会也没关系」的风险。"},
-  {dim:"D", text:"我的聊天话题里，总会出现一些新东西。"},
-  {dim:"D", text:"我有一项这两三年才长出来的新技能或新爱好。"},
-  {dim:"D", text:"我去过没去过的地方，或者试过没用过的路线。"},
-  {dim:"D", text:"我会问「为什么是这样」，而不只是「怎么办」。"},
-  {dim:"D", text:"纪录片、播客、展览，我能说出最近看的一个。"},
-  {dim:"D", text:"我能跟不同圈子里的人聊到一块儿去。"},
-  {dim:"D", text:"我不再急着给没经历过的事下结论。"},
-  {dim:"D", text:"我的问题清单，比购物清单还长。"},
-  {dim:"D", text:"我愿意改主意——被说服的时候，我会大方承认。"},
-  {dim:"D", text:"我会对着一道菜、一个字、一片云好奇起来。"},
-  {dim:"D", text:"我尝试过一次说走就走的小冒险。"},
-  {dim:"D", text:"我看过的内容里，有一部分超出了我的本行。"},
-  {dim:"D", text:"我能欣赏跟我审美相反的东西。"},
-  {dim:"D", text:"遇到看不懂的内容，我会研究一下而不是划走。"},
-  {dim:"D", text:"我的某些想法，被某个人或某本书刷新过。"},
-  {dim:"D", text:"我愿意主动结识跟我不一样的人。"},
-  {dim:"D", text:"我对「我还不知道什么」心里有一张单子。"},
-  {dim:"D", text:"我学东西是为了高兴，不全是为了有用。"},
-  {dim:"D", text:"我能弄明白一个陌生领域的入门内容，讲给别人听。"},
-  {dim:"D", text:"我不怕被新玩意儿甩下，会伸手摸一摸。"},
-  {dim:"D", text:"我的习惯清单里，最近添过新的一项。"},
-  {dim:"D", text:"见过更大的世界之后，我反而更能理解身边的小事。"},
-  {dim:"D", text:"我愿意独自去一个陌生的场合。"},
-  {dim:"D", text:"我能从小孩子或长辈身上学到东西。"},
-  {dim:"D", text:"我给未来的自己留过一张愿望清单。"},
-  {dim:"D", text:"我不觉得「到了年纪就该停止学新东西」。"},
-  {dim:"D", text:"我会为了弄明白一件事，一路查到深夜。"},
-  {dim:"D", text:"我的口头禅里有「试试看」。"},
-  {dim:"D", text:"我能同时喜欢两种看起来矛盾的东西。"},
-  {dim:"D", text:"我对世界的困惑比一年前多了，但慌张少了。"},
-  {dim:"D", text:"我发现以前讨厌的东西，现在能看出好了。"},
-  {dim:"D", text:"我会给自己安排「没目的的一天」。"},
-  {dim:"D", text:"我相信明年的我，会比现在懂得更多。"},
-  /* E 和自己和解 · 40 题 */
-  {dim:"E", text:"计划被打乱时，我能很快切换成「那就这样也行」。"},
-  {dim:"E", text:"我不太拿自己的进度条和别人的较劲。"},
-  {dim:"E", text:"独处的时候，我不需要一直刷点什么来填满安静。"},
-  {dim:"E", text:"犯错之后，我骂自己三句以内就能翻篇。"},
-  {dim:"E", text:"我能欣赏别人的好运气，而且真心替他们高兴。"},
-  {dim:"E", text:"对过去的选择，我能说出当时那样决定的道理。"},
-  {dim:"E", text:"我允许自己休息，休息时不会一边躺着一边愧疚。"},
-  {dim:"E", text:"事情不完美的时候，我能看见「已经不错的部分」。"},
-  {dim:"E", text:"我能对着镜子对自己说「就现在这样也挺好」。"},
-  {dim:"E", text:"我不再逼自己去参加不想去的聚会。"},
-  {dim:"E", text:"我能接受自己有短板，就像接受天气有阴晴。"},
-  {dim:"E", text:"我不觉得「没在努力的时候自己有罪」。"},
-  {dim:"E", text:"我能一口气说出自己的三个优点，不打磕巴。"},
-  {dim:"E", text:"拒绝别人之后，我不会愧疚一整天。"},
-  {dim:"E", text:"我很少在深夜回放白天的尴尬瞬间。"},
-  {dim:"E", text:"我能跟自己的缺点共处，像跟老朋友打招呼。"},
-  {dim:"E", text:"我不需要每件事都先想「别人会怎么看我」。"},
-  {dim:"E", text:"我能承认「这件事我就是不想做」。"},
-  {dim:"E", text:"我允许自己有一些没有结果的努力。"},
-  {dim:"E", text:"我不需要成为谁，也能喜欢自己。"},
-  {dim:"E", text:"我能穿过糟糕的过去，跟它挥挥手。"},
-  {dim:"E", text:"我的快乐不需要别人签字批准。"},
-  {dim:"E", text:"我能把「应该」换成「我想要」。"},
-  {dim:"E", text:"我累了就歇，不把休息当成偷懒。"},
-  {dim:"E", text:"我不再拿自己的第一章，去比别人的第十章。"},
-  {dim:"E", text:"我能对自己说「你已经做得够多了」。"},
-  {dim:"E", text:"我不害怕安静，安静里我反而自在。"},
-  {dim:"E", text:"我能接受今天的自己情绪不高，并允许它高不起来。"},
-  {dim:"E", text:"我不再为自己的敏感觉得羞耻。"},
-  {dim:"E", text:"我能给自己做一顿好吃的，就因为想哄哄自己。"},
-  {dim:"E", text:"我不需要等谁来认可我，才开始认可我自己。"},
-  {dim:"E", text:"我能笑着说「那次我真的搞砸了」。"},
-  {dim:"E", text:"我不常困在「要是当初」的念头里。"},
-  {dim:"E", text:"我能给自己写信，语气像对一个好朋友。"},
-  {dim:"E", text:"我接受身体本来的样子，和它好好合作。"},
-  {dim:"E", text:"我不把自己的价值绑在任何人的评价上。"},
-  {dim:"E", text:"我能在人生的低谷里，不怀疑自己的全部。"},
-  {dim:"E", text:"我允许计划里有一天什么都不干。"},
-  {dim:"E", text:"我和「普通的自己」和解了，也觉得不普通。"},
-  {dim:"E", text:"我知道自己的节奏，也相信它不算慢。"}
-];
+(function(){
+  'use strict';
 
-const TYPES = {
-  A:{
-    name:"「成事大满贯」",
-    line:"你的大结果不是运气，是「事情到我手里能落地」的手感。",
-    story:{
-      full:"别人的大结果写在工资条上，你的大结果写在交付记录里。你有一种稀缺的能力：把「想做」翻译成「做完了」。别人还在立项会上打转，你已经默默干完第二轮了。",
-      high:"这份手感在你身上已经相当稳定——你不缺结果，缺的只是回头确认一眼。",
-      mid:"这份手感你已有积累，偶尔发凉，多数时候稳得很。",
-      low:"这份手感正在生长，别急，你已经比上个月的自己多了几块砖。"
-    },
-    advice:[
-      ["留一件「没人验收」的作品","每周给一件纯粹因为喜欢而做的事留 2 小时，不打卡、不发圈，做完自己知道就行。"],
-      ["把大怪兽切成小拼图","遇到难事别硬顶，先花 10 分钟把它切成三块能开工的小块，一旦启动就顺了。"],
-      ["给自己发一次「确认」","季度末回头数一数自己完成的事，写下来。你缺的不是能力，是回头看一眼的习惯。"]
-    ],
-    quote:"潮起潮落，但「我能做成事」这件事，一直长在你身上。",
-    quoteSub:"—— 你把日子过成了作品，只是还没签名",
-    lowHint:"你的「成事手感」还比较安静：先挑一件 10 分钟能完成的小事做掉。手感是做出来的，不是等出来的。"
-  },
-  B:{
-    name:"「被爱收藏家」",
-    line:"你的大结果是：有人稳稳懂着你，且你敢开口。",
-    story:{
-      full:"你以为自己没什么大结果，其实你手里握着一份很稀缺的存在：一个深夜能拨出去的号码，和几个记得你不吃香菜的人。这种「被懂着」，不声不响，却经得起岁月。",
-      high:"你的关系磁场已经很好——不是认识的人多，是每一段都真的在。",
-      mid:"你的关系里有稳定的暖，平时不显山露水，关键时刻一直都在。",
-      low:"你的关系正在悄悄升温，别小看今天随口的一句「最近咋样」。"
-    },
-    advice:[
-      ["主动发起一次「没用」的联系","给一个许久没聊的人发条不含请求、不带目的的消息，纯叙旧的情谊经得起岁月。"],
-      ["练习说真话的三成","下次被问「还好吗」，试着说一句真实的近况，被接住一次，心就宽一次。"],
-      ["记一本「别人小事账」","把朋友的忌口、大日子、在焦虑的事记下来，在对的时刻提一嘴，你就是别人的深夜号码。"]
-    ],
-    quote:"成年人的珍贵，不在通讯录的长度，在「深夜敢拨、对方会接」。",
-    quoteSub:"—— 你被好好爱着，这件事值得被你自己知道",
-    lowHint:"你的「被人懂着」还比较安静：这周找一位还算安心的人，说一句真话试试。心与心的距离，从开口那一刻开始变近。"
-  },
-  C:{
-    name:"「情绪自由通」",
-    line:"你的大结果是：风吹浪打，先吃口热饭再说。",
-    story:{
-      full:"别人追头衔，你已经练出了自己的定力：被否定会难过，但不内耗过夜；别人上头，你还在原地。你不是没脾气，你是情绪来得快、放得下。",
-      high:"你的内核稳得像老楼的承重墙——不是没晃过，是晃两下就能归位。",
-      mid:"你的内核底盘不错，偶尔晃一下，多数时候能自己扶稳自己。",
-      low:"你的内核正在打地基，今天能接住一件事，就比昨天多了一分承重。"
-    },
-    advice:[
-      ["给情绪设一个「下班时间」","难受可以有，但给它一个截止点：到点了就去洗漱、出门走一圈，让身体先带脑子下班。"],
-      ["备一句自己的口头禅","提前写一句能让自己站住的话，比如「先吃饭，天塌不下来」，情绪上头时直接调用。"],
-      ["做一次「破防复盘」","下次冷静后回看：刚才真正触动我的是什么？看清一次，下次它的火力就弱一分。"]
-    ],
-    quote:"真正的从容，是事情砸过来时，你还能决定自己的下一个动作。",
-    quoteSub:"—— 风浪一直有，而你一直接得住",
-    lowHint:"你的「情绪自由」还在充电：先从照顾好身体开始——睡够、吃热乎的。电量足了，风浪自然显得小。"
-  },
-  D:{
-    name:"「越活越开阔」",
-    line:"你的大结果是：世界一直在变大，你也一直在变大。",
-    story:{
-      full:"别人攒履历，你在攒世界。你会为毫无用处的东西着迷，会认真听对手说话，还敢承认「这我不会」。这种越活越开阔的曲线，是好日子里很稳的一条。",
-      high:"你的世界地图已经摊得很开，而且还在往外画——这份开阔，会一直陪着你。",
-      mid:"你的地图在稳步扩边，偶尔停下歇脚，但方向一直没丢。",
-      low:"你的地图刚翻新一角，别嫌慢，每一条新画的线都算数。"
-    },
-    advice:[
-      ["养一个「无用爱好」","给它固定预算和固定时间，不为变现、不发朋友圈，只为让世界多开一扇窗。"],
-      ["每月听一个「对面」的观点","找一个你不同意立场的内容认真听完，能复述出对方三条理由才算数。"],
-      ["把「我不知道」说出口","下次聊天时大方承认一次不知道，你会发现这句话常常换来别人愿意教你。"]
-    ],
-    quote:"有人用头衔丈量世界，你用好奇心——后者的地图，永远画不完。",
-    quoteSub:"—— 你的世界比你以为的要大",
-    lowHint:"你的「越活越开阔」还在起步：本周挑一件一直好奇但没动手的事，给它 30 分钟。地图是画出来的，不是等出来的。"
-  },
-  E:{
-    name:"「和解舒服搭」",
-    line:"你的大结果是：终于不跟自己打架了。",
-    story:{
-      full:"别人卷进度条，你已经坐在了自己的舒服搭上：计划乱了能改道，别人开花你不慌，独处不心慌，犯错能翻篇。这份和自己讲和的功夫，是日常里的稀罕物。",
-      high:"你已经把「自我攻击」这只后台程序关掉了——省下来的力气，全用来好好生活。",
-      mid:"你大体上已经跟自己讲和，只是偶尔还会旧病复发地较劲两下。",
-      low:"你正在学着跟自己讲和，虽然还会拌嘴，但冷战的时间越来越短了。"
-    },
-    advice:[
-      ["给犯错定一个「三句上限」","自责可以，但数着说，超过三句就强制换台：起身倒杯水，让批评广播停一停。"],
-      ["把「别人的时刻表」静音","刷到同龄人的高光时，练习补一句：那是他的路线图，不是我的考卷。"],
-      ["每周留一段「不填充的安静」","20 分钟不看手机地待着——散步、发呆、擦桌子都行，让安静从敌人变回朋友。"]
-    ],
-    quote:"头衔让人抬头看你，掌声让人围过来，而和自己和解，让你终于睡得着。",
-    quoteSub:"—— 你和自己，处得比想象中好",
-    lowHint:"你的「和自己和解」还在路上：今天先从一件小事放过自己——那件翻来覆去的旧账，试着让它过夜即翻篇。"
-  }
-};
-
-/* 档位：按排名首位的维度分数 */
-const LEVELS = [
-  {min:85, label:"🌟 这份大结果，早就稳稳在你手里"},
-  {min:70, label:"💛 已经到手，记得常拿出来看看"},
-  {min:50, label:"🌱 悄悄成形中，别错过它的长势"},
-  {min:0,  label:"🌰 种子已经埋下，正在发芽"}
-];
-
-/* ---------- 状态 ---------- */
-let QUESTIONS = [];                     // 本轮抽中的 20 题
-let answers = [];                       // 0 = 未答
-let cur = 0;
-let navToken = 0; // 手动导航会使其自增，从而取消未决的自动跳题
-let code = "";      // 当前入场验证码
-
-function cancelAutoAdvance(){ navToken++; }
-
-function shuffle(arr){
-  for(let i=arr.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [arr[i],arr[j]] = [arr[j],arr[i]];
-  }
-  return arr;
-}
-/* 每次开测：每维随机抽 4 题，打乱顺序 */
-function drawQuestions(){
-  const picked = [];
-  Object.keys(DIMS).forEach(k=>{
-    const pool = shuffle(BANK.filter(q=>q.dim===k).slice());
-    picked.push(...pool.slice(0,4));
-  });
-  return shuffle(picked);
-}
-
-/* ---------- 入场验证码 ---------- */
-const CAP_COLORS = ["#E8705F","#C9963F","#6E8B74","#5E8A8C","#D66C7C"];
-function newCode(){
-  code = String(Math.floor(1000 + Math.random()*9000));
-  renderCaptcha();
-  document.getElementById("code-input").value = "";
-}
-function renderCaptcha(){
-  const box = document.getElementById("captcha");
-  box.innerHTML = "";
-  // 干扰点
-  for(let i=0;i<6;i++){
-    const n = document.createElement("span");
-    n.className = "noise";
-    const s = 4 + Math.random()*6;
-    n.style.cssText = "width:"+s+"px;height:"+s+"px;left:"+(Math.random()*92+2)+"%;top:"+(Math.random()*76+8)+"%;";
-    box.appendChild(n);
-  }
-  // 数字：随机倾斜、偏移、配色
-  code.split("").forEach(d=>{
-    const el = document.createElement("span");
-    el.className = "cap-digit";
-    el.textContent = d;
-    el.style.setProperty("--r", (Math.random()*14-7).toFixed(1)+"deg");
-    el.style.setProperty("--y", (Math.random()*10-5).toFixed(1)+"px");
-    el.style.color = CAP_COLORS[Math.floor(Math.random()*CAP_COLORS.length)];
-    box.appendChild(el);
-  });
-}
-function tryEnter(){
-  const val = document.getElementById("code-input").value.trim();
-  if(val !== code){
-    const card = document.getElementById("verify-card");
-    card.classList.remove("shake");
-    void card.offsetWidth; // 重置动画
-    card.classList.add("shake");
-    toast(val ? "验证码没对上，换一张再来～" : "先输入 4 位验证码哦～");
-    newCode();
-    document.getElementById("code-input").focus();
-    return;
-  }
-  startNewRound();
-}
-
-/* ---------- 页面切换 ---------- */
-function show(page){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById("page-"+page).classList.add("active");
-  window.scrollTo({top:0,behavior:"instant"});
-}
-
-/* ---------- 答题页渲染 ---------- */
-function renderDots(){
-  const box = document.getElementById("dots");
-  box.innerHTML = "";
-  QUESTIONS.forEach((q,i)=>{
-    const b = document.createElement("button");
-    b.className = "dot" + (answers[i] ? " answered":"") + (i===cur ? " current":"");
-    b.textContent = i+1;
-    b.title = "第"+(i+1)+"题" + (answers[i] ? "（已答）":"（未答）");
-    b.onclick = ()=>{ cancelAutoAdvance(); cur = i; renderQuiz(); };
-    box.appendChild(b);
-  });
-}
-function renderQuiz(){
-  if(cur < 0) cur = 0;
-  if(cur > QUESTIONS.length-1) cur = QUESTIONS.length-1;
-  const q = QUESTIONS[cur];
-  document.getElementById("q-cur").textContent = cur+1;
-  document.getElementById("q-total").textContent = QUESTIONS.length;
-  document.getElementById("q-done").textContent = answers.filter(a=>a>0).length;
-  document.getElementById("q-bar").style.width = (answers.filter(a=>a>0).length/QUESTIONS.length*100)+"%";
-  document.getElementById("q-num").textContent = "QUESTION " + String(cur+1).padStart(2,"0");
-  document.getElementById("q-text").textContent = q.text;
-
-  const box = document.getElementById("q-opts");
-  box.innerHTML = "";
-  LIKERT.forEach(o=>{
-    const b = document.createElement("button");
-    b.className = "opt" + (answers[cur]===o.v ? " picked":"");
-    b.innerHTML = '<span class="radio"></span><span class="idx">'+o.v+'</span><span>'+o.label+'</span>';
-    b.onclick = ()=>{
-      answers[cur] = o.v;
-      renderQuiz(); renderDots();
-      if(cur < QUESTIONS.length-1){
-        const token = ++navToken, from = cur;
-        setTimeout(()=>{
-          // 仅当期间未发生任何手动导航、仍停留在本题时才自动进入下一题
-          if(token === navToken && cur === from){
-            cancelAutoAdvance();
-            cur++; renderQuiz();
-          }
-        }, 320);
-      }
-    };
-    box.appendChild(b);
-  });
-
-  document.getElementById("btn-prev").style.visibility = cur===0 ? "hidden":"visible";
-  const nextBtn = document.getElementById("btn-next");
-  if(cur === QUESTIONS.length-1){
-    nextBtn.textContent = "查看我的大结果 ✦";
-  }else{
-    nextBtn.textContent = "下一题 →";
-  }
-  renderDots();
-}
-
-document.getElementById("btn-prev").onclick = ()=>{ cancelAutoAdvance(); if(cur>0){ cur--; renderQuiz(); } };
-document.getElementById("btn-next").onclick = ()=>{
-  cancelAutoAdvance();
-  if(cur < QUESTIONS.length-1){
-    if(!answers[cur]) toast("这道题还没选哦，凭直觉选一个就好～");
-    else { cur++; renderQuiz(); }
-  }else{
-    submitAnswers();
-  }
-};
-
-/* ---------- 未答提醒 ---------- */
-function firstUnanswered(){
-  for(let i=0;i<answers.length;i++){ if(!answers[i]) return i; }
-  return -1;
-}
-function submitAnswers(){
-  const miss = firstUnanswered();
-  if(miss !== -1){
-    cur = miss;
-    renderQuiz();
-    renderDots();
-    const dots = document.querySelectorAll("#dots .dot");
-    dots.forEach((d,i)=>{ if(!answers[i]) d.classList.add("warn"); });
-    toast("还有 " + answers.filter(a=>!a).length + " 题没答，先用荧光标记帮你指路～");
-    document.getElementById("page-quiz").scrollIntoView({behavior:"smooth"});
-    return;
-  }
-  buildResult();
-  show("result");
-  animateResult();
-}
-
-/* ---------- 计分（不随机） ---------- */
-function calcScores(){
-  const raw = {A:0,B:0,C:0,D:0,E:0};
-  QUESTIONS.forEach((q,i)=>{ raw[q.dim] += answers[i]; });
-  const pct = {};
-  Object.keys(raw).forEach(k=>{ pct[k] = Math.round(raw[k]/20*100); });
-  return pct;
-}
-
-/* ---------- 结果渲染 ---------- */
-let lastType = null, lastScores = null, lastLevel = null;
-
-function buildResult(){
-  const pct = calcScores();
-  const keys = Object.keys(pct);
-  const sorted = keys.slice().sort((a,b)=> pct[b]-pct[a]);
-  const top = sorted[0];
-  const T = TYPES[top];
-
-  /* 并列提示：第二高分与榜首分差 ≤ 4 */
-  const tie = document.getElementById("tie-note");
-  if(pct[sorted[1]] - pct[top] >= -4 && pct[sorted[1]] > 0){
-    tie.style.display = "block";
-    tie.textContent = "别急，你的「" + DIMS[sorted[1]].name + "」和榜首只差 " + (pct[top]-pct[sorted[1]]) + " 分，妥妥的双料大结果选手。";
-  }else{
-    tie.style.display = "none";
-  }
-
-  const total = Math.round(keys.reduce((s,k)=>s+pct[k],0)/keys.length);
-  const level = LEVELS.find(l=>pct[top]>=l.min).label;
-
-  /* 主题色 */
-  const c = DIMS[top].color;
-  document.documentElement.style.setProperty("--type", c);
-
-  document.getElementById("type-badge").innerHTML = badgeSVG(top);
-  document.getElementById("type-name").textContent = T.name;
-  document.getElementById("type-line").textContent = T.line;
-  document.getElementById("level-pill").textContent = level;
-
-  /* 综合指数 */
-  const bigEl = document.getElementById("balance-total");
-  bigEl.dataset.target = total;
-  bigEl.textContent = "0";
-
-  /* 维度条 */
-  const bars = document.getElementById("dim-bars");
-  bars.innerHTML = "";
-  sorted.forEach(k=>{
-    const row = document.createElement("div");
-    row.className = "dim-row";
-    row.innerHTML =
-      '<div class="dim-head"><span class="name">'+DIMS[k].name+'</span><span class="score">'+pct[k]+' 分</span></div>'+
-      '<div class="dim-bar"><i data-w="'+pct[k]+'" style="background:'+DIMS[k].color+'"></i></div>';
-    bars.appendChild(row);
-  });
-
-  /* 解读 */
-  const story = document.getElementById("type-story");
-  const tier = pct[top]>=85 ? "high" : (pct[top]>=50 ? "mid" : "low");
-  story.innerHTML =
-    '<p class="lead">'+T.line+'</p>'+
-    '<p>'+T.story.full+'</p>'+
-    '<p>'+T.story[tier]+'</p>';
-
-  /* 建议 */
-  const adv = document.getElementById("type-advice");
-  adv.innerHTML = "";
-  T.advice.forEach((a,i)=>{
-    const li = document.createElement("li");
-    li.innerHTML = '<span class="no">'+(i+1)+'</span><span><b>'+a[0]+'</b> · '+a[1]+'</span>';
-    adv.appendChild(li);
-  });
-
-  /* 相对安静维度的提示 */
-  const low = sorted[sorted.length-1];
-  const lowEl = document.getElementById("low-hint");
-  if(pct[low] < 60){
-    lowEl.style.display = "block";
-    document.getElementById("low-tag").textContent = "还没被你注意到的大结果：" + DIMS[low].name;
-    document.getElementById("low-text").textContent = TYPES[low].lowHint;
-  }else{
-    lowEl.style.display = "none";
-  }
-
-  /* 语录卡 */
-  document.getElementById("qc-main").textContent = T.quote;
-  document.getElementById("qc-sub").textContent = T.quoteSub;
-
-  lastType = top; lastScores = pct; lastLevel = level;
-}
-
-function badgeSVG(key){
-  const c = DIMS[key].color;
-  const icons = {
-    A:'<path d="M50 20 l8 17 19 2.5 -14 13 3.6 18.5 -16.6 -9.3 -16.6 9.3 3.6 -18.5 -14 -13 19 -2.5 z" fill="'+c+'" stroke="#3A3630" stroke-width="3" stroke-linejoin="round"/>',
-    B:'<rect x="26" y="30" width="48" height="36" rx="6" fill="'+c+'" stroke="#3A3630" stroke-width="3"/><path d="M26 36 l24 18 24 -18" fill="none" stroke="#3A3630" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 22 l2.6 7 7 2.6 -7 2.6 -2.6 7 -2.6 -7 -7 -2.6 7 -2.6 z" fill="#C9963F"/>',
-    C:'<path d="M22 62 c8 -8 14 8 22 0 s14 8 22 0 s10 6 12 4" fill="none" stroke="'+c+'" stroke-width="4" stroke-linecap="round"/><path d="M50 18 c-8 10 -10 16 -2 22 c8 -6 8 -14 2 -22 z" fill="'+c+'" stroke="#3A3630" stroke-width="3" stroke-linejoin="round"/>',
-    D:'<rect x="40" y="42" width="14" height="20" rx="3" transform="rotate(-30 47 52)" fill="'+c+'" stroke="#3A3630" stroke-width="3"/><rect x="46" y="34" width="14" height="20" rx="3" transform="rotate(-30 53 44)" fill="#FFFDF6" stroke="#3A3630" stroke-width="3"/><path d="M30 66 h40" stroke="#3A3630" stroke-width="3" stroke-linecap="round"/><path d="M70 24 l2.6 7 7 2.6 -7 2.6 -2.6 7 -2.6 -7 -7 -2.6 7 -2.6 z" fill="#6E8B74"/>',
-    E:'<path d="M60 54 a18 18 0 1 1 -8 -30 a14 14 0 1 0 8 30 z" fill="'+c+'" stroke="#3A3630" stroke-width="3" stroke-linejoin="round"/><path d="M26 22 l2.2 5.8 5.8 2.2 -5.8 2.2 -2.2 5.8 -2.2 -5.8 -5.8 -2.2 5.8 -2.2 z" fill="#C9963F"/><path d="M68 60 l1.8 4.6 4.6 1.8 -4.6 1.8 -1.8 4.6 -1.8 -4.6 -4.6 -1.8 4.6 -1.8 z" fill="#5E8A8C"/>'
+  /* ==========================================================
+     一、题库索引（18 个主题 / 217 道题，每次随机抽 14 道）
+     ========================================================== */
+  var DIMS = {
+    C:{ name:'认知清晰', short:'认知', desc:'对体重、进食、进度的解读是否贴近真实' },
+    E:{ name:'情绪轻盈', short:'情绪', desc:'吃多、没动、平台期带来的心理负担大小' },
+    B:{ name:'行为弹性', short:'行为', desc:'中断和意外之后，能不能低成本地接上' }
   };
-  return '<svg viewBox="0 0 100 84" xmlns="http://www.w3.org/2000/svg">'+
-    '<circle cx="50" cy="46" r="40" fill="#FBEAE6" opacity=".6"/>'+
-    icons[key]+'</svg>';
-}
+  var DIM_ORDER = ['C','E','B'];
+  var QUOTA = { C:5, E:5, B:4 };
 
-/* ---------- 结果动画 ---------- */
-function animateResult(){
-  const bigEl = document.getElementById("balance-total");
-  const target = parseInt(bigEl.dataset.target,10) || 0;
-  const t0 = performance.now(), dur = 900;
-  function step(t){
-    const p = Math.min((t-t0)/dur, 1);
-    bigEl.textContent = Math.round(target * (1-Math.pow(1-p,3)));
-    if(p<1) requestAnimationFrame(step);
+  var TOPICS = [
+    { k:'scale',    dim:'C', name:'体重数字' },
+    { k:'over',     dim:'C', name:'算不算吃多' },
+    { k:'progress', dim:'C', name:'进度与速度' },
+    { k:'judge',    dim:'C', name:'衡量方式' },
+    { k:'water',    dim:'C', name:'身体波动' },
+    { k:'signal',   dim:'C', name:'身体信号' },
+    { k:'blame',    dim:'E', name:'自责' },
+    { k:'satisfy',  dim:'E', name:'身材满意' },
+    { k:'compare',  dim:'E', name:'比较' },
+    { k:'social',   dim:'E', name:'社交场合' },
+    { k:'energy',   dim:'E', name:'精力与情绪' },
+    { k:'future',   dim:'E', name:'对未来的担心' },
+    { k:'binge',    dim:'B', name:'忍与失控' },
+    { k:'restrict', dim:'B', name:'限制与补偿' },
+    { k:'interrupt',dim:'B', name:'中断与恢复' },
+    { k:'move',     dim:'B', name:'运动节奏' },
+    { k:'plan',     dim:'B', name:'计划与执行' },
+    { k:'reward',   dim:'B', name:'食物与情绪' }
+  ];
+
+  /* ==========================================================
+     二、状态类型（规则判定，同一组选择永远同一结果）
+     ========================================================== */
+  var TYPES = {
+    tense:{
+      code:'TYPE 01', name:'紧绷内耗型', en:'TENSE',
+      tags:['高自责','秤上过山车','需要松绑'],
+      slogan:'你不是不自律，是对自己太苛刻了。',
+      basisKey:'E',
+      intro:'你的情绪负担明显偏重：多吃一点就反复回想，没动起来就自我批评。这种苛刻短期让人「看起来很拼」，长期会耗掉动力——<b>自责消耗的意志力，往往比运动消耗的体力更多</b>。这不是缺点，是把自己当成了需要管束的对象，而不是需要照顾的人。',
+      strength:'你对目标的在意程度非常高，这份认真本身很珍贵——只是现在大部分都流向了自我批评。',
+      watch:'你是在照顾一个身体，不是在管理一个犯人。',
+      encourage:'你这么严格，恰恰说明你根本不缺自律。你缺的只是对自己好一点——就从今天这一顿开始。'
+    },
+    pendulum:{
+      code:'TYPE 02', name:'过山车型', en:'PENDULUM',
+      tags:['全有或全无','打卡依赖','大起大落'],
+      slogan:'猛冲、中断、自责、再猛冲——把循环换成节奏。',
+      basisKey:'B',
+      intro:'你的执行是「脉冲式」的：状态好时很猛，一被打断就整段停摆。问题不在意志力，而在于把<b>「完美执行」当成了及格线</b>——任何一次意外都会让整套安排失效。这也是为什么你总觉得自己「又开始了，又停了」。',
+      strength:'你认真起来非常能打，这是很多人没有的爆发力。你的波动不是因为懒，是因为标准定得太满。',
+      watch:'断一天不叫失败，断一个月才叫——它们的区别，只是中间有没有一个便宜的「回来」入口。',
+      encourage:'你不需要每次都满血复活。你只需要每次都能低成本地重新开始。'
+    },
+    fog:{
+      code:'TYPE 03', name:'认知打架型', en:'FOG',
+      tags:['被秤绑架','信息过载','两套说法'],
+      slogan:'你很努力，但脑子里两套说法在打架。',
+      basisKey:'C',
+      intro:'你一边执行，一边被各种说法拉着走：「掉得慢就是没用」「重了就是胖了」「停住就是失败」。这些<b>半真半假的信息</b>让你每一步都在自我怀疑。问题不在行动力，在信息——而信息是最容易校准的一环。',
+      strength:'你是会去「搞懂」的人，这比闷头做的人走得远得多。坐标系换对了，你已有的努力会立刻显示出真实的进度。',
+      watch:'体重是传感器，不是裁判。它负责报数，不负责给你打分。',
+      encourage:'你已经比大多数人更认真地对待这件事了。现在只差一件事：把体重的「裁判权」拿回来。'
+    },
+    steady:{
+      code:'TYPE 04', name:'从容推进型', en:'STEADY',
+      tags:['三项在线','稳定','最怕乱加码'],
+      slogan:'你已经在健康的节奏里了，别被短期数字晃动。',
+      basisKey:'ALL',
+      intro:'认知、情绪、行为三项都在健康区：你知道波动是正常的，吃多了不会崩，中断也能接上。这个阶段最容易出问题的地方，恰恰是「加码」：很多人在这里忍不住加练、砍饭、称得更勤，把好不容易养出的节奏亲手打断。',
+      strength:'你已经拥有了整件事里最难的部分：一个可持续的节奏。它比任何加速技巧都值钱。',
+      watch:'真正让人卡住的，往往不是做得不够，而是在状态最好的时候用力过猛。',
+      encourage:'你现在的状态，是很多人摸索了两三年才慢慢到的位置。慢，就是你的快。'
+    },
+    grounded:{
+      code:'TYPE 05', name:'稳中带卡型', en:'GROUNDED',
+      tags:['底盘稳','卡在认知','补课即可'],
+      slogan:'大方向是稳的，还剩一两个卡点。',
+      basisKey:'MIX',
+      intro:'你的情绪和行为基础都不错——不会因为一顿饭崩盘，中断了也能接上。但认知里还留着一些<b>半真半假的旧说法</b>，平时不影响你，特定时刻（大餐后、平台期）会突然冒出来制造焦虑——这是这类状态最典型的样子。',
+      strength:'情绪韧性是学不来的部分，而你已经有了——不因波动崩盘的人，才能走得远。剩下的只是知识，而知识是最好补的东西。',
+      watch:'你的卡点不是毅力，是几个还没更新的旧观念。',
+      encourage:'你已经走过了最难的一段：把状态稳住。剩下的路，比你想的平得多。'
+    },
+    drift:{
+      code:'TYPE 06', name:'摇摆未定型', en:'DRIFT',
+      tags:['靠临场反应','标准未建立','可塑性强'],
+      slogan:'时好时坏，说明你还没摸清自己的「触发点」。',
+      basisKey:'MIX',
+      intro:'你的状态波动比较大：有时从容，有时突然被一顿饭、一个数字击中。这种波动通常不是因为不够努力，而是<b>还没有一套自己的判断标准</b>——每次都靠临场反应，自然时好时坏。',
+      strength:'「时好时坏」的另一面是：你的好状态真实存在过。它不是运气，是可以被复制成日常的东西。',
+      watch:'波动不是你的敌人，它是在告诉你：标准还没立起来。',
+      encourage:'你现在缺的不是能力，是找到自己的开关——而这件事本身，就有规律可循。'
+    }
+  };
+
+  /* ==========================================================
+     三、事实卡（纯陈述，不给建议）
+     ========================================================== */
+  var TRUTHS = {
+    over:{ t:'你觉得的「吃多」，可能不是吃多', d:'人对摄入量的记忆误差非常大：自以为「放开了吃」的那餐，实际热量常只比平常多 <b>300–600 大卡</b>，离「长 1kg 脂肪」需要的 <b>约 7700 大卡盈余</b>还差得很远。单顿的感觉，不足以判断吃没吃多。' },
+    scale:{ t:'体重重了 1kg，大概率不是脂肪', d:'1kg 脂肪约等于 <b>7700 大卡盈余</b>，一顿饭造不出来。真正让秤波动的是：盐分带来的水、碳水储备（<b>每 1g 糖原携带约 3g 水</b>）、肠道内容物——它们通常 2–3 天内自然回落。' },
+    day:{ t:'一天吃多，毁不掉一个月', d:'减脂看的是几周的<b>总缺口</b>。今天多 800 大卡，摊到四周里，每天的影响约等于 0.03kg。多数时候，第二天照常吃，这件事就过去了。' },
+    plateau:{ t:'掉秤从来不是直线', d:'体重下降的真实形状是锯齿：平台 → 突然掉一截 → 再平台。水分重组、激素波动都会让数字停住 <b>1–3 周</b>，这不代表脂肪没减少。' },
+    tape:{ t:'围度比体重更诚实', d:'开始规律运动后，肌肉增加 + 脂肪减少会让体重「看起来没变」，但腰围、大腿围和照片会先说话。想区分「变紧致」和「只是变轻」，<b>软尺比体重秤可信</b>。' },
+    restrict:{ t:'忍得越狠，反弹越猛', d:'长期压抑食欲会放大「心理剥夺感」，让人更容易在某个时刻吃回来，然后再更用力地忍——这是最常见的恶性循环。它不是自制力问题，是限制本身带来的生理与心理反弹。' },
+    move:{ t:'运动的意义，远不止「燃烧」', d:'运动对情绪、睡眠、食欲调控的帮助，比对热量的直接影响更大。当运动被当成「惩罚昨天」时，它就会变成压力源；当成照顾自己的方式时，才更容易长期存在。' },
+    water:{ t:'水分是体重波动的主角', d:'成人身体里约 60% 是水。盐分、碳水、激素周期、久坐、气温、睡眠不足，都会让身体暂时多存 0.5–2kg 水。<b>水的重量和脂肪的重量，在秤上长得一模一样</b>，但它们的去向完全不同。' },
+    blame:{ t:'自责的成本，比那顿饭高', d:'自责会激活压力反应，抬高皮质醇，让人更想吃高糖高脂的食物——于是「自责 → 想吃 → 再自责」形成闭环。从结果看，<b>苛责自己往往比那顿多吃带来更大的代价</b>。' },
+    compare:{ t:'你比较的对象，是被筛选过的', d:'社交媒体上呈现的是精选瞬间：角度、光线、修图、脱水、甚至不同年份的照片。用别人的「最好一帧」对比自己的「日常一帧」，这场比较从一开始就不对等。' },
+    social:{ t:'一顿饭在总量里占比很小', d:'一天的总摄入里，一顿聚餐通常占 30–40%。即使这顿比平时多 500 大卡，放进一周（约 14000 大卡）里也只有 3–4%。<b>决定长期结果的是一周的整体，不是某一顿。</b>' },
+    energy:{ t:'睡不够，食欲会变强', d:'睡眠不足会升高饥饿素、降低瘦素，让第二天的食欲明显增加，尤其偏向高糖高脂。所以「最近特别想吃」有时不是意志力的问题，是<b>睡眠在替身体说话</b>。' },
+    binge:{ t:'限制与失控，是一对', d:'越是严格限制某类食物，对它的注意力就越难移开，直到某个时刻防线整体崩塌。「忍—失控—更用力地忍」是同一个循环的三段，而不是三次独立的失败。' },
+    plan:{ t:'同时改太多，很难留住', d:'行为改变的研究里有个稳定结论：一次只改一个习惯，留存率明显更高。同时改饮食、运动、作息，看似高效，实际是把失败的概率乘在了一起。' },
+    reward:{ t:'用食物安慰，是学来的', d:'把食物和「奖励／安抚」绑定，是后天学到的联结，不是性格缺陷。它也解释了为什么压力大的时候，手会先伸向甜的、脆的、方便的那一类。' },
+    future:{ t:'反弹的机制，不是意志力', d:'体重下降后，身体会通过降低能耗、提高食欲来「抵抗」变化，这种适应会持续一段时间。<b>这不是你不够坚持，是生理层面的自我保护。</b>知道这一点，比责怪自己有用。' },
+    progress:{ t:'速度的差异，来自起点', d:'体重基数大的人前期掉得更快，因为维持体重本身消耗更多；基数小的人每周 0.3kg 已是稳定进度。拿不同起点的人比速度，结论一定失真。' },
+    judge:{ t:'「瘦」有很多种测量方式', d:'体重、围度、体脂、照片、力量、耐力、睡眠，各自测量的是不同的东西。只用一个数字代表全部变化，就像只用体重判断健康一样片面。' },
+    signal:{ t:'饿和馋，是两套系统', d:'饿来自能量需求，通常逐渐出现，胃里空、可能伴随乏力；馋多由外部线索触发（气味、时间、情绪、看到食物），来得快去得也快。两者都存在，也都正常。' },
+    satisfy:{ t:'对身材的不满，会被放大', d:'人对自身形象的感知并不客观：情绪低落时，会更容易注意到不满意的地方，并高估别人对它的关注程度。这种「放大」在压力大、睡眠差的时候尤其明显。' },
+    interrupt:{ t:'中断一两周，不会清零', d:'体能和习惯的消退比想象中慢：短暂中断主要影响的是「感觉」，而不是全部成果。真正让人回不去的，往往不是中断本身，而是中断后「我已经不是那种人了」的自我判断。' }
+  };
+
+  /* ==========================================================
+     四、抽题（分层随机：认知 5 / 情绪 5 / 行为 4，选项顺序也打乱）
+     ========================================================== */
+  var rng = Math.random;
+  var seedMatch = /[?&]seed=(\d+)/.exec(location.search);
+  if(seedMatch){
+    var seed = parseInt(seedMatch[1], 10) >>> 0;
+    rng = function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
   }
-  requestAnimationFrame(step);
-  setTimeout(()=>{
-    document.querySelectorAll("#dim-bars .dim-bar i").forEach(el=>{
-      el.style.width = el.dataset.w + "%";
+  function shuffle(arr){
+    for(var i=arr.length-1;i>0;i--){
+      var j = Math.floor(rng() * (i+1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+
+  var seen = {};   // 本次浏览会话里已经出过的题，尽量不重复
+  function buildQuiz(){
+    var out = [];
+    DIM_ORDER.forEach(function(d){
+      var keys = shuffle(TOPICS.filter(function(t){ return t.dim === d; }).map(function(t){ return t.k; }));
+      var need = QUOTA[d];
+      for(var i=0;i<need;i++){
+        var key = keys[i % keys.length];
+        var list = BANK[key];
+        var pool = [];
+        for(var n=0;n<list.length;n++){ if(!seen[key + '#' + n]) pool.push(n); }
+        if(!pool.length){                       // 这个主题的题都出过了，重置它
+          for(var r=0;r<list.length;r++){ delete seen[key + '#' + r]; pool.push(r); }
+        }
+        var idx = pool[Math.floor(rng() * pool.length)];
+        seen[key + '#' + idx] = 1;
+        var opts = list[idx][1].split('|').map(function(txt, n){ return { label:txt, pts:n }; });
+        out.push({
+          topic:key,
+          dim:d,
+          text:list[idx][0],
+          options:shuffle(opts)
+        });
+      }
     });
-  }, 120);
-}
-
-/* ---------- 开始 / 重新测试 ---------- */
-function startNewRound(){
-  cancelAutoAdvance();
-  QUESTIONS = drawQuestions();
-  answers = new Array(QUESTIONS.length).fill(0);
-  cur = 0;
-  renderQuiz();
-  show("quiz");
-}
-document.getElementById("btn-start").onclick = tryEnter;
-document.getElementById("btn-refresh-code").onclick = ()=>{ newCode(); document.getElementById("code-input").focus(); };
-document.getElementById("code-input").addEventListener("input", function(){
-  this.value = this.value.replace(/\D/g,"").slice(0,4);
-  if(this.value.length === 4){ tryEnter(); }
-});
-document.getElementById("code-input").addEventListener("keydown", function(e){
-  if(e.key === "Enter"){ tryEnter(); }
-});
-document.getElementById("btn-retake").onclick = ()=>{
-  startNewRound();
-  toast("已换一批新题，重新认领一次～");
-};
-
-/* ---------- 复制战报 ---------- */
-document.getElementById("btn-copy").onclick = ()=>{
-  if(!lastType || !lastScores) return;
-  const s = lastScores, top = lastType;
-  const lines = [
-    "🪙 我的大结果盘点出来了！",
-    "",
-    "我的大结果是：" + TYPES[top].name,
-    TYPES[top].line,
-    "当前状态：" + lastLevel,
-    "",
-    "📊 五维拥有指数：",
-    ...Object.keys(DIMS).map(k=> "· " + DIMS[k].name + "：" + s[k] + " 分"),
-    "",
-    "大结果不一定是加薪和升职，也可以是这些悄悄陪着你、只是还没被你注意到的东西。",
-  ].join("\n");
-  const done = ()=> toast("战报已复制，想发的时候随你用～");
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(lines).then(done).catch(()=>{ fallbackCopy(lines); done(); });
-  }else{
-    fallbackCopy(lines); done();
+    return shuffle(out);
   }
-};
-function fallbackCopy(text){
-  const ta = document.createElement("textarea");
-  ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
-  document.body.appendChild(ta); ta.select();
-  try{ document.execCommand("copy"); }catch(e){}
-  document.body.removeChild(ta);
-}
 
-/* ---------- Toast ---------- */
-let toastTimer = null;
-function toast(msg){
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>t.classList.remove("show"), 2600);
-}
+  var quiz = [];
+  var answers = [];
+  var cur = 0;
+  var $ = function(id){ return document.getElementById(id); };
+  var screens = { home:$('screen-home'), quiz:$('screen-quiz'), result:$('screen-result') };
 
-/* ---------- 启动：生成验证码 ---------- */
-newCode();
+  function show(name){
+    Object.keys(screens).forEach(function(k){
+      screens[k].classList.toggle('is-active', k === name);
+    });
+    window.scrollTo({ top:0, behavior:'auto' });
+  }
+  var toastTimer = null;
+  function toast(msg){
+    var t = $('toast');
+    t.textContent = msg;
+    t.classList.add('is-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('is-show'); }, 2200);
+  }
+  function level(score){ return score >= 70 ? 'high' : score >= 40 ? 'mid' : 'low'; }
+
+  /* ==========================================================
+     五、答题交互
+     ========================================================== */
+  function buildDots(){
+    var box = $('dots');
+    box.innerHTML = '';
+    quiz.forEach(function(_, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dot';
+      b.setAttribute('aria-label', '跳到第 ' + (i+1) + ' 题');
+      b.dataset.i = i;
+      b.addEventListener('click', function(){
+        cur = parseInt(this.dataset.i, 10);
+        renderQuestion();
+      });
+      box.appendChild(b);
+    });
+  }
+  function renderDots(){
+    var els = $('dots').children;
+    for(var i=0;i<els.length;i++){
+      els[i].classList.toggle('is-done', answers[i] !== null);
+      els[i].classList.toggle('is-current', i === cur);
+    }
+    var box = $('dots'), act = els[cur];
+    if(act){
+      var left = act.offsetLeft - box.clientWidth/2 + act.clientWidth/2;
+      box.scrollTo({ left: Math.max(0, left), behavior:'smooth' });
+    }
+  }
+  function renderQuestion(){
+    var q = quiz[cur];
+    $('q-dim').textContent = DIMS[q.dim].name;
+    $('q-label').textContent = 'Q' + String(cur+1).padStart(2,'0');
+    $('q-text').textContent = q.text;
+    var hintEl = $('q-hint');
+    var hintMap = {
+      scale:'体重一天内可以差 1–2 公斤，这不是答案，是传感器读数。',
+      water:'身体里六成是水，它的重量和脂肪一样会显示在秤上。',
+      over:'凭印象选就好，人对吃多少的记忆本来就不准。',
+      progress:'没有标准速度，每个人的起点不一样。',
+      blame:'这里没有对错，只有你真实的第一反应。',
+      compare:'想到最近两周的真实感受就行。',
+      social:'选最常发生的那种情况。',
+      binge:'很多人都有过，选接近的就好。',
+      restrict:'如实选，不需要美化。',
+      interrupt:'想想最近一次被打断的经历。',
+      move:'强度不重要，重要的是在不在节奏里。',
+      energy:'按最近两周的整体感受选。',
+      future:'想到这个问题时，你心里最真实的声音。',
+      judge:'不用考虑「应该」看什么。',
+      satisfy:'第一感觉比思考后的答案更准。',
+      signal:'身体的感觉，往往比计算更早给出信号。',
+      plan:'没有标准计划，只有你自己的。',
+      reward:'选你实际会做的，而不是应该做的。'
+    };
+    hintEl.textContent = hintMap[q.topic] || '';
+    hintEl.style.display = hintEl.textContent ? '' : 'none';
+
+    var opts = $('opts');
+    opts.innerHTML = '';
+    q.options.forEach(function(o, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'opt' + (answers[cur] === i ? ' is-selected' : '');
+      b.innerHTML = '<span class="opt-key">' + 'ABCD'[i] + '</span><span class="opt-text"></span>';
+      b.querySelector('.opt-text').textContent = o.label;
+      b.addEventListener('click', function(){ selectOption(i); });
+      opts.appendChild(b);
+    });
+    $('q-now').textContent = String(cur+1).padStart(2,'0');
+    $('q-total').textContent = String(quiz.length);
+    $('bar-fill').style.width = ((cur+1) / quiz.length * 100) + '%';
+    $('btn-prev').disabled = (cur === 0);
+    $('btn-next').textContent = (cur === quiz.length - 1) ? '看我的结果' : '下一题';
+    renderDots();
+  }
+  function selectOption(i){
+    answers[cur] = i;
+    var list = $('opts').children;
+    for(var k=0;k<list.length;k++){
+      list[k].classList.toggle('is-selected', k === i);
+    }
+    renderDots();
+    if(navigator.vibrate){ try{ navigator.vibrate(8); }catch(e){} }
+  }
+  function shakeCard(){
+    var c = $('q-card');
+    c.classList.remove('shake');
+    void c.offsetWidth;
+    c.classList.add('shake');
+    setTimeout(function(){ c.classList.remove('shake'); }, 500);
+  }
+  function next(){
+    if(answers[cur] === null){
+      toast('先选一个更接近你真实感受的');
+      shakeCard();
+      return;
+    }
+    if(cur === quiz.length - 1){
+      var missing = answers.indexOf(null);
+      if(missing !== -1){
+        toast('第 ' + (missing+1) + ' 题还没回答');
+        cur = missing;
+        renderQuestion();
+        shakeCard();
+        return;
+      }
+      goResult();
+      return;
+    }
+    cur++;
+    renderQuestion();
+  }
+  function prev(){ if(cur > 0){ cur--; renderQuestion(); } }
+  /* ==========================================================
+     六、计分（确定性）
+     ========================================================== */
+  function compute(){
+    var sums = { C:0, E:0, B:0 }, max = { C:0, E:0, B:0 };
+    quiz.forEach(function(q, i){
+      var o = q.options[answers[i]];
+      if(o){ sums[q.dim] += o.pts; max[q.dim] += 3; }
+    });
+    var scores = {};
+    DIM_ORDER.forEach(function(d){
+      scores[d] = max[d] ? Math.max(0, Math.min(100, Math.round(sums[d] / max[d] * 100))) : 0;
+    });
+    var avg = (scores.C + scores.E + scores.B) / 3;
+
+    // 判定：先看整体负担，再看均衡度，最后看最短板
+    var vals = DIM_ORDER.map(function(d){ return scores[d]; });
+    var spread = Math.max.apply(null, vals) - Math.min.apply(null, vals);
+    var low = DIM_ORDER.slice().sort(function(a, b){
+      if(scores[a] !== scores[b]) return scores[a] - scores[b];
+      return DIM_ORDER.indexOf(a) - DIM_ORDER.indexOf(b);
+    })[0];
+
+    var minv = Math.min.apply(null, vals);
+    var typeKey;
+    if(avg < 36 && spread <= 20){ typeKey = 'tense'; }                            // 三项都很重且都不突出
+    else if(spread <= 17 && avg >= 62 && minv >= 58){ typeKey = 'steady'; }       // 都高且齐
+    else if(spread <= 17 && avg >= 47 && minv >= 42){ typeKey = 'grounded'; }     // 都中等
+    else if(spread <= 22 && avg < 58){ typeKey = 'drift'; }                       // 都不高不低，略不均
+    else { typeKey = (low === 'E') ? 'tense' : (low === 'B') ? 'pendulum' : 'fog'; }
+
+    return { scores:scores, avg:Math.round(avg), spread:spread, lowest:low, typeKey:typeKey, type:TYPES[typeKey] };
+  }
+
+  /* 某主题在本次抽到的题里最低的分值（没抽到返回 null） */
+  function topicMin(topic){
+    var m = null;
+    quiz.forEach(function(q, i){
+      if(q.topic !== topic || answers[i] === null) return;
+      var p = q.options[answers[i]].pts;
+      if(m === null || p < m) m = p;
+    });
+    return m;
+  }
+  function hit(topic, threshold){
+    var m = topicMin(topic);
+    return m !== null && m <= threshold;
+  }
+
+  /* ==========================================================
+     七、信号卡（描述现象，不做诊断，不给方案）
+     ========================================================== */
+  function flags(){
+    var out = [];
+    if(hit('blame', 1)){
+      out.push({ kind:'care', tag:'情绪信号', title:'这种强度的自责，值得被认真对待',
+        text:'吃完会难受很久、反复回想，甚至不敢上秤——这种感受很多人都经历过，它不代表你脆弱，也不代表你失败。但如果这种状态<b>持续两周以上、明显影响吃饭和睡觉</b>，把它当成一件正经事会更稳妥：和信任的人聊聊，或者找医生、正规心理咨询。' });
+    }
+    if(hit('restrict', 0) || hit('binge', 0)){
+      out.push({ kind:'warm', tag:'循环', title:'越是严格限制，越容易在某刻失守',
+        text:'「忍一段—吃很多—再更用力地忍」是同一个循环的三段，不是三次独立的失败。它和自制力的关系不大，和「限制的严格程度」关系更大。<b>这不是你的品格问题，是限制本身的反弹。</b>' });
+    }
+    if(hit('satisfy', 1)){
+      out.push({ kind:'care', tag:'身体接纳', title:'如果你很难接受现在的自己',
+        text:'长期对身材强烈不满、影响到日常情绪和生活，这不是「矫情」，值得被认真对待。有一件很多人试过的小事：每周记下一条「身体今天帮我做到的事」。如果这种感受持续存在，寻求专业心理支持是很正常、也很值得的选择。' });
+    }
+    if(hit('scale', 1) || hit('water', 1)){
+      out.push({ kind:'warm', tag:'读数', title:'秤只是传感器，不是裁判',
+        text:'体重一天内可以波动 1–2 公斤，来源是水、糖原和肠道内容物；而脂肪的变化是以「周」为单位的。同一天里不同时刻的两个数字，本来就没有可比性。' });
+    }
+    if(hit('progress', 1)){
+      out.push({ kind:'warm', tag:'速度', title:'关于掉秤速度的公开口径',
+        text:'公开的循证建议里，减重速度常被描述为<b>每周体重的 0.5–1%</b>；而且前期掉的多是水分、后期必然变慢——越接近目标越慢是规律，不是失败。' });
+    }
+    if(hit('energy', 1)){
+      out.push({ kind:'warm', tag:'状态', title:'睡不够的时候，食欲会变强',
+        text:'睡眠不足会升高饥饿素、降低瘦素，让第二天的食欲明显增加，尤其偏向高糖高脂。如果你最近特别想吃，可能不是意志力的问题，而是身体在用另一种方式说话。' });
+    }
+    if(hit('future', 1)){
+      out.push({ kind:'warm', tag:'长期', title:'对「以后」的担心，本身也很耗人',
+        text:'担心反弹、担心一辈子都要算着吃——这类担心很常见，也很消耗。有意思的是，越把注意力放在「以后会不会失败」上，当下越容易疲惫。' });
+    }
+    return out.slice(0, 3);
+  }
+
+  /* ==========================================================
+     八、事实卡挑选（按本次抽到的主题 + 答案倾向）
+     ========================================================== */
+  function pickTruths(){
+    var scored = [];
+    quiz.forEach(function(q, i){
+      if(answers[i] === null) return;
+      var p = q.options[answers[i]].pts;
+      if(p > 1) return;
+      var key = TRUTHS[q.topic] ? q.topic : null;
+      if(!key) return;
+      var dup = scored.some(function(x){ return x.k === key; });
+      if(!dup) scored.push({ k:key, p:p });
+    });
+    scored.sort(function(a, b){ return a.p - b.p; });
+    var keys = scored.slice(0, 4).map(function(x){ return x.k; });
+    ['over','scale','day'].forEach(function(k){
+      if(keys.length < 3 && keys.indexOf(k) < 0) keys.push(k);
+    });
+    return keys.slice(0, 4);
+  }
+
+  /* ==========================================================
+     九、渲染结果
+     ========================================================== */
+  function goResult(){
+    var r = compute();
+    var sc = r.scores;
+    var T = r.type;
+
+    $('res-title').textContent = '你是「' + T.name + '」';
+    $('res-slogan').textContent = T.slogan;
+
+    var mn = Math.min(sc.C, sc.E, sc.B), mx = Math.max(sc.C, sc.E, sc.B);
+    var basis;
+    if(r.avg < 36 && r.spread <= 20) basis = '三项平均 ' + r.avg + ' 分，整体负担偏重';
+    else if(T.basisKey === 'ALL') basis = '三项都在 ' + mn + ' 分以上，而且彼此差距不大';
+    else if(T.basisKey === 'MIX' && r.typeKey === 'grounded') basis = '三项在 ' + mn + '–' + mx + ' 分之间，没有明显偏科';
+    else if(T.basisKey === 'MIX') basis = '三项在 ' + mn + '–' + mx + ' 分之间，还没有明显的短板';
+    else basis = '三项里最低的是「' + DIMS[r.lowest].name + '」' + sc[r.lowest] + ' 分';
+
+    var html = '';
+
+    html += '<div class="profile">' +
+      '<div class="p-top">' +
+        '<span class="p-code">' + T.code + ' / ' + T.en + '</span>' +
+        '<span class="p-badge">心理负担 · ' + burdenLabel(r.avg) + '</span>' +
+      '</div>' +
+      '<div class="p-name">' + T.name + '</div>' +
+      '<div class="p-tags">' + T.tags.map(function(t){ return '<span class="p-tag">' + t + '</span>'; }).join('') + '</div>' +
+      '<div class="p-basis">' + basis + '</div>' +
+      '<div class="p-stats">' +
+        '<div class="p-stat"><b>' + sc.C + '<i>/100</i></b><span>认知清晰</span></div>' +
+        '<div class="p-stat"><b>' + sc.E + '<i>/100</i></b><span>情绪轻盈</span></div>' +
+        '<div class="p-stat"><b>' + sc.B + '<i>/100</i></b><span>行为弹性</span></div>' +
+      '</div>' +
+    '</div>';
+
+    html += '<div class="type-intro rise"><em>关于这个状态</em>' + T.intro + '</div>';
+
+    /* 01 事实 */
+    var keys = pickTruths();
+    html += '<div class="block">' +
+      '<div class="block-h"><span class="block-num">01 / 事实</span><h2 class="block-title">先把几件事说清楚</h2></div>' +
+      '<p class="block-desc">下面每一条都是公开的运动科学与营养常识，挑的是<b>你这次的答案里</b>最需要被解释的那几个。它们不构成建议，只是把事实摆出来。</p>' +
+      '<div class="truths">' + keys.map(function(k, i){
+        var t = TRUTHS[k];
+        return '<div class="truth"><div class="truth-h"><span class="badge">事实 ' + (i+1) + '</span>' + t.t + '</div><p>' + t.d + '</p></div>';
+      }).join('') + '</div>' +
+    '</div>';
+
+    /* 02 三维 */
+    html += '<div class="block">' +
+      '<div class="block-h"><span class="block-num">02 / 拆解</span><h2 class="block-title">你的负担落在哪一格</h2></div>' +
+      '<p class="block-desc">三个维度，分数越高越轻松。<b>这不是考试</b>，低分只说明「这里还有一点没放下」。</p>' +
+      '<div class="dims">' +
+        barRow('认知清晰', sc.C) +
+        barRow('情绪轻盈', sc.E) +
+        barRow('行为弹性', sc.B) +
+        '<div class="dim-note"><b>一句话读分：</b>' + dimSummary(r) + '</div>' +
+      '</div>' +
+    '</div>';
+
+    /* 03 信号 */
+    var fs = flags();
+    html += '<div class="block">' +
+      '<div class="block-h"><span class="block-num">03 / 留意</span><h2 class="block-title">有几件事，值得你多看一眼</h2></div>' +
+      (fs.length ? '<p class="block-desc">这些不是批评，也不是提醒你「该做什么」——它们和你「能不能瘦」无关，和你「舒不舒服」有关。</p>' +
+        fs.map(function(f){
+          return '<div class="card ' + (f.kind === 'care' ? 'is-care' : 'is-warm') + '" style="margin-top:14px">' +
+            '<div class="card-h"><span class="pip"></span>' + f.title + '<span class="card-tag">' + f.tag + '</span></div>' +
+            '<p>' + f.text + '</p></div>';
+        }).join('')
+      : '<p class="block-desc">这次没有发现需要特别留意的信号——这是件好事，说明你现在的位置是稳的。</p>' +
+        '<div class="card" style="margin-top:14px"><div class="card-h"><span class="pip"></span>这次没有触发任何提醒</div><p>你选的大多是「已经想得比较明白」的那一档。保持现在这样就好，不用多做点什么。</p></div>') +
+    '</div>';
+
+    /* 04 一句话 */
+    html += '<div class="block">' +
+      '<div class="block-h"><span class="block-num">04 / 带走</span><h2 class="block-title">如果只记一句</h2></div>' +
+      '<div class="reminder"><b>' + T.encourage + '</b><br><br>' +
+        '你已经在「想弄明白自己」的路上了——这件事本身，就比任何一天的体重数字更值得肯定。' +
+        '允许慢，允许波动，允许偶尔多吃一顿。<b>你不需要为一次测试的结果负责，它只是照了一下镜子。</b>' +
+      '</div>' +
+      '<div class="quote-line">' + T.watch + '</div>' +
+    '</div>';
+
+    /* 05 边界 */
+    html += '<div class="block">' +
+      '<div class="block-h"><span class="block-num">05 / 边界</span><h2 class="block-title">关于这个小测试</h2></div>' +
+      '<div class="disclaimer"><b>它是什么：</b>一个 3 分钟的小测试，用自己的话描述最近的状态，然后得到一段描述性的解读。仅此而已。<br><br>' +
+      '<b>它不是什么：</b>不是医学诊断，不是心理评估，不是营养咨询，也不是任何形式的健康服务；<b>它不提供饮食方案、训练计划或任何建议</b>，不评价你的身体，也不预测任何结果。文中提到的事实来自公开的运动科学与营养常识，仅供理解使用。<br><br>' +
+      '<b>如果以下情况出现，请优先寻求专业帮助：</b>进食失控感强烈且频繁、对食物的恐惧持续加重、情绪长期低落并影响睡眠与社交、体重在短时间内明显下降——请联系医生或正规心理咨询机构。任何以损害健康为代价的减重方式（长时间极低热量、催泻、过度运动）都应当立刻停止。<br><br>' +
+      '<b>关于数据：</b>整个测试在你的浏览器里完成，不联网、不上传、不保存。关掉页面，就什么都没留下。</div>' +
+    '</div>';
+
+    $('res-body').innerHTML = html;
+
+    requestAnimationFrame(function(){
+      var ins = document.querySelectorAll('.bar-in');
+      for(var i=0;i<ins.length;i++){
+        (function(el, idx){
+          setTimeout(function(){ el.style.width = el.dataset.w + '%'; }, 150 + idx * 120);
+        })(ins[i], i);
+      }
+    });
+
+    $('res-actions').innerHTML =
+      '<button class="btn btn-primary" id="btn-copy" type="button">复制我的结果</button>' +
+      '<div class="row">' +
+        '<button class="btn btn-ghost" id="btn-edit" type="button">修改答案</button>' +
+        '<button class="btn btn-ghost" id="btn-retest" type="button">重新抽题</button>' +
+      '</div>';
+    $('btn-copy').addEventListener('click', function(){ copyResult(r); });
+    $('btn-edit').addEventListener('click', function(){
+      cur = 0;
+      show('quiz');
+      renderQuestion();
+      toast('已保留答案，点上方圆点可直接跳到某一题');
+    });
+    $('btn-retest').addEventListener('click', openModal);
+
+    show('result');
+  }
+
+  function barRow(name, v){
+    var lv = level(v);
+    var cls = 'bar-in lv-' + (lv === 'high' ? 'h' : lv === 'mid' ? 'm' : 'l');
+    return '<div class="bar-row">' +
+      '<span class="bar-name">' + name + '</span>' +
+      '<span class="bar-track"><i class="' + cls + '" data-w="' + v + '"></i></span>' +
+      '<span class="bar-val">' + v + '</span>' +
+    '</div>';
+  }
+
+  function burdenLabel(avg){
+    if(avg >= 70) return '轻盈';
+    if(avg >= 45) return '中等';
+    return '偏重';
+  }
+
+  function dimSummary(r){
+    var sc = r.scores;
+    var min = 'C', max = 'C';
+    DIM_ORDER.forEach(function(d){
+      if(sc[d] < sc[min]) min = d;
+      if(sc[d] > sc[max]) max = d;
+    });
+    if(r.avg >= 70) return '三项都在轻松区，你的「心累」属于正常范围——这次测试没有发现明显的卡点。';
+    return '你最松的一环是<b>' + DIMS[max].name + '（' + sc[max] + '）</b>，最紧的一环是<b>' + DIMS[min].name + '（' + sc[min] + '）</b>。这个差值，就是这次测试照出来的地方。';
+  }
+
+  /* ==========================================================
+     十、复制
+     ========================================================== */
+  function copyResult(r){
+    var sc = r.scores;
+    var keys = pickTruths();
+    var txt =
+      '【我的减脂心态小测试】\n' +
+      '状态：' + r.type.name + '（' + r.type.en + '）\n' +
+      '认知清晰 ' + sc.C + ' / 情绪轻盈 ' + sc.E + ' / 行为弹性 ' + sc.B + '\n' +
+      '一句话：' + r.type.slogan + '\n' +
+      '几句事实：' + keys.map(function(k){ return TRUTHS[k].t; }).join('；') + '\n' +
+      '带走这句：' + r.type.encourage + '\n' +
+      '（这是一个 14 题的小测试，不是诊断，也不构成任何建议）';
+
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = txt;
+      ta.setAttribute('readonly','');
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try{ ok = document.execCommand('copy'); }catch(e){ ok = false; }
+      document.body.removeChild(ta);
+      toast(ok ? '已复制，可以直接发出去' : '复制失败，长按文字手动复制');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ toast('已复制，可以直接发出去'); }).catch(fallback);
+    }else{ fallback(); }
+  }
+
+  /* ==========================================================
+     十一、弹窗与初始化
+     ========================================================== */
+  function openModal(){ $('modal').classList.add('is-open'); }
+  function closeModal(){ $('modal').classList.remove('is-open'); }
+  $('modal-cancel').addEventListener('click', closeModal);
+  $('modal').addEventListener('click', function(e){ if(e.target === this) closeModal(); });
+  $('modal-confirm').addEventListener('click', function(){
+    answers = [];
+    quiz = [];
+    cur = 0;
+    closeModal();
+    show('home');
+    toast('已清空，下次开始会抽一组新题');
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && $('modal').classList.contains('is-open')) closeModal();
+  });
+
+  function startQuiz(){
+    quiz = buildQuiz();
+    answers = new Array(quiz.length).fill(null);
+    cur = 0;
+    buildDots();
+    renderQuestion();
+    show('quiz');
+  }
+
+  $('btn-start').addEventListener('click', startQuiz);
+  $('btn-back-home').addEventListener('click', function(){
+    var any = answers.some(function(a){ return a !== null; });
+    if(any){ toast('进度还在，点「开始」会重新抽题并清空'); }
+    show('home');
+  });
+  $('btn-next').addEventListener('click', next);
+  $('btn-prev').addEventListener('click', prev);
+
+  document.addEventListener('keydown', function(e){
+    if(!screens.quiz.classList.contains('is-active')) return;
+    if($('modal').classList.contains('is-open')) return;
+    var tag = (e.target && e.target.tagName) || '';
+    if(tag === 'INPUT' || tag === 'TEXTAREA') return;
+    if(e.key === 'ArrowRight' && e.target === document.body) next();
+    if(e.key === 'ArrowLeft' && e.target === document.body) prev();
+    var n = parseInt(e.key, 10);
+    if(n >= 1 && n <= 4){
+      var o = $('opts').children[n-1];
+      if(o) o.click();
+    }
+  });
+
+  /* 调试出口（不影响使用） */
+  window.__mind = {
+    getQuiz:function(){ return quiz; },
+    getAnswers:function(){ return answers; },
+    compute:compute,
+    pickTruths:pickTruths,
+    flags:flags
+  };
+})();
+
 </script>
 </body>
 </html>
