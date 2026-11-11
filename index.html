@@ -1,1139 +1,2648 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>人生大结果测试 · 你早就拿到了什么大结果</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070b14">
+<title>平行时空下的你可能如何生活 | 原创趣味自评</title>
+<meta name="description" content="平行时空下的你可能如何生活？20 道生活切片，想象另一种日子怎么过。原创趣味自评，不构成心理诊断或治疗建议。">
 <style>
-  :root{
-    --bg:#FBF7EF;
-    --card:#FFFFFF;
-    --ink:#3A3630;
-    --ink-soft:#7C7568;
-    --line:#EAE2D3;
-    --coral:#E8705F;
-    --coral-soft:#FBEAE6;
-    --gold:#C9963F;
-    --gold-soft:#F7EEDD;
-    --green:#6E8B74;
-    --rose:#D66C7C;
-    --teal:#5E8A8C;
-    --shadow:0 10px 30px rgba(58,54,48,.08);
-    --radius:20px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
-    line-height:1.7;
-    min-height:100vh;
-  }
-  .serif{font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;}
-  .wrap{max-width:680px;margin:0 auto;padding:0 20px 60px;}
-  .page{display:none;animation:fadeIn .45s ease;}
-  .page.active{display:block;}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+/* ============ 设计令牌 ============ */
+:root{
+  --bg:#070b14;
+  --ink:#eef1f8;
+  --ink-2:#bcc5d8;
+  --ink-3:#95a0b6;
+  --gold:#e9c79b;
+  --gold-2:#f6e0c0;
+  --gold-dim:rgba(233,199,155,.16);
+  --violet:#a99bff;
+  --teal:#83d8c6;
+  --line:rgba(255,255,255,.12);
+  --line-soft:rgba(255,255,255,.075);
+  --panel:linear-gradient(160deg,rgba(255,255,255,.062),rgba(255,255,255,.022));
+  --panel-flat:rgba(255,255,255,.04);
+  --radius:18px;
+  --radius-sm:14px;
+  --shadow:0 28px 70px -34px rgba(0,0,0,.95);
+  --sans:"PingFang SC","HarmonyOS Sans SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","STSong",Georgia,serif;
+  --sp-1:8px; --sp-2:12px; --sp-3:16px; --sp-4:24px; --sp-5:32px; --sp-6:48px; --sp-7:64px;
+}
 
-  /* ====== 首页 ====== */
-  .hero{padding-top:44px;text-align:center;}
-  .hero .tag{
-    display:inline-block;background:var(--coral-soft);color:var(--coral);
-    font-size:13px;letter-spacing:.12em;padding:5px 16px;border-radius:999px;font-weight:600;
-  }
-  .hero h1{
-    font-size:clamp(30px,7.4vw,44px);line-height:1.35;margin:20px 0 6px;font-weight:700;
-  }
-  .hero h1 .hl{color:var(--coral);position:relative;white-space:nowrap;}
-  .hero h1 .hl::after{
-    content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;
-    background:var(--gold-soft);z-index:-1;border-radius:4px;
-  }
-  .hero .sub{color:var(--ink-soft);font-size:15px;max-width:420px;margin:12px auto 0;}
-  .hero-art{margin:26px auto 6px;max-width:340px;}
-  .hero-art svg{width:100%;height:auto;display:block;}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.75;
+  letter-spacing:.012em;
+  background:
+    radial-gradient(1100px 680px at 12% -8%, #1a2140 0%, transparent 62%),
+    radial-gradient(900px 620px at 92% -4%, #1d1533 0%, transparent 58%),
+    radial-gradient(900px 760px at 50% 112%, #0d1d26 0%, transparent 62%),
+    var(--bg);
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+/* 星尘层 */
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  opacity:.5;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><g fill='%23ffffff'><circle cx='18' cy='34' r='.9' opacity='.5'/><circle cx='86' cy='14' r='.7' opacity='.35'/><circle cx='152' cy='58' r='1' opacity='.45'/><circle cx='214' cy='26' r='.7' opacity='.3'/><circle cx='40' cy='112' r='.8' opacity='.35'/><circle cx='122' cy='146' r='.6' opacity='.3'/><circle cx='196' cy='124' r='.9' opacity='.4'/><circle cx='248' cy='96' r='.6' opacity='.28'/><circle cx='64' cy='196' r='.9' opacity='.4'/><circle cx='146' cy='222' r='.7' opacity='.3'/><circle cx='222' cy='204' r='.8' opacity='.35'/><circle cx='12' cy='248' r='.6' opacity='.25'/></g></svg>");
+  background-size:260px 260px;
+}
+body::after{
+  content:"";
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 0%,transparent 40%,rgba(4,6,12,.55) 100%);
+}
 
-  .intro-card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:22px 24px;margin-top:22px;box-shadow:var(--shadow);text-align:left;
-  }
-  .intro-card h2{font-size:17px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-  .intro-card p{font-size:14.5px;color:var(--ink-soft);}
-  .intro-card p+p{margin-top:8px;}
-  .intro-card .quote{
-    border-left:3px solid var(--coral);padding:2px 0 2px 14px;margin-top:14px;
-    color:var(--ink);font-size:14.5px;
-  }
+.app{position:relative; z-index:1; display:flex; flex-direction:column; min-height:100vh}
+.wrap{width:100%; max-width:780px; margin:0 auto; padding:0 20px}
 
-  .dim-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
-  .dim-chip{
-    font-size:12.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);
-    background:var(--bg);color:var(--ink-soft);font-weight:500;
-  }
-  .dim-chip b{font-weight:600;}
+/* ============ 顶栏 ============ */
+.topbar{
+  position:relative; z-index:2;
+  padding:22px 0 0;
+}
+.topbar .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px}
+.brand{display:flex; align-items:center; gap:10px; min-height:32px}
+.brand svg{width:26px; height:26px; flex:none}
+.brand-name{
+  font-family:var(--serif); font-size:15px; letter-spacing:.14em;
+  color:var(--ink-2);
+}
+.brand-tag{
+  font-size:11px; letter-spacing:.16em; color:var(--ink-3);
+  border:1px solid var(--line-soft); border-radius:999px;
+  padding:4px 10px; white-space:nowrap;
+}
 
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    border:none;cursor:pointer;font-family:inherit;font-weight:600;
-    border-radius:999px;transition:transform .15s ease,box-shadow .15s ease,opacity .15s;
-  }
-  .btn:active{transform:scale(.96);}
-  .btn-primary{
-    background:linear-gradient(135deg,#EE7D64,#E05B4C);color:#fff;
-    font-size:17px;padding:15px 46px;box-shadow:0 8px 22px rgba(232,112,95,.35);
-    letter-spacing:.06em;
-  }
-  .btn-primary:hover{box-shadow:0 10px 26px rgba(232,112,95,.45);transform:translateY(-1px);}
-  .btn-ghost{
-    background:transparent;color:var(--ink-soft);font-size:14px;padding:10px 20px;
-    border:1px solid var(--line);background:var(--card);
-  }
-  .btn-ghost:hover{color:var(--ink);border-color:#D8CEBB;}
-  .cta-area{text-align:center;margin-top:26px;}
-  .cta-note{font-size:12.5px;color:var(--ink-soft);margin-top:12px;}
+/* ============ 视图切换 ============ */
+.view{display:none; padding:var(--sp-6) 0 var(--sp-7)}
+.view.is-active{display:block; animation:viewIn .5s cubic-bezier(.22,.8,.3,1) both}
+@keyframes viewIn{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
 
-  /* ====== 入场验证 ====== */
-  .verify-card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:22px 24px 24px;margin-top:26px;box-shadow:var(--shadow);text-align:center;
-  }
-  .verify-card h2{font-size:17px;display:flex;align-items:center;justify-content:center;gap:8px;}
-  .verify-card .v-sub{font-size:13.5px;color:var(--ink-soft);margin-top:6px;}
-  .captcha{
-    display:flex;justify-content:center;gap:10px;margin:18px 0 14px;
-    padding:16px 12px;border-radius:16px;
-    background:
-      repeating-linear-gradient(35deg, rgba(232,112,95,.05) 0 6px, transparent 6px 14px),
-      var(--bg);
-    border:1px dashed #E0D5C0;user-select:none;
-    position:relative;overflow:hidden;
-  }
-  .captcha .noise{position:absolute;border-radius:50%;background:rgba(122,112,96,.18);}
-  .cap-digit{
-    width:52px;height:64px;background:var(--card);border-radius:12px;
-    border:1.5px solid var(--line);box-shadow:0 4px 10px rgba(58,54,48,.06);
-    display:flex;align-items:center;justify-content:center;
-    font-size:30px;font-weight:700;font-family:"Noto Serif SC","Songti SC",serif;
-    transform:rotate(var(--r,0deg)) translateY(var(--y,0px));
-  }
-  .code-input{
-    display:block;margin:0 auto;width:180px;text-align:center;letter-spacing:.5em;
-    font-size:22px;font-weight:700;font-family:inherit;color:var(--ink);
-    padding:10px 0 10px .5em;border:2px solid var(--line);border-radius:14px;
-    background:var(--bg);outline:none;transition:border-color .2s;
-  }
-  .code-input:focus{border-color:var(--coral);}
-  .code-input::placeholder{color:#C4BAA8;letter-spacing:0;font-size:14px;font-weight:400;}
-  .verify-btns{display:flex;justify-content:center;gap:10px;margin-top:14px;}
-  .verify-card.shake{animation:shake .4s ease;}
-  @keyframes shake{
-    20%{transform:translateX(-7px);}40%{transform:translateX(6px);}
-    60%{transform:translateX(-4px);}80%{transform:translateX(3px);}
-  }
+/* ============ 首页 ============ */
+.hero{text-align:center; padding-top:var(--sp-5)}
+.eyebrow{
+  margin:0 0 var(--sp-3);
+  font-size:11.5px; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--gold); opacity:.9;
+}
+h1{
+  font-family:var(--serif); font-weight:600;
+  font-size:clamp(28px,6.4vw,46px); line-height:1.34;
+  letter-spacing:.02em; margin:0 0 var(--sp-3);
+  text-wrap:balance;
+}
+h1 em{
+  font-style:normal;
+  background:linear-gradient(100deg,var(--gold-2),var(--gold) 55%,#c9a9ff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.lede{
+  margin:0 auto; max-width:34em; color:var(--ink-2);
+  font-size:clamp(14.5px,3.7vw,17px); line-height:1.95;
+}
+.hero-art{
+  margin:var(--sp-4) auto var(--sp-4); max-width:400px;
+}
+.hero-art svg{width:100%; height:auto; display:block}
 
-  .disclaim{
-    margin-top:30px;font-size:12px;color:#B4AB9C;text-align:center;line-height:1.8;
-  }
+.btn{
+  -webkit-appearance:none; appearance:none;
+  font-family:inherit; font-size:16px; font-weight:500;
+  min-height:52px; padding:0 30px;
+  border-radius:999px; border:1px solid transparent;
+  cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  transition:transform .18s ease, box-shadow .25s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
+  touch-action:manipulation;
+}
+.btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+.btn-primary{
+  color:#241a10;
+  background:linear-gradient(135deg,var(--gold-2),var(--gold) 60%,#d9b183);
+  box-shadow:0 16px 34px -18px rgba(233,199,155,.75), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 22px 44px -18px rgba(233,199,155,.9), inset 0 1px 0 rgba(255,255,255,.6)}
+.btn-primary:active{transform:translateY(0) scale(.988)}
+.btn-primary .arrow{transition:transform .2s ease}
+.btn-primary:hover .arrow{transform:translateX(4px)}
+.btn-ghost{
+  color:var(--ink-2); background:rgba(255,255,255,.03);
+  border-color:var(--line);
+}
+.btn-ghost:hover{color:var(--ink); border-color:rgba(255,255,255,.24); background:rgba(255,255,255,.06)}
+.btn-ghost:active{transform:scale(.985)}
+.btn[disabled]{opacity:.42; cursor:not-allowed; transform:none !important; box-shadow:none}
+.btn-wide{width:100%; max-width:340px}
 
-  /* ====== 答题页 ====== */
-  .quiz-top{
-    position:sticky;top:0;z-index:20;background:rgba(251,247,239,.92);
-    backdrop-filter:blur(8px);padding:14px 0 10px;margin:0 -20px;padding-left:20px;padding-right:20px;
-    border-bottom:1px solid var(--line);
-  }
-  .quiz-top-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-soft);}
-  .quiz-top-row b{color:var(--ink);font-size:15px;}
-  .bar{height:8px;background:#EFE7D8;border-radius:99px;margin-top:10px;overflow:hidden;}
-  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#EE7D64,#E8705F);border-radius:99px;transition:width .35s ease;}
-  .dots{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;justify-content:center;}
-  .dot{
-    width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--card);
-    font-size:11px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;
-    font-family:inherit;transition:all .2s;padding:0;
-  }
-  .dot.answered{background:var(--coral);border-color:var(--coral);color:#fff;}
-  .dot.current{transform:scale(1.18);box-shadow:0 0 0 2px var(--coral-soft),0 0 0 3.5px var(--coral);}
-  .dot.warn{background:#F4B4A6;border-color:#F4B4A6;animation:pulse 1s ease infinite;}
-  @keyframes pulse{50%{transform:scale(1.15);}}
+.hint{
+  margin:var(--sp-3) 0 0; font-size:12.5px; color:var(--ink-3); letter-spacing:.04em;
+}
 
-  .q-card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:30px 26px 26px;margin-top:22px;animation:fadeIn .35s ease;
-  }
-  .q-num{font-size:13px;color:var(--coral);font-weight:700;letter-spacing:.15em;}
-  .q-text{font-size:clamp(19px,4.6vw,23px);font-weight:700;line-height:1.6;margin:12px 0 24px;}
-  .opts{display:flex;flex-direction:column;gap:12px;}
-  .opt{
-    display:flex;align-items:center;gap:14px;text-align:left;width:100%;
-    background:var(--bg);border:1.5px solid var(--line);border-radius:16px;
-    padding:14px 18px;cursor:pointer;font-family:inherit;font-size:16px;color:var(--ink);
-    transition:all .18s ease;
-  }
-  .opt:hover{border-color:#E0C9AE;}
-  .opt .radio{
-    width:20px;height:20px;border-radius:50%;border:2px solid #D8CEBB;flex:none;
-    display:flex;align-items:center;justify-content:center;transition:all .18s;
-  }
-  .opt .radio::after{
-    content:"";width:9px;height:9px;border-radius:50%;background:#fff;transform:scale(0);transition:transform .18s;
-  }
-  .opt.picked{border-color:var(--coral);background:var(--coral-soft);font-weight:600;}
-  .opt.picked .radio{border-color:var(--coral);background:var(--coral);}
-  .opt.picked .radio::after{transform:scale(1);}
-  .opt .idx{font-size:12px;color:var(--ink-soft);flex:none;width:16px;}
+.disclaimer{
+  margin:var(--sp-4) auto 0; max-width:46em; text-align:center;
+  padding:14px 18px; border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.02); border:1px solid var(--line-soft);
+  font-size:11.5px; line-height:1.9; color:var(--ink-3);
+}
 
-  .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:12px;}
-  .quiz-nav .btn-ghost{min-width:104px;}
-  .quiz-nav .btn-primary{font-size:15px;padding:12px 30px;}
-  .quiz-nav .spacer{flex:1;}
+.cards3{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-2);
+  margin-top:var(--sp-6);
+}
+.mini{
+  padding:20px 18px; border-radius:var(--radius-sm);
+  background:var(--panel); border:1px solid var(--line-soft);
+  box-shadow:var(--shadow);
+}
+.mini h3{
+  margin:0 0 8px; font-size:12px; letter-spacing:.18em;
+  color:var(--gold); font-weight:500;
+}
+.mini p{margin:0; font-size:13.5px; line-height:1.8; color:var(--ink-2)}
 
-  .toast{
-    position:fixed;left:50%;bottom:36px;transform:translateX(-50%) translateY(20px);
-    background:var(--ink);color:#fff;font-size:14px;padding:11px 22px;border-radius:99px;
-    opacity:0;pointer-events:none;transition:all .3s ease;z-index:99;max-width:86vw;text-align:center;
-  }
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.quote{
+  margin:var(--sp-6) auto 0; max-width:30em; text-align:center;
+  font-family:var(--serif); font-size:clamp(15px,3.9vw,18px); line-height:1.9;
+  color:var(--ink-2); position:relative; padding:0 8px;
+}
+.quote::before,.quote::after{
+  content:""; display:block; width:44px; height:1px; margin:0 auto var(--sp-2);
+  background:linear-gradient(90deg,transparent,rgba(233,199,155,.55),transparent);
+}
+.quote::after{margin:var(--sp-2) auto 0}
 
-  /* ====== 结果页 ====== */
-  .result-hero{text-align:center;padding-top:40px;}
-  .result-hero .kicker{
-    font-size:13px;letter-spacing:.2em;color:var(--ink-soft);margin-bottom:14px;
-  }
-  .type-badge{width:120px;margin:0 auto;display:block;}
-  .type-badge svg{width:100%;height:auto;}
-  .result-hero h1{font-size:clamp(26px,6.6vw,38px);margin-top:14px;line-height:1.4;}
-  .result-hero h1 .tname{color:var(--type,var(--coral));}
-  .result-hero .type-line{color:var(--ink-soft);font-size:15.5px;margin-top:8px;}
-  .level-pill{
-    display:inline-block;margin-top:16px;padding:7px 20px;border-radius:999px;
-    background:var(--gold-soft);color:#9A7327;font-weight:600;font-size:14px;
-  }
-  .tie-note{
-    margin:14px auto 0;max-width:440px;font-size:13.5px;color:var(--ink-soft);
-    background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:10px 16px;
-  }
+/* ============ 答题页 ============ */
+.quiz-head{
+  position:sticky; top:0; z-index:5;
+  margin:0 calc(50% - 50vw) var(--sp-4);
+  padding:14px calc(50vw - 50%) 12px;
+  background:linear-gradient(180deg,rgba(7,11,20,.96),rgba(7,11,20,.72) 70%,transparent);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+}
+.quiz-meta{
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:12.5px; letter-spacing:.08em; color:var(--ink-3); margin-bottom:10px;
+}
+.quiz-meta b{color:var(--gold); font-weight:500; font-variant-numeric:tabular-nums}
+.pool-note{font-size:11.5px; color:var(--ink-3); letter-spacing:.06em; white-space:nowrap}
+.link-btn{
+  -webkit-appearance:none; appearance:none; background:none; border:0;
+  font-family:inherit; font-size:12.5px; color:var(--ink-3);
+  cursor:pointer; padding:6px 2px; min-height:32px; letter-spacing:.06em;
+  border-bottom:1px dashed rgba(255,255,255,.2);
+}
+.link-btn:hover{color:var(--gold); border-bottom-color:rgba(233,199,155,.6)}
+.link-btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:4px}
+.progress{
+  height:3px; border-radius:99px; background:rgba(255,255,255,.1); overflow:hidden;
+}
+.progress span{
+  display:block; height:100%; width:0%;
+  border-radius:99px;
+  background:linear-gradient(90deg,var(--gold),#f0d3ae 60%,var(--violet));
+  box-shadow:0 0 12px rgba(233,199,155,.55);
+  transition:width .42s cubic-bezier(.3,.8,.3,1);
+}
 
-  .panel{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:24px 24px 26px;margin-top:20px;
+.qcard{
+  padding:var(--sp-5) var(--sp-4) var(--sp-4);
+  border-radius:var(--radius);
+  background:var(--panel); border:1px solid var(--line-soft);
+  box-shadow:var(--shadow);
+  animation:qIn .4s cubic-bezier(.22,.8,.3,1) both;
+}
+@keyframes qIn{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+.qcard.shake{animation:shake .38s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.q-eyebrow{
+  margin:0 0 var(--sp-2); font-size:11px; letter-spacing:.22em; color:var(--ink-3);
+}
+.qcard h2{
+  font-family:var(--serif); font-weight:600;
+  font-size:clamp(19px,4.5vw,24px); line-height:1.6;
+  margin:0 0 var(--sp-4); letter-spacing:.01em; text-wrap:pretty;
+}
+.options{display:flex; flex-direction:column; gap:10px}
+.opt{
+  -webkit-appearance:none; appearance:none; text-align:left; width:100%;
+  font-family:inherit; font-size:15px; line-height:1.65; color:var(--ink);
+  min-height:60px; padding:14px 16px;
+  display:flex; align-items:flex-start; gap:12px;
+  background:rgba(255,255,255,.028);
+  border:1px solid var(--line-soft); border-radius:var(--radius-sm);
+  cursor:pointer;
+  transition:border-color .18s ease, background-color .18s ease, transform .14s ease, box-shadow .22s ease;
+  touch-action:manipulation;
+}
+.opt:hover{border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.055)}
+.opt:active{transform:scale(.994)}
+.opt:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+.opt .k{
+  flex:none; width:24px; height:24px; margin-top:1px;
+  display:grid; place-items:center;
+  font-size:11.5px; letter-spacing:.02em; color:var(--ink-3);
+  border:1px solid var(--line); border-radius:8px;
+  font-variant-numeric:tabular-nums;
+  transition:all .18s ease;
+}
+.opt .t{flex:1}
+.opt[aria-checked="true"]{
+  border-color:rgba(233,199,155,.62);
+  background:linear-gradient(140deg,rgba(233,199,155,.14),rgba(169,155,255,.07));
+  box-shadow:0 0 0 1px rgba(233,199,155,.18), 0 16px 34px -26px rgba(233,199,155,.8);
+}
+.opt[aria-checked="true"] .k{
+  color:#241a10; background:var(--gold); border-color:var(--gold);
+}
+.opt[aria-checked="true"] .t{color:var(--gold-2)}
+.q-note{
+  margin:var(--sp-4) 0 0; font-size:12.5px; color:var(--ink-3);
+  border-top:1px solid var(--line-soft); padding-top:var(--sp-3);
+  text-align:center; letter-spacing:.04em;
+}
+
+.qnav{
+  display:flex; align-items:center; gap:var(--sp-2);
+  margin-top:var(--sp-4);
+}
+.qnav .btn{flex:1}
+.qnav .btn-primary{flex:1.4}
+
+/* 答题卡 */
+.qcard-panel{
+  margin-top:var(--sp-3); padding:18px;
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.035); border:1px solid var(--line-soft);
+}
+.qcard-panel h4{
+  margin:0 0 12px; font-size:11.5px; letter-spacing:.18em; color:var(--ink-3); font-weight:500;
+}
+.qgrid{display:grid; grid-template-columns:repeat(10,1fr); gap:8px}
+.qgrid button{
+  -webkit-appearance:none; appearance:none; font-family:inherit;
+  aspect-ratio:1; min-height:38px;
+  border-radius:9px; border:1px solid var(--line-soft);
+  background:rgba(255,255,255,.03); color:var(--ink-3);
+  font-size:12.5px; cursor:pointer; font-variant-numeric:tabular-nums;
+  transition:all .16s ease;
+}
+.qgrid button:hover{border-color:rgba(255,255,255,.3); color:var(--ink)}
+.qgrid button.done{color:#241a10; background:rgba(233,199,155,.82); border-color:transparent}
+.qgrid button.now{outline:2px solid var(--violet); outline-offset:1px}
+.qgrid button:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+
+/* ============ 结果页 ============ */
+.result-head{text-align:center; margin-bottom:var(--sp-5)}
+.type-no{
+  display:inline-block; font-size:11px; letter-spacing:.26em; color:var(--ink-3);
+  border:1px solid var(--line-soft); border-radius:999px; padding:5px 14px; margin-bottom:var(--sp-3);
+}
+.type-name{
+  font-family:var(--serif); font-weight:600; margin:0;
+  font-size:clamp(30px,7.6vw,50px); line-height:1.25; letter-spacing:.03em;
+  background:linear-gradient(100deg,#fff,var(--gold-2) 45%,var(--gold) 70%,#bfaeff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.type-en{
+  margin:10px 0 0; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--ink-3);
+}
+.type-tagline{
+  margin:var(--sp-3) auto 0; max-width:26em;
+  font-family:var(--serif); font-size:clamp(15px,4vw,18.5px); line-height:1.9; color:var(--ink-2);
+}
+.tags{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:var(--sp-3)}
+.tag{
+  font-size:12px; letter-spacing:.08em; color:var(--gold);
+  border:1px solid rgba(233,199,155,.28); border-radius:999px; padding:5px 13px;
+  background:rgba(233,199,155,.06);
+}
+
+.sec{margin-top:var(--sp-5)}
+.sec-label{
+  display:flex; align-items:center; gap:12px; margin:0 0 var(--sp-3);
+  font-size:11px; letter-spacing:.22em; color:var(--ink-3); font-weight:500;
+}
+.sec-label::after{content:""; flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent)}
+
+.card{
+  padding:var(--sp-4);
+  border-radius:var(--radius);
+  background:var(--panel); border:1px solid var(--line-soft);
+  box-shadow:var(--shadow);
+}
+.scene p{
+  margin:0; font-family:var(--serif); font-size:clamp(15px,3.9vw,17.5px);
+  line-height:2.05; color:#e6eaf4; letter-spacing:.015em;
+}
+.scene p + p{margin-top:10px}
+
+/* 雷达 */
+.radar-wrap{
+  display:grid; grid-template-columns:300px 1fr; gap:var(--sp-4);
+  align-items:center;
+}
+.radar{width:100%; max-width:300px; margin:0 auto; display:block}
+.dims{display:flex; flex-direction:column; gap:14px}
+.dim-row{display:flex; flex-direction:column; gap:4px}
+.dim-top{display:flex; align-items:baseline; justify-content:space-between; gap:10px}
+.dim-name{font-size:13.5px; color:var(--ink); letter-spacing:.06em}
+.dim-val{font-size:12px; color:var(--gold); font-variant-numeric:tabular-nums; letter-spacing:.04em}
+.dim-read{font-size:12.5px; line-height:1.7; color:var(--ink-3)}
+
+.two{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-2)}
+.list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px}
+.list li{
+  position:relative; padding-left:18px; font-size:14px; line-height:1.85; color:var(--ink-2);
+}
+.list li::before{
+  content:""; position:absolute; left:0; top:.72em;
+  width:5px; height:5px; border-radius:50%; background:var(--gold); opacity:.85;
+}
+.list.muted li::before{background:var(--violet); opacity:.8}
+
+.advice{display:flex; flex-direction:column; gap:10px}
+.advice-item{
+  display:flex; gap:14px; padding:16px 18px;
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.035); border:1px solid var(--line-soft);
+}
+.advice-item .n{
+  flex:none; font-family:var(--serif); font-size:20px; color:var(--gold); opacity:.7;
+  line-height:1.2; font-variant-numeric:tabular-nums;
+}
+.advice-item h4{margin:0 0 4px; font-size:14px; font-weight:500; color:var(--ink); letter-spacing:.02em}
+.advice-item p{margin:0; font-size:13px; line-height:1.8; color:var(--ink-3)}
+
+.letter{
+  padding:var(--sp-4);
+  border-radius:var(--radius);
+  border:1px dashed rgba(233,199,155,.34);
+  background:linear-gradient(160deg,rgba(233,199,155,.07),rgba(169,155,255,.045));
+}
+.letter p{
+  margin:0; font-family:var(--serif); font-size:clamp(15px,3.9vw,17px); line-height:2.05; color:#efe6d8;
+}
+.letter .sign{
+  margin-top:12px; font-family:var(--sans); font-size:11.5px; letter-spacing:.16em; color:var(--ink-3);
+}
+.care{
+  margin-top:var(--sp-3); padding:16px 18px; border-radius:var(--radius-sm);
+  background:rgba(131,216,198,.07); border:1px solid rgba(131,216,198,.24);
+  font-size:13px; line-height:1.8; color:#cfe9e2;
+}
+.care b{color:var(--teal); font-weight:500}
+
+.result-disclaimer{
+  margin:0 auto var(--sp-4); max-width:36em; text-align:center;
+  padding:9px 16px; border-radius:var(--radius-sm);
+  border:1px solid var(--line-soft); background:rgba(255,255,255,.02);
+  font-size:11.5px; line-height:1.75; letter-spacing:.04em; color:var(--ink-2);
+}
+
+.share-box{
+  display:flex; gap:8px; align-items:stretch; flex-wrap:wrap;
+}
+.share-text{
+  flex:1 1 260px; min-height:52px; display:flex; align-items:center;
+  padding:12px 16px; border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.03); border:1px solid var(--line-soft);
+  font-size:13px; line-height:1.7; color:var(--ink-2);
+}
+.actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:var(--sp-4)}
+.actions .btn{flex:1 1 160px}
+
+.footnote{
+  margin-top:var(--sp-5); padding-top:var(--sp-3);
+  border-top:1px solid var(--line-soft);
+  font-size:11.5px; line-height:1.9; color:var(--ink-3); letter-spacing:.02em;
+}
+
+.mini-h{
+  margin:0 0 12px; font-size:11.5px; letter-spacing:.18em;
+  color:var(--gold); font-weight:500;
+}
+
+/* ============ 页脚 ============ */
+footer{
+  margin-top:auto; padding:var(--sp-5) 0 var(--sp-4);
+  border-top:1px solid var(--line-soft);
+  font-size:11.5px; color:var(--ink-3); line-height:1.9; text-align:center;
+}
+
+/* ============ Toast ============ */
+.toast{
+  position:fixed; left:50%; bottom:calc(28px + env(safe-area-inset-bottom));
+  transform:translate(-50%,20px);
+  z-index:50; pointer-events:none;
+  padding:11px 20px; border-radius:999px;
+  background:rgba(20,26,42,.96); border:1px solid rgba(233,199,155,.32);
+  color:var(--gold-2); font-size:13px; letter-spacing:.04em;
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.9);
+  opacity:0; transition:opacity .25s ease, transform .3s cubic-bezier(.22,.8,.3,1);
+  max-width:calc(100vw - 40px); text-align:center;
+}
+.toast.show{opacity:1; transform:translate(-50%,0)}
+
+/* ============ 插画动效 ============ */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinRev{to{transform:rotate(-360deg)}}
+@keyframes twinkle{0%,100%{opacity:.18}50%{opacity:.95}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.orbit-a{animation:spin 38s linear infinite; transform-origin:200px 150px}
+.orbit-b{animation:spinRev 26s linear infinite; transform-origin:200px 150px}
+.star{animation:twinkle 4.6s ease-in-out infinite}
+.floaty{animation:floaty 7s ease-in-out infinite}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important; transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+
+/* ============ 移动端 ============ */
+@media (max-width:760px){
+  .radar-wrap{grid-template-columns:1fr; gap:var(--sp-3)}
+  .radar{max-width:260px}
+  .two{grid-template-columns:1fr}
+  .cards3{grid-template-columns:1fr; gap:10px}
+  .qgrid{grid-template-columns:repeat(5,1fr)}
+  .topbar{padding-top:16px}
+  .view{padding:var(--sp-5) 0 var(--sp-6)}
+  .qcard{padding:var(--sp-4) 18px var(--sp-3)}
+  .qnav{position:sticky; bottom:0;
+    margin:var(--sp-3) calc(50% - 50vw) 0;
+    padding:12px calc(50vw - 50%) calc(12px + env(safe-area-inset-bottom));
+    background:linear-gradient(0deg,rgba(7,11,20,.96) 40%,rgba(7,11,20,.75) 80%,transparent);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
   }
-  .panel h3{font-size:17px;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  .panel h3 .mini{width:22px;height:22px;flex:none;}
-
-  .balance-num{text-align:center;margin:4px 0 2px;}
-  .balance-num .big{font-size:46px;font-weight:700;color:var(--coral);font-family:"Noto Serif SC","Songti SC",serif;}
-  .balance-num .unit{font-size:16px;color:var(--ink-soft);}
-  .balance-cap{text-align:center;font-size:13px;color:var(--ink-soft);margin-bottom:14px;}
-
-  .dim-row{margin-top:16px;}
-  .dim-row .dim-head{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px;}
-  .dim-row .dim-head .name{font-weight:600;}
-  .dim-row .dim-head .score{color:var(--ink-soft);font-variant-numeric:tabular-nums;}
-  .dim-bar{height:12px;background:#F2EBDD;border-radius:99px;overflow:hidden;}
-  .dim-bar i{display:block;height:100%;border-radius:99px;width:0;transition:width .9s cubic-bezier(.22,.9,.3,1);}
-
-  .story{font-size:15px;color:var(--ink);}
-  .story p+p{margin-top:10px;}
-  .story .lead{color:var(--type,var(--coral));font-weight:700;}
-
-  .advice{list-style:none;}
-  .advice li{
-    display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:14.5px;
-  }
-  .advice li:last-child{border-bottom:none;padding-bottom:2px;}
-  .advice .no{
-    flex:none;width:24px;height:24px;border-radius:8px;background:var(--type,var(--coral));color:#fff;
-    font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;
-  }
-  .advice b{color:var(--type,var(--coral));}
-
-  .low-hint{margin-top:10px;}
-  .low-hint .lh-tag{
-    display:inline-block;font-size:12px;background:var(--gold-soft);color:#9A7327;
-    padding:3px 10px;border-radius:99px;margin-bottom:8px;font-weight:600;
-  }
-  .low-hint p{font-size:14px;color:var(--ink-soft);}
-
-  .quotecard{
-    margin-top:24px;padding:6px;border-radius:24px;
-    background:linear-gradient(135deg,var(--type,#E8705F),#C9963F);
-    box-shadow:0 12px 30px rgba(58,54,48,.14);
-  }
-  .quotecard .inner{
-    background:#FFFDF8;border-radius:19px;padding:26px 22px;text-align:center;position:relative;overflow:hidden;
-  }
-  .quotecard .inner::before{
-    content:"“";position:absolute;top:-14px;left:12px;font-size:90px;color:var(--type,var(--coral));opacity:.12;
-    font-family:"Noto Serif SC",serif;
-  }
-  .quotecard .qc-tag{font-size:12px;letter-spacing:.25em;color:var(--ink-soft);}
-  .quotecard .qc-main{font-size:clamp(19px,5vw,23px);font-weight:700;line-height:1.65;margin:12px 0 8px;font-family:"Noto Serif SC","Songti SC",serif;}
-  .quotecard .qc-sub{font-size:13px;color:var(--ink-soft);}
-  .quotecard .qc-foot{margin-top:16px;font-size:11.5px;color:#B4AB9C;letter-spacing:.08em;}
-
-  .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px;}
-  .result-actions .btn-primary{font-size:15px;padding:13px 32px;}
-  .result-actions .btn-ghost{font-size:15px;padding:13px 28px;border-radius:999px;}
-
-  footer{margin-top:44px;text-align:center;font-size:12px;color:#B4AB9C;line-height:1.9;}
-
-  @media (max-width:480px){
-    .q-card{padding:24px 18px 20px;}
-    .panel{padding:20px 16px 22px;}
-    .opt{padding:12px 14px;font-size:15px;}
-    .hero{padding-top:32px;}
-    .cap-digit{width:46px;height:58px;font-size:26px;}
-  }
+  .btn{min-height:54px; padding:0 22px}
+  .qnav .btn{font-size:15px}
+  .mini{padding:16px}
+  .brand-tag{display:none}
+  .pool-note{display:none}
+  .actions .btn{flex:1 1 100%}
+}
+@media (max-width:380px){
+  .wrap{padding:0 16px}
+  .qcard h2{font-size:18px}
+  .opt{font-size:14.5px; padding:13px 14px; gap:10px}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="app">
 
-  <!-- ================= 首页 ================= -->
-  <section id="page-home" class="page active">
-    <div class="hero">
-      <span class="tag">原创趣味自评 · 每次随机抽 20 题 · 约 3 分钟</span>
-      <h1 class="serif">人人都想要<span class="hl">大结果</span><br>其实你早就拿到了一些</h1>
-      <p class="sub">不聊存款，不聊头衔。有些大结果早已悄悄来到你身上，只是你还没低头看见。花三分钟，把它们一件一件认出来。</p>
-
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg">
-          <!-- 台面 -->
-          <ellipse cx="170" cy="212" rx="128" ry="14" fill="#EFE7D6"/>
-          <!-- 奖杯 -->
-          <g stroke="#3A3630" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M132 66 h76 v30 a38 38 0 0 1 -76 0 z" fill="#F5C55C"/>
-            <path d="M132 74 c-18 2 -26 12 -22 24 c3 10 14 14 24 10" fill="none"/>
-            <path d="M208 74 c18 2 26 12 22 24 c-3 10 -14 14 -24 10" fill="none"/>
-            <rect x="160" y="132" width="20" height="26" fill="#F5C55C"/>
-            <path d="M144 196 c4 -20 8 -32 26 -32 c18 0 22 12 26 32 z" fill="#E8705F"/>
-            <rect x="132" y="196" width="76" height="12" rx="6" fill="#3A3630"/>
-            <circle cx="170" cy="97" r="14" fill="#FFFDF6"/>
-            <path d="M170 90 l2.6 5.4 6 .8 -4.4 4.2 1.1 5.9 -5.3 -2.9 -5.3 2.9 1.1 -5.9 -4.4 -4.2 6 -.8 z" fill="#E8705F" stroke="none"/>
-          </g>
-          <!-- 旁边的小盆栽：成长 -->
-          <g stroke="#3A3630" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M262 196 c0 -22 6 -34 14 -40" fill="none"/>
-            <path d="M276 156 c10 -14 26 -16 34 -12 c-2 12 -14 22 -30 20" fill="#6E8B74"/>
-            <path d="M272 172 c-12 -8 -24 -6 -30 2 c8 8 22 8 30 -2" fill="#8BAA90"/>
-            <path d="M248 196 h48 l-5 16 h-38 z" fill="#E8705F"/>
-          </g>
-          <!-- 小徽章与心愿便签 -->
-          <g stroke="#3A3630" stroke-width="3">
-            <circle cx="84" cy="186" r="17" fill="#F5C55C"/>
-            <path d="M84 178 v16 M78 183 c0 -3 2.5 -5 6 -5 s6 2 6 5 s-2.5 5 -6 5 s-6 2 -6 5 s2.5 5 6 5 s6 -2 6 -5" fill="none" stroke-width="2.4"/>
-            <circle cx="52" cy="168" r="11" fill="#FBEAE6"/>
-            <path d="M52 163 v10 M48 166 h8" stroke-width="2.2" fill="none"/>
-          </g>
-          <!-- 闪光 -->
-          <g fill="#E8705F">
-            <path d="M110 44 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z"/>
-            <path d="M236 60 l2.4 6.4 6.4 2.4 -6.4 2.4 -2.4 6.4 -2.4 -6.4 -6.4 -2.4 6.4 -2.4 z" fill="#C9963F"/>
-            <path d="M196 30 l1.8 4.8 4.8 1.8 -4.8 1.8 -1.8 4.8 -1.8 -4.8 -4.8 -1.8 4.8 -1.8 z" fill="#6E8B74"/>
-          </g>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="5.2" fill="url(#bg1)"/>
+          <ellipse cx="16" cy="16" rx="13.4" ry="6.4" stroke="rgba(233,199,155,.75)" stroke-width="1.1" transform="rotate(-24 16 16)"/>
+          <circle cx="27" cy="11.4" r="1.5" fill="#a99bff"/>
+          <defs><linearGradient id="bg1" x1="11" y1="11" x2="21" y2="21"><stop stop-color="#f6e0c0"/><stop offset="1" stop-color="#e9c79b"/></linearGradient></defs>
         </svg>
+        <span class="brand-name">平行时空 · 自评</span>
       </div>
+      <span class="brand-tag">原创趣味自评 · 非诊断</span>
     </div>
+  </header>
 
-    <div class="intro-card">
-      <h2><svg class="mini" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FBEAE6"/><path d="M12 7v5l3 3" stroke="#E8705F" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>这是个什么测试？</h2>
-      <p>生活里大家默认「大结果 = 加薪 + 升职」。但加薪有周期，升职有名额，真正陪你过日子的大结果，往往是另外几样东西——它们不敲锣打鼓，安安静静地陪了你很久：</p>
-      <div class="dim-preview">
-        <span class="dim-chip"><b>成事手感</b> · 事情到手里能落地</span>
-        <span class="dim-chip"><b>被人懂着</b> · 深夜有人接你电话</span>
-        <span class="dim-chip"><b>情绪自由</b> · 天塌了先吃口热的</span>
-        <span class="dim-chip"><b>越活越开阔</b> · 世界一直在变大</span>
-        <span class="dim-chip"><b>和自己和解</b> · 内耗欠费停机</span>
+  <main>
+    <!-- ================= 首页 ================= -->
+    <section id="view-home" class="view is-active" aria-labelledby="home-title">
+      <div class="wrap">
+        <div class="hero">
+          <p class="eyebrow">Parallel Me · 关于另一种日子的一场想象</p>
+          <h1 id="home-title">平行时空下的你，<br>可能<em>如何生活</em>？</h1>
+          <p class="lede">二十道生活切片：住哪儿、怎么醒、和谁吃晚饭、周末怎么过。选完，你会看到自己在另一条时间线上可能怎样过日子——以及其中哪些，此刻的你已经过上了。</p>
+
+          <div class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 400 300" fill="none">
+              <defs>
+                <radialGradient id="portalFill" cx="50%" cy="45%" r="55%">
+                  <stop offset="0%" stop-color="#2a3560" stop-opacity=".95"/>
+                  <stop offset="55%" stop-color="#141c33" stop-opacity=".9"/>
+                  <stop offset="100%" stop-color="#0a0f1c" stop-opacity=".2"/>
+                </radialGradient>
+                <linearGradient id="ringStroke" x1="110" y1="60" x2="290" y2="245">
+                  <stop stop-color="#f6e0c0" stop-opacity=".95"/>
+                  <stop offset=".5" stop-color="#e9c79b" stop-opacity=".55"/>
+                  <stop offset="1" stop-color="#a99bff" stop-opacity=".75"/>
+                </linearGradient>
+                <linearGradient id="beam" x1="200" y1="150" x2="200" y2="290">
+                  <stop stop-color="#e9c79b" stop-opacity=".5"/>
+                  <stop offset="1" stop-color="#e9c79b" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+
+              <!-- 星尘 -->
+              <g fill="#ffffff">
+                <circle class="star" cx="52" cy="62" r="1.6" style="animation-delay:0s"/>
+                <circle class="star" cx="348" cy="88" r="1.3" style="animation-delay:1.1s"/>
+                <circle class="star" cx="92" cy="232" r="1.2" style="animation-delay:2s"/>
+                <circle class="star" cx="316" cy="226" r="1.7" style="animation-delay:.6s"/>
+                <circle class="star" cx="140" cy="34" r="1.1" style="animation-delay:1.7s"/>
+                <circle class="star" cx="266" cy="42" r="1.2" style="animation-delay:2.6s"/>
+                <circle class="star" cx="30" cy="150" r="1.1" style="animation-delay:3.1s"/>
+                <circle class="star" cx="372" cy="168" r="1.3" style="animation-delay:1.4s"/>
+              </g>
+
+              <!-- 轨道 -->
+              <g opacity=".8">
+                <ellipse class="orbit-a" cx="200" cy="150" rx="146" ry="54" stroke="rgba(233,199,155,.28)" stroke-width="1" stroke-dasharray="2 8"/>
+                <ellipse class="orbit-b" cx="200" cy="150" rx="120" ry="120" stroke="rgba(169,155,255,.2)" stroke-width="1" stroke-dasharray="1 12"/>
+              </g>
+
+              <!-- 门 / 时空圆环 -->
+              <g class="floaty">
+                <circle cx="200" cy="150" r="86" fill="url(#portalFill)"/>
+                <circle cx="200" cy="150" r="86" stroke="url(#ringStroke)" stroke-width="1.4"/>
+                <circle cx="200" cy="150" r="72" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+                <g fill="#ffffff" opacity=".85">
+                  <circle class="star" cx="176" cy="122" r="1.4" style="animation-delay:.3s"/>
+                  <circle class="star" cx="226" cy="138" r="1.1" style="animation-delay:1.6s"/>
+                  <circle class="star" cx="204" cy="176" r="1.6" style="animation-delay:2.3s"/>
+                  <circle class="star" cx="246" cy="170" r="1" style="animation-delay:.9s"/>
+                </g>
+                <!-- 另一个我（门内剪影） -->
+                <g opacity=".55" fill="#e9c79b">
+                  <circle cx="207" cy="128" r="7"/>
+                  <path d="M207 137c-9 0-15 7-15 16v22h30v-22c0-9-6-16-15-16z" opacity=".85"/>
+                </g>
+              </g>
+
+              <!-- 门外的我 -->
+              <g fill="#dfe6f4" opacity=".9">
+                <circle cx="200" cy="230" r="7.4"/>
+                <path d="M200 240c-8.4 0-14.6 6.2-14.6 14v10h29.2v-10c0-7.8-6.2-14-14.6-14z"/>
+              </g>
+              <path d="M200 216v-8" stroke="url(#beam)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <button class="btn btn-primary btn-wide" id="btn-start">
+            推门进去 <span class="arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="hint">原创趣味自评 · 不涉及诊断与治疗 · 中途可回头改答案</p>
+        </div>
+
+        <div class="cards3">
+          <article class="mini">
+            <h3>这是什么</h3>
+            <p>二十道关于住处、清晨、晚饭、周末与旧物的生活题，借一点文学想象，看你在另一条时间线上可能怎么过日子。</p>
+          </article>
+          <article class="mini">
+            <h3>结果怎么来</h3>
+            <p>每次从 200 道生活题里抽 20 道，并尽量避开最近答过的题；按五维计分、三轴定位，落进九种可能的生活形态。题目会换，算法不变；答案固定，结果就固定。</p>
+          </article>
+          <article class="mini">
+            <h3>关于隐私</h3>
+            <p>没有服务器，没有账号，没有埋点。答案只存在这个页面的内存里；本机只记一串题目编号用来换题去重，不记你的任何选择。</p>
+          </article>
+        </div>
+
+        <p class="disclaimer">本页为原创趣味自评与文学想象，不属于专业心理测评，不构成心理诊断、心理评估、治疗或医疗建议，也不作为任何现实决策的依据。<br>结果没有常模、没有对错，仅供会心一笑；若需要专业支持，请咨询具备资质的机构或人士。</p>
+
+        <blockquote class="quote">所有你没走的路，都还在某处亮着。</blockquote>
       </div>
-      <p class="quote">20 道场景题，凭直觉选就行。没有正确答案，只有「太是我了」和「不许是」。每确认一条，都是一次小小的「原来我早就有了」。</p>
-    </div>
+    </section>
 
-    <!-- 入场验证 -->
-    <div class="verify-card" id="verify-card">
-      <h2><svg width="22" height="22" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="3" fill="#FBEAE6"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="#E8705F" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="12" cy="15" r="1.6" fill="#E8705F"/></svg>入场小验证</h2>
-      <p class="v-sub">这道门只拦「手滑」和「机器人」——输入下面 4 位数字就能进</p>
-      <div class="captcha" id="captcha" aria-label="验证码"></div>
-      <input class="code-input" id="code-input" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="输入 4 位数字">
-      <div class="verify-btns">
-        <button class="btn btn-ghost" id="btn-refresh-code">↻ 换一张</button>
+    <!-- ================= 答题页 ================= -->
+    <section id="view-quiz" class="view" aria-labelledby="q-text">
+      <div class="wrap">
+        <div class="quiz-head">
+          <div class="quiz-meta">
+            <span id="q-index">第 <b>1</b> / 20 题</span>
+            <span class="pool-note" id="q-pool">题组 · ----</span>
+            <button class="link-btn" id="btn-card" aria-expanded="false" aria-controls="qcard-panel">答题卡</button>
+          </div>
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0" aria-label="答题进度" id="progress">
+            <span id="bar"></span>
+          </div>
+        </div>
+
+        <div class="qcard" id="qcard">
+          <p class="q-eyebrow" id="q-dim">生活切片 · 跃迁</p>
+          <h2 id="q-text">正在加载题目…</h2>
+          <div class="options" id="options" role="radiogroup" aria-labelledby="q-text"></div>
+          <p class="q-note">没有正确答案，只有你比较想认领的那一句 · 场景均为想象 · 趣味自评，不涉及诊断与治疗。</p>
+        </div>
+
+        <div class="qnav">
+          <button class="btn btn-ghost" id="btn-prev">上一题</button>
+          <button class="btn btn-primary" id="btn-next">下一题</button>
+        </div>
+
+        <div class="qcard-panel" id="qcard-panel" hidden>
+          <h4>答题卡 · 点数字可直接跳题</h4>
+          <div class="qgrid" id="qgrid"></div>
+          <button class="link-btn" id="btn-redraw" style="margin-top:14px">换一套题（清空本次作答）</button>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="cta-area">
-      <button class="btn btn-primary" id="btn-start">验证通过，认领我的大结果</button>
-      <p class="cta-note">题库 200 题，每次开测随机抽 20 题 · 答案仅保存在本页面 · 可返回修改、可重新测试</p>
-    </div>
+    <!-- ================= 结果页 ================= -->
+    <section id="view-result" class="view" aria-labelledby="type-name">
+      <div class="wrap" id="result-root"></div>
+    </section>
+  </main>
 
-    <p class="disclaim">本测试为原创趣味自评，用于自我觉察与放松一刻，<br>不构成任何心理测评、诊断或医疗建议。</p>
-  </section>
-
-  <!-- ================= 答题页 ================= -->
-  <section id="page-quiz" class="page">
-    <div class="quiz-top">
-      <div class="quiz-top-row">
-        <span>第 <b id="q-cur">1</b> / <span id="q-total">20</span> 题</span>
-        <span>已答 <b id="q-done">0</b> 题</span>
-      </div>
-      <div class="bar"><i id="q-bar"></i></div>
-      <div class="dots" id="dots"></div>
+  <footer>
+    <div class="wrap">
+      本页为原创趣味自评与文学想象，只用于自我观察与叙事消遣，<strong>不属于专业心理测评，不构成心理诊断、心理评估、治疗或医疗建议，也不作为任何现实决策的依据</strong>。<br>
+      本页及制作者不对依据本页内容所作的判断、选择或行动承担责任。结果仅由你自己的选择计算，没有常模、没有对错、没有高低。<br>
+      若你需要专业支持，请咨询具备资质的机构或人士。
     </div>
-    <div class="q-card" id="q-card">
-      <div class="q-num" id="q-num">QUESTION 01</div>
-      <div class="q-text" id="q-text"></div>
-      <div class="opts" id="q-opts"></div>
-      <div class="quiz-nav">
-        <button class="btn btn-ghost" id="btn-prev">← 上一题</button>
-        <div class="spacer"></div>
-        <button class="btn btn-primary" id="btn-next">下一题 →</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 结果页 ================= -->
-  <section id="page-result" class="page">
-    <div class="result-hero">
-      <p class="kicker">YOUR BIG RESULT · 大结果盘点</p>
-      <div class="type-badge" id="type-badge"></div>
-      <h1 class="serif">你拿到的大结果是<br><span class="tname" id="type-name"></span></h1>
-      <p class="type-line" id="type-line"></p>
-      <div class="level-pill" id="level-pill"></div>
-      <div class="tie-note" id="tie-note" style="display:none;"></div>
-    </div>
-
-    <div class="panel" id="panel-balance">
-      <h3><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FBEAE6"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="#E8705F" stroke-width="2"/><circle cx="12" cy="12" r="1.8" fill="#E8705F"/></svg>你的大结果盘点</h3>
-      <div class="balance-num"><span class="big" id="balance-total">0</span><span class="unit"> 分</span></div>
-      <p class="balance-cap">五维综合拥有指数 · 满分 100（这不是打分，是一次确认）</p>
-      <div id="dim-bars"></div>
-    </div>
-
-    <div class="panel">
-      <h3><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FBEAE6"/><path d="M8 13c1.5-4 6.5-4 8 0M8.5 9.5h.01M15.5 9.5h.01" stroke="#E8705F" stroke-width="2" fill="none" stroke-linecap="round"/></svg>你的结果解读</h3>
-      <div class="story" id="type-story"></div>
-    </div>
-
-    <div class="panel">
-      <h3><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FBEAE6"/><path d="M12 7v6M12 16.5h.01" stroke="#E8705F" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>下一步：让大结果继续长大</h3>
-      <ul class="advice" id="type-advice"></ul>
-      <div class="low-hint" id="low-hint" style="display:none;">
-        <span class="lh-tag" id="low-tag"></span>
-        <p id="low-text"></p>
-      </div>
-    </div>
-
-    <div class="quotecard" id="quotecard">
-      <div class="inner">
-        <p class="qc-tag">我的大结果 · 专属语录</p>
-        <p class="qc-main" id="qc-main"></p>
-        <p class="qc-sub" id="qc-sub"></p>
-        <p class="qc-foot">—— 人生大结果测试 · 原创趣味自评 ——</p>
-      </div>
-    </div>
-
-    <div class="result-actions">
-      <button class="btn btn-primary" id="btn-copy">复制我的战报</button>
-      <button class="btn btn-ghost" id="btn-retake">再测一次（换一批题）</button>
-    </div>
-
-    <footer>结果由你的答案实时计算，不随机 · 愿你把今天认领的大结果，常拿出来看看</footer>
-  </section>
+  </footer>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* =====================================================
-   人生大结果测试 · 数据与逻辑
-   题库 200 题（五维各 40 题），每次开测每维随机抽 4 题、
-   共 20 题。计分：每题 1-5 分，每维满分 20，
-   维度得分 = 原始分 / 20 × 100。结果完全由答案计算。
-   入场验证：每次进入首页随机生成 4 位数字验证码。
-   ===================================================== */
-
-const LIKERT = [
-  {v:1, label:"完全不是我"},
-  {v:2, label:"不太像我"},
-  {v:3, label:"说不准，玄学"},
-  {v:4, label:"有点像我"},
-  {v:5, label:"太是我了"}
-];
-
+/* =========================================================
+   一、维度与题目
+   五个维度各 4 题，每题四选项分别计 3/2/1/0 分（顺序已打散）
+   ========================================================= */
 const DIMS = {
-  A:{name:"成事手感",   color:"#E8705F"},
-  B:{name:"被人懂着",   color:"#D66C7C"},
-  C:{name:"情绪自由",   color:"#6E8B74"},
-  D:{name:"越活越开阔", color:"#5E8A8C"},
-  E:{name:"和自己和解", color:"#C9963F"}
+  jump: {
+    label: "跃迁倾向",
+    short: "跃迁",
+    en: "Drift",
+    desc: "你对「另一种可能」有多想真的动身。",
+    read: {
+      high: "你对另一种日子不是想想而已——你有真实的行动冲动，陌生感对你更像燃料。",
+      mid: "你会在门口站一会儿，等风向合适再迈步。这份稳，是你自己给的。",
+      low: "你更愿意把眼前这块地种好。远方是风景，脚下也正当时。"
+    }
+  },
+  order: {
+    label: "轨道秩序",
+    short: "秩序",
+    en: "Orbit",
+    desc: "你需要多少结构，才觉得世界是稳的。",
+    read: {
+      high: "可预判的结构让你很舒服，条理一清楚，日子就顺了。",
+      mid: "你有自己的规矩，也接受临时的转弯。",
+      low: "你把计划当作建议，更相信现场反应。"
+    }
+  },
+  anchor: {
+    label: "引力锚点",
+    short: "引力",
+    en: "Gravity",
+    desc: "你的坐标系里，「谁在身边」占多大权重。",
+    read: {
+      high: "你的时空是由人撑起来的：谁在，哪里就是家。",
+      mid: "你需要人，但也需要一段不被打扰的距离。",
+      low: "你的稳定来自内部，不太靠外部确认。"
+    }
+  },
+  glow: {
+    label: "微光热度",
+    short: "微光",
+    en: "Glow",
+    desc: "你对日常小事的感受力与热情。",
+    read: {
+      high: "你对小事有很强的感受力，这是很珍贵的天赋，也是你的回血方式。",
+      mid: "你能被打动，也守得住自己的节奏。",
+      low: "你的节奏很稳，不太靠小事起落。留一点空给自己慢慢歇，也挺好。"
+    }
+  },
+  echo: {
+    label: "时光回声",
+    short: "回声",
+    en: "Echo",
+    desc: "你和过去的关系：回望，还是归档。",
+    read: {
+      high: "你和过去的关系很温柔，那些「如果」也成了日子里的背景光。",
+      mid: "你会回头，但不常久留。",
+      low: "你更像把过去好好收好的人，然后轻快地往前走。"
+    }
+  }
 };
 
-/* ---------- 题库：200 题，每维 40 题 ---------- */
-const BANK = [
-  /* A 成事手感 · 40 题 */
-  {dim:"A", text:"交出去的活儿，我敢拍着胸口说「这版能打」。"},
-  {dim:"A", text:"半路想放弃的时候，我总能找到一个再撑一下的理由。"},
-  {dim:"A", text:"别人说「这事挺难的」，我第一反应是「那拆开看看」。"},
-  {dim:"A", text:"我手里至少有一件没人催、没人验收、我也做完了的事。"},
-  {dim:"A", text:"答应别人的事，我心里会排好顺序，很少掉链子。"},
-  {dim:"A", text:"遇到没做过的事，我会先动手试一小步，而不是先列一圈困难。"},
-  {dim:"A", text:"把一件事从「想」推到「做成」，这在我身上发生过不止一次。"},
-  {dim:"A", text:"开了头的事，大多数在我手里是有交代的。"},
-  {dim:"A", text:"我的待办清单越写越长，但完成的那一栏也没停下。"},
-  {dim:"A", text:"出问题的时候，我习惯先说「我来想办法」，而不是先找人背锅。"},
-  {dim:"A", text:"没人盯着的时候，我也能把该做的做完。"},
-  {dim:"A", text:"学新东西上手慢一点没关系，我会一直练到能用。"},
-  {dim:"A", text:"计划表上的事，我能真的执行，不只是写个好看。"},
-  {dim:"A", text:"我改过方案、返过工，但很少烂尾。"},
-  {dim:"A", text:"别人还在纠结要不要做，我已经试出个雏形了。"},
-  {dim:"A", text:"我会把大目标切成一张张小任务卡，一张张划掉。"},
-  {dim:"A", text:"资料查到一半卡住了，我会换个路子接着查。"},
-  {dim:"A", text:"桌面也许乱，但我手头的事是有秩序的。"},
-  {dim:"A", text:"我能忍受「枯燥但必要」的那部分工作。"},
-  {dim:"A", text:"做完一件事，我会顺手记下下次能做得好的点。"},
-  {dim:"A", text:"我不怕从头再来，反正方法已经攒下了。"},
-  {dim:"A", text:"交付之前，我会自己先挑三处毛病。"},
-  {dim:"A", text:"我说过「包在我身上」，然后真的办成了。"},
-  {dim:"A", text:"时间紧的时候，我反而能抓住重点。"},
-  {dim:"A", text:"我做东西有个习惯：先出一版能用的，再慢慢打磨。"},
-  {dim:"A", text:"我能一边做一边判断「这样下去行不行」。"},
-  {dim:"A", text:"半夜想到一个改进点，我会记下来，第二天真的去试。"},
-  {dim:"A", text:"我不需要掌声，也能把事做完。"},
-  {dim:"A", text:"我能同时推进几件事，还不忘掉其中任何一件。"},
-  {dim:"A", text:"遇到卡壳，我会休息一下再回来，而不是彻底撂挑子。"},
-  {dim:"A", text:"我做完的事，回头再看基本不用大返工。"},
-  {dim:"A", text:"我能接受「先完成，再完美」。"},
-  {dim:"A", text:"需要有人拿主意的事，我能推动到有人拿主意。"},
-  {dim:"A", text:"我的收藏夹里躺着教程，而且我真的照着做过。"},
-  {dim:"A", text:"我会把「以后再说」的事翻出来，挑一件今天就办。"},
-  {dim:"A", text:"一件事做到七成想放弃时，我会跟自己说「都到这里了」。"},
-  {dim:"A", text:"我敢在没人走过的路上，摸索出自己的做法。"},
-  {dim:"A", text:"做事之前我心里有数：哪步容易、哪步要留神。"},
-  {dim:"A", text:"我能为了一个长线目标，忍住眼前的诱惑。"},
-  {dim:"A", text:"回头看我做过的东西，会忍不住想「还不错嘛」。"},
-  /* B 被人懂着 · 40 题 */
-  {dim:"B", text:"低谷的时候，我清楚地知道深夜敢打给谁。"},
-  {dim:"B", text:"有人记得我不吃香菜、怕吵、睡得浅这种小事。"},
-  {dim:"B", text:"我能说出「我最近不太好」，而且不觉得丢人。"},
-  {dim:"B", text:"我能说出至少三个人各自擅长什么、最近在忙什么。"},
-  {dim:"B", text:"难过的时候，我能说清楚自己是哪一种难过。"},
-  {dim:"B", text:"我身边有人会对我说「你先照顾好自己，其他的放一放」。"},
-  {dim:"B", text:"和某几个朋友，很久不联系我也不担心关系变淡。"},
-  {dim:"B", text:"被安慰这件事在我身上是起效的，不是左耳进右耳出。"},
-  {dim:"B", text:"有人会主动问我「你那天说的那事后来怎么样了」。"},
-  {dim:"B", text:"我敢在朋友面前暴露自己的糗事。"},
-  {dim:"B", text:"我的相册里存着和朋友们的合照，而不只有风景。"},
-  {dim:"B", text:"遇到好事，我脑子里会立刻蹦出「要告诉谁」。"},
-  {dim:"B", text:"有人了解我的雷区，会提前帮我避开。"},
-  {dim:"B", text:"我能在别人面前掉眼泪，而不觉得没面子。"},
-  {dim:"B", text:"朋友做决定之前，会来问问我的看法。"},
-  {dim:"B", text:"有人知道我心里的软肋在哪，并且替我保密。"},
-  {dim:"B", text:"我收到过「看到这个就想到你」的消息。"},
-  {dim:"B", text:"我生病或状态差的时候，有人会真的来照顾我。"},
-  {dim:"B", text:"我分得清哪些朋友能聊正事、哪些能聊心事。"},
-  {dim:"B", text:"有人陪过我度过一段难捱的日子。"},
-  {dim:"B", text:"我敢跟朋友说「这次我需要你帮帮我」。"},
-  {dim:"B", text:"我的秘密有人保管，而且我知道它很安全。"},
-  {dim:"B", text:"群里接龙、拼单、约饭，总有人会想到我。"},
-  {dim:"B", text:"我能接住朋友的坏情绪，而不是急着给建议。"},
-  {dim:"B", text:"有人记得我的重要日子。"},
-  {dim:"B", text:"我和家里人能好好说上几句话，不全是客气。"},
-  {dim:"B", text:"我能说出一个「随时可以打扰」的人。"},
-  {dim:"B", text:"和朋友闹过别扭，我们知道怎么和好。"},
-  {dim:"B", text:"我被认真倾听过——对方不打断、不评判、不急着走。"},
-  {dim:"B", text:"有人夸过「跟你待着很舒服」。"},
-  {dim:"B", text:"我的玩笑话，总有人接得住。"},
-  {dim:"B", text:"我难过的时候不用装没事，因为装不过他们。"},
-  {dim:"B", text:"朋友会把好东西介绍给我，不求回报。"},
-  {dim:"B", text:"我知道谁会在我缺席的时候替我说话。"},
-  {dim:"B", text:"有人看见我的努力，并且说出口过。"},
-  {dim:"B", text:"我们之间有只有彼此才懂的暗号和梗。"},
-  {dim:"B", text:"我能跟不同的人聊到一起，找到共同话题。"},
-  {dim:"B", text:"我发过的动态，有人认真评论过。"},
-  {dim:"B", text:"紧张的场合里，我能找到那个让我安心的人。"},
-  {dim:"B", text:"「被记得」这件事，在我身上发生过很多次。"},
-  /* C 情绪自由 · 40 题 */
-  {dim:"C", text:"被否定之后，我会难受一阵，但不会连夜怀疑人生。"},
-  {dim:"C", text:"别人的情绪炸了，我能稳稳站在原地，不被点着。"},
-  {dim:"C", text:"我的快乐不太依赖别人今天对我的态度。"},
-  {dim:"C", text:"以前能让我破防的事，现在只剩一句「嗯，知道了」。"},
-  {dim:"C", text:"情绪上头的时候，我能先停三秒再开口。"},
-  {dim:"C", text:"一件事结果不理想，我会复盘，但不会骂自己一整晚。"},
-  {dim:"C", text:"我不太会因为别人的一句评价，反复回想一整天。"},
-  {dim:"C", text:"再难的日子落到我头上，我也能先安排好吃饭睡觉。"},
-  {dim:"C", text:"我分得清「我的事」和「别人的情绪」。"},
-  {dim:"C", text:"天气不好、运气不好，我心情也不至于跟着塌。"},
-  {dim:"C", text:"我能说出自己此刻的情绪，而不是只觉得「烦」。"},
-  {dim:"C", text:"吵架的时候，我能做到不翻旧账。"},
-  {dim:"C", text:"别人催我，我能稳住自己的节奏。"},
-  {dim:"C", text:"我知道做什么能把自己的电量充回来。"},
-  {dim:"C", text:"我能让一件事翻篇，而不是反刍一个星期。"},
-  {dim:"C", text:"面对突发状况，我的声音能保持平稳。"},
-  {dim:"C", text:"我不会因为对方语气重，就把内容也全盘否定。"},
-  {dim:"C", text:"我能在难过和生气之间，分清自己到底是哪个。"},
-  {dim:"C", text:"深夜情绪上头之后，第二天我照样起来过日子。"},
-  {dim:"C", text:"我不太需要别人哄，也能自己缓过来。"},
-  {dim:"C", text:"我能跟自己说「现在先不想这个」。"},
-  {dim:"C", text:"别人的顺遂让我羡慕，但不让我焦躁。"},
-  {dim:"C", text:"我情绪低的时候，会主动找出口，而不是硬扛。"},
-  {dim:"C", text:"被误解的时候，我能解释一次，然后放下。"},
-  {dim:"C", text:"我能接受「今天状态不好」，并且照样善待自己。"},
-  {dim:"C", text:"大场面之前我会紧张，但上了场就能稳住。"},
-  {dim:"C", text:"我不会把火撒在无辜的人身上。"},
-  {dim:"C", text:"我能在一堆事里，先照顾好自己的情绪。"},
-  {dim:"C", text:"别人的冷脸，我不会脑补成天塌了。"},
-  {dim:"C", text:"我的心情恢复得比以前快了。"},
-  {dim:"C", text:"我分得清「事实很糟」和「我感觉很糟」。"},
-  {dim:"C", text:"我不会在气头上做重要的决定。"},
-  {dim:"C", text:"我能在热闹里自在，也能在冷场里自洽。"},
-  {dim:"C", text:"坏消息来了，我能先稳住，再想下一步。"},
-  {dim:"C", text:"我不再需要向每个人证明自己。"},
-  {dim:"C", text:"别人向我倒苦水时，我知道什么时候该设边界。"},
-  {dim:"C", text:"我的睡眠不太容易被心事偷走。"},
-  {dim:"C", text:"我能在情绪的悬崖边，给自己踩一脚刹车。"},
-  {dim:"C", text:"我允许自己哭一场，哭完接着过。"},
-  {dim:"C", text:"我对自己说话的语气，比对朋友还温和。"},
-  /* D 越活越开阔 · 40 题 */
-  {dim:"D", text:"最近半年，我为一个纯粹感兴趣的东西熬过夜或花过钱。"},
-  {dim:"D", text:"我会认真听自己不同意的观点，还听得出点门道。"},
-  {dim:"D", text:"和一年前的自己比，我明显多懂了一些东西。"},
-  {dim:"D", text:"我承认「这个我不知道」，而且不觉得羞愧。"},
-  {dim:"D", text:"陌生领域的内容，我会主动点开看看，不怕看不懂。"},
-  {dim:"D", text:"隔一阵子，我就会冒出「原来是这样」的时刻。"},
-  {dim:"D", text:"我愿意为一个新尝试承担一点「学不会也没关系」的风险。"},
-  {dim:"D", text:"我的聊天话题里，总会出现一些新东西。"},
-  {dim:"D", text:"我有一项这两三年才长出来的新技能或新爱好。"},
-  {dim:"D", text:"我去过没去过的地方，或者试过没用过的路线。"},
-  {dim:"D", text:"我会问「为什么是这样」，而不只是「怎么办」。"},
-  {dim:"D", text:"纪录片、播客、展览，我能说出最近看的一个。"},
-  {dim:"D", text:"我能跟不同圈子里的人聊到一块儿去。"},
-  {dim:"D", text:"我不再急着给没经历过的事下结论。"},
-  {dim:"D", text:"我的问题清单，比购物清单还长。"},
-  {dim:"D", text:"我愿意改主意——被说服的时候，我会大方承认。"},
-  {dim:"D", text:"我会对着一道菜、一个字、一片云好奇起来。"},
-  {dim:"D", text:"我尝试过一次说走就走的小冒险。"},
-  {dim:"D", text:"我看过的内容里，有一部分超出了我的本行。"},
-  {dim:"D", text:"我能欣赏跟我审美相反的东西。"},
-  {dim:"D", text:"遇到看不懂的内容，我会研究一下而不是划走。"},
-  {dim:"D", text:"我的某些想法，被某个人或某本书刷新过。"},
-  {dim:"D", text:"我愿意主动结识跟我不一样的人。"},
-  {dim:"D", text:"我对「我还不知道什么」心里有一张单子。"},
-  {dim:"D", text:"我学东西是为了高兴，不全是为了有用。"},
-  {dim:"D", text:"我能弄明白一个陌生领域的入门内容，讲给别人听。"},
-  {dim:"D", text:"我不怕被新玩意儿甩下，会伸手摸一摸。"},
-  {dim:"D", text:"我的习惯清单里，最近添过新的一项。"},
-  {dim:"D", text:"见过更大的世界之后，我反而更能理解身边的小事。"},
-  {dim:"D", text:"我愿意独自去一个陌生的场合。"},
-  {dim:"D", text:"我能从小孩子或长辈身上学到东西。"},
-  {dim:"D", text:"我给未来的自己留过一张愿望清单。"},
-  {dim:"D", text:"我不觉得「到了年纪就该停止学新东西」。"},
-  {dim:"D", text:"我会为了弄明白一件事，一路查到深夜。"},
-  {dim:"D", text:"我的口头禅里有「试试看」。"},
-  {dim:"D", text:"我能同时喜欢两种看起来矛盾的东西。"},
-  {dim:"D", text:"我对世界的困惑比一年前多了，但慌张少了。"},
-  {dim:"D", text:"我发现以前讨厌的东西，现在能看出好了。"},
-  {dim:"D", text:"我会给自己安排「没目的的一天」。"},
-  {dim:"D", text:"我相信明年的我，会比现在懂得更多。"},
-  /* E 和自己和解 · 40 题 */
-  {dim:"E", text:"计划被打乱时，我能很快切换成「那就这样也行」。"},
-  {dim:"E", text:"我不太拿自己的进度条和别人的较劲。"},
-  {dim:"E", text:"独处的时候，我不需要一直刷点什么来填满安静。"},
-  {dim:"E", text:"犯错之后，我骂自己三句以内就能翻篇。"},
-  {dim:"E", text:"我能欣赏别人的好运气，而且真心替他们高兴。"},
-  {dim:"E", text:"对过去的选择，我能说出当时那样决定的道理。"},
-  {dim:"E", text:"我允许自己休息，休息时不会一边躺着一边愧疚。"},
-  {dim:"E", text:"事情不完美的时候，我能看见「已经不错的部分」。"},
-  {dim:"E", text:"我能对着镜子对自己说「就现在这样也挺好」。"},
-  {dim:"E", text:"我不再逼自己去参加不想去的聚会。"},
-  {dim:"E", text:"我能接受自己有短板，就像接受天气有阴晴。"},
-  {dim:"E", text:"我不觉得「没在努力的时候自己有罪」。"},
-  {dim:"E", text:"我能一口气说出自己的三个优点，不打磕巴。"},
-  {dim:"E", text:"拒绝别人之后，我不会愧疚一整天。"},
-  {dim:"E", text:"我很少在深夜回放白天的尴尬瞬间。"},
-  {dim:"E", text:"我能跟自己的缺点共处，像跟老朋友打招呼。"},
-  {dim:"E", text:"我不需要每件事都先想「别人会怎么看我」。"},
-  {dim:"E", text:"我能承认「这件事我就是不想做」。"},
-  {dim:"E", text:"我允许自己有一些没有结果的努力。"},
-  {dim:"E", text:"我不需要成为谁，也能喜欢自己。"},
-  {dim:"E", text:"我能穿过糟糕的过去，跟它挥挥手。"},
-  {dim:"E", text:"我的快乐不需要别人签字批准。"},
-  {dim:"E", text:"我能把「应该」换成「我想要」。"},
-  {dim:"E", text:"我累了就歇，不把休息当成偷懒。"},
-  {dim:"E", text:"我不再拿自己的第一章，去比别人的第十章。"},
-  {dim:"E", text:"我能对自己说「你已经做得够多了」。"},
-  {dim:"E", text:"我不害怕安静，安静里我反而自在。"},
-  {dim:"E", text:"我能接受今天的自己情绪不高，并允许它高不起来。"},
-  {dim:"E", text:"我不再为自己的敏感觉得羞耻。"},
-  {dim:"E", text:"我能给自己做一顿好吃的，就因为想哄哄自己。"},
-  {dim:"E", text:"我不需要等谁来认可我，才开始认可我自己。"},
-  {dim:"E", text:"我能笑着说「那次我真的搞砸了」。"},
-  {dim:"E", text:"我不常困在「要是当初」的念头里。"},
-  {dim:"E", text:"我能给自己写信，语气像对一个好朋友。"},
-  {dim:"E", text:"我接受身体本来的样子，和它好好合作。"},
-  {dim:"E", text:"我不把自己的价值绑在任何人的评价上。"},
-  {dim:"E", text:"我能在人生的低谷里，不怀疑自己的全部。"},
-  {dim:"E", text:"我允许计划里有一天什么都不干。"},
-  {dim:"E", text:"我和「普通的自己」和解了，也觉得不普通。"},
-  {dim:"E", text:"我知道自己的节奏，也相信它不算慢。"}
-];
+const QUESTION_BANK = [
+  { dim: "jump", text: "桌上忽然多了一张单程票，目的地写着「另一个可能」。你会：", opts: [
+    { t: "撕下票根，先上车，路上再想", s: 3 },
+    { t: "问清楚几点发车、能不能退", s: 2 },
+    { t: "拿在手里翻来覆去看很久", s: 1 },
+    { t: "夹进书里，当一枚书签", s: 0 }
+  ]},
+  { dim: "jump", text: "你相册里最近一张「不像你日常」的照片，是什么？", opts: [
+    { t: "一家没去过的店，路过时随手拍的", s: 2 },
+    { t: "上个月在陌生城市拍的，那天我谁都不认识", s: 3 },
+    { t: "我相册里全是日常，日常已经很够了", s: 0 },
+    { t: "别人发给我的，我存了下来", s: 1 }
+  ]},
+  { dim: "jump", text: "公司或学校要派一个人去陌生城市驻半年，会上没人吭声。你：", opts: [
+    { t: "等别人定完，我配合就好", s: 1 },
+    { t: "我先举手，顺便当成一次小小的转身", s: 3 },
+    { t: "会后私下问细节，合适就去", s: 2 },
+    { t: "默默把报名表折成纸飞机", s: 0 }
+  ]},
+  { dim: "jump", text: "那些你说过「以后一定要去」的地方，现在怎么样了？", opts: [
+    { t: "我早不说「以后」了——要么订票，要么承认不去", s: 0 },
+    { t: "多到可以拼出另一个我的人生", s: 3 },
+    { t: "存过，但几乎没再打开", s: 1 },
+    { t: "有三五个，偶尔翻出来看看", s: 2 }
+  ]},
 
+  { dim: "order", text: "一次说走就走的旅行，你的行李是什么样的？", opts: [
+    { t: "分装袋、清单、备用充电线，一样不少", s: 3 },
+    { t: "主要的东西带上，剩下的当地买", s: 2 },
+    { t: "两件衣服一个包，走", s: 1 },
+    { t: "行李是什么？我连身份证都常忘", s: 0 }
+  ]},
+  { dim: "order", text: "最让你安心的那种「平行时空」，长什么样？", opts: [
+    { t: "计划随时能改，改了我也不慌", s: 1 },
+    { t: "有一张能预判的日程表，误差不超过十分钟", s: 3 },
+    { t: "一片空白，什么都没安排", s: 0 },
+    { t: "有几个固定会去的老地方，老板认识我", s: 2 }
+  ]},
+  { dim: "order", text: "接手一个没有说明书的烂摊子，你的第一个动作是：", opts: [
+    { t: "先画流程图，把边界摸清楚", s: 3 },
+    { t: "边做边理，先让它跑起来", s: 2 },
+    { t: "先放一放，等它自己长出答案", s: 0 },
+    { t: "拉个人一起乱着来，热闹点", s: 1 }
+  ]},
+  { dim: "order", text: "你的手机桌面，最接近哪一种？", opts: [
+    { t: "常用几个在外面，其余看情况", s: 1 },
+    { t: "文件夹分类，连颜色都统一，看着舒服", s: 3 },
+    { t: "大致有分区，常用的放外面", s: 2 },
+    { t: "三屏都是 App，我靠搜索活着", s: 0 }
+  ]},
+
+  { dim: "anchor", text: "如果真能翻到那条时间线上的一页日记，你最想先确认的一件事是：", opts: [
+    { t: "那些人还在不在我身边", s: 3 },
+    { t: "我过得好不好", s: 1 },
+    { t: "有没有人，把我当成他的例外", s: 2 },
+    { t: "我有没有变成另一个人", s: 0 }
+  ]},
+  { dim: "anchor", text: "一个会影响你未来三年的决定，你会先告诉谁？", opts: [
+    { t: "自己先想清楚，再通知大家", s: 1 },
+    { t: "第一个想到的那个人，问过才安心", s: 3 },
+    { t: "谁也不说，做完再说", s: 0 },
+    { t: "两三个朋友，听听不同意见", s: 2 }
+  ]},
+  { dim: "anchor", text: "断网独处一周，有吃有住，无人打扰。你：", opts: [
+    { t: "第三天开始给人发很长很长的消息", s: 3 },
+    { t: "会想念，但日子照样过", s: 2 },
+    { t: "求之不得，最好一个月", s: 0 },
+    { t: "挺舒服，正好清静", s: 1 }
+  ]},
+  { dim: "anchor", text: "哪一种「平行时空」最让你后背发凉？", opts: [
+    { t: "我一直在原地，一步都没走成", s: 1 },
+    { t: "那个时空里，没有一个人认识我", s: 3 },
+    { t: "我什么都有了，但没人可以分享", s: 2 },
+    { t: "我活成了自己都不认识的样子", s: 0 }
+  ]},
+
+  { dim: "glow", text: "下班路上，天边有一块好看到不像话的云。你：", opts: [
+    { t: "停下来拍，还要发给一个人", s: 3 },
+    { t: "看见了，心里「哦」一声", s: 1 },
+    { t: "拍一张，自己留着", s: 2 },
+    { t: "低头刷手机，走过去了", s: 0 }
+  ]},
+  { dim: "glow", text: "热汤、刚洗好的床单、便利店关东煮——这类小事的电量有多大？", opts: [
+    { t: "偶尔有用，看当天状态", s: 1 },
+    { t: "足够把我从很差的一天里捞出来", s: 3 },
+    { t: "我更需要的是一件真正的大事", s: 0 },
+    { t: "有用，但救不了大事", s: 2 }
+  ]},
+  { dim: "glow", text: "一件让你开心的事，通常能撑多久？", opts: [
+    { t: "小半天", s: 2 },
+    { t: "很久，我会反复回味，甚至讲给别人听", s: 3 },
+    { t: "一会儿就淡了", s: 1 },
+    { t: "说实话，我最近很少觉得开心", s: 0 }
+  ]},
+  { dim: "glow", text: "平行时空下的你发来一张照片，你希望画面里是什么？", opts: [
+    { t: "一张登机牌，目的地被打码", s: 1 },
+    { t: "一桌热菜，和几个笑得很丑的人", s: 3 },
+    { t: "一间被阳光泡着的房间", s: 2 },
+    { t: "一张黑屏——他在睡觉，什么也不用证明", s: 0 }
+  ]},
+
+  { dim: "echo", text: "「如果当初」这四个字，在你脑子里出现的频率是：", opts: [
+    { t: "偶尔，多在夜里", s: 2 },
+    { t: "一周好几次，还能自动补完整段剧情", s: 3 },
+    { t: "几乎不出现，过去就过去了", s: 0 },
+    { t: "很少，忙起来就没有了", s: 1 }
+  ]},
+  { dim: "echo", text: "旧照片、旧聊天记录，你会怎么处理？", opts: [
+    { t: "会翻，翻完心里空一块，然后接着翻", s: 3 },
+    { t: "定期清理，不留", s: 0 },
+    { t: "只在特定的日子翻", s: 2 },
+    { t: "都存在那儿，不太看", s: 1 }
+  ]},
+  { dim: "echo", text: "关于遗憾，你更像哪一种人？", opts: [
+    { t: "知道它在，但不去看", s: 1 },
+    { t: "把遗憾养在心里，像养一缸鱼，每天喂", s: 3 },
+    { t: "遗憾是路标，不是房子，我看一眼就走", s: 0 },
+    { t: "偶尔喂一下，平时不管", s: 2 }
+  ]},
+  { dim: "echo", text: "如果能给十年前的自己发一条消息，你会：", opts: [
+    { t: "写很长，写到手机发烫", s: 3 },
+    { t: "只说两个字：别怕", s: 2 },
+    { t: "我大概什么都不会说", s: 0 },
+    { t: "说一句「你做得挺好的」", s: 1 }
+  ]},
+  /* ---- 生活切片 · 扩充批次 ---- */
+  { dim: "jump", text: "如果明年可以搬去一座完全陌生的城市，你第一个念头是：", opts: [
+    { t: "我挺喜欢现在的窗外的", s: 0 },
+    { t: "先去住一个月试试，不行就回来", s: 2 },
+    { t: "什么时候能出发，我先查租房", s: 3 },
+    { t: "得看那边有没有认识的人", s: 1 }
+  ]},
+  { dim: "jump", text: "周末忽然空出两天，没有任何安排，你更可能：", opts: [
+    { t: "约朋友，看他们想去哪", s: 1 },
+    { t: "买张票去没去过的地方，当晚就走", s: 3 },
+    { t: "在家待着，把攒的剧看完", s: 0 },
+    { t: "找一家没吃过的店、一条没走过的路", s: 2 }
+  ]},
+  { dim: "jump", text: "面对一件「没做过但很想试」的事，你的第一反应是：", opts: [
+    { t: "查两天资料，找个低风险的方式开始", s: 2 },
+    { t: "想归想，手头的事还没做完", s: 0 },
+    { t: "先上手，边做边学，错了再说", s: 3 },
+    { t: "等有人带我一起", s: 1 }
+  ]},
+  { dim: "jump", text: "你更愿意住在哪一种房子里？", opts: [
+    { t: "离熟人近，住久一点", s: 1 },
+    { t: "租期短、随时能搬，家具都好拆", s: 3 },
+    { t: "自己的房子，按十年不用搬的样式布置", s: 0 },
+    { t: "签一年，但留着换城市的余地", s: 2 }
+  ]},
+  { dim: "jump", text: "如果日子可以重开一次，你最想换掉的是：", opts: [
+    { t: "换掉几个岔路口的选择", s: 1 },
+    { t: "整条路线，连城市带职业一起换", s: 3 },
+    { t: "其实不用换，我想看看它长成什么样", s: 0 },
+    { t: "换一个行业，其他先留着", s: 2 }
+  ]},
+  { dim: "jump", text: "手机里那个「想学但一直没开始」的清单，现在：", opts: [
+    { t: "收藏了课程，挑了个周末准备开始", s: 2 },
+    { t: "我没列过，日子已经排得挺满", s: 0 },
+    { t: "上周刚开了个头，工具都买齐了", s: 3 },
+    { t: "存着，偶尔翻出来看看", s: 1 }
+  ]},
+
+  { dim: "order", text: "你理想中的早晨，更接近哪一种？", opts: [
+    { t: "醒了再说，看当天心情", s: 1 },
+    { t: "固定时间醒，按顺序做完那几件事", s: 3 },
+    { t: "没有早晨，作息随日子漂", s: 0 },
+    { t: "大致有个节奏，允许晚半小时", s: 2 }
+  ]},
+  { dim: "order", text: "冰箱和储物柜，通常是：", opts: [
+    { t: "塞得下就好，偶尔翻出惊喜", s: 1 },
+    { t: "分格、贴标签，快过期的放最外面", s: 3 },
+    { t: "别问，问就是全靠记", s: 0 },
+    { t: "大致归类，找得到就行", s: 2 }
+  ]},
+  { dim: "order", text: "一次出门前，你最不能接受的是：", opts: [
+    { t: "大方向定了，细节没定", s: 2 },
+    { t: "行程没定，连住哪儿都悬着", s: 3 },
+    { t: "全不定，走到哪算哪，想想就舒服", s: 0 },
+    { t: "只订了第一晚，后面看情况", s: 1 }
+  ]},
+  { dim: "order", text: "你的钱，通常怎么安排？", opts: [
+    { t: "不记，但心里有个数", s: 1 },
+    { t: "有预算表，每笔都记，月底对账", s: 3 },
+    { t: "到账就花，剩下的下个月再说", s: 0 },
+    { t: "大致分几份，不细记", s: 2 }
+  ]},
+  { dim: "order", text: "计划被临时打乱时，你：", opts: [
+    { t: "有点烦，但半小时就能调过来", s: 2 },
+    { t: "先愣一下，然后立刻重排一版", s: 3 },
+    { t: "松口气，本来就不想按原计划", s: 0 },
+    { t: "顺势改，反正也差不多", s: 1 }
+  ]},
+  { dim: "order", text: "你更信任哪一种日子？", opts: [
+    { t: "一段时间一换，不重样", s: 1 },
+    { t: "可复制的日常，稳稳地重复", s: 3 },
+    { t: "每天都不一样才叫活着", s: 0 },
+    { t: "大体稳定，偶尔加点新东西", s: 2 }
+  ]},
+
+  { dim: "anchor", text: "你理想里的一顿晚饭，是：", opts: [
+    { t: "自己吃，但会跟人发几句消息", s: 1 },
+    { t: "几个人围一桌，菜多一点，话也多一点", s: 3 },
+    { t: "一个人，安静，不用说话", s: 0 },
+    { t: "和一两个熟人，慢慢吃", s: 2 }
+  ]},
+  { dim: "anchor", text: "搬到一个新地方，最先想安顿好的是：", opts: [
+    { t: "把自己那套东西摆舒服", s: 1 },
+    { t: "和老朋友固定通话的时间", s: 3 },
+    { t: "一个人待着的那块角落", s: 0 },
+    { t: "能不能约到人周末见面", s: 2 }
+  ]},
+  { dim: "anchor", text: "别人一句「最近还好吗」，对你来说：", opts: [
+    { t: "礼貌回一下，不太往心里去", s: 1 },
+    { t: "分量很重，会记很久", s: 3 },
+    { t: "客气话而已，不必当真", s: 0 },
+    { t: "挺暖，回一句谢谢", s: 2 }
+  ]},
+  { dim: "anchor", text: "你更怕哪一种日子？", opts: [
+    { t: "太久没独处，有点透不过气", s: 1 },
+    { t: "热闹散场后，屋里只剩自己", s: 3 },
+    { t: "被人安排得满满的，没有自己的空", s: 0 },
+    { t: "有人陪，但没人真的懂", s: 2 }
+  ]},
+  { dim: "anchor", text: "手机里最舍不得删的，是：", opts: [
+    { t: "几张自己喜欢的截图", s: 1 },
+    { t: "和几个人的长聊天记录", s: 3 },
+    { t: "没什么留的，定期清", s: 0 },
+    { t: "一起拍的照片", s: 2 }
+  ]},
+  { dim: "anchor", text: "做一个大决定时，真正让你点头的往往是：", opts: [
+    { t: "「大家都觉得可行」", s: 1 },
+    { t: "「这样对他们比较好」", s: 3 },
+    { t: "「我自己想清楚了」", s: 0 },
+    { t: "「有人跟我一起扛」", s: 2 }
+  ]},
+
+  { dim: "glow", text: "一个普通的周三傍晚，什么会让你觉得今天没白过？", opts: [
+    { t: "事情都划掉了，可以歇了", s: 1 },
+    { t: "路上闻到谁家在炒菜，忽然很想笑", s: 3 },
+    { t: "说不上，等哪天真有件大事吧", s: 0 },
+    { t: "一杯刚好不烫的茶，坐了十分钟", s: 2 }
+  ]},
+  { dim: "glow", text: "你多久会认真看一次窗外？", opts: [
+    { t: "偶尔，等电梯时瞟一眼", s: 1 },
+    { t: "几乎每天，光不一样", s: 3 },
+    { t: "窗帘基本没拉开过", s: 0 },
+    { t: "天气特别好的时候", s: 2 }
+  ]},
+  { dim: "glow", text: "收到一份没什么用的小礼物，你：", opts: [
+    { t: "道谢，然后放进抽屉", s: 1 },
+    { t: "会摆出来，能高兴好几天", s: 3 },
+    { t: "客气一下，转手就忘了", s: 0 },
+    { t: "收好，偶尔看见会笑一下", s: 2 }
+  ]},
+  { dim: "glow", text: "关于「好吃」这件事，你：", opts: [
+    { t: "饱了就行", s: 1 },
+    { t: "能为一口热的一绕两条街", s: 3 },
+    { t: "常常想不起来上一顿吃了什么", s: 0 },
+    { t: "会挑，但不折腾", s: 2 }
+  ]},
+  { dim: "glow", text: "你更容易被什么打动？", opts: [
+    { t: "一个讲得很完整的故事", s: 1 },
+    { t: "很小的、没人注意到的细节", s: 3 },
+    { t: "得是足够大的事才行", s: 0 },
+    { t: "一段刚好对上的天气和心情", s: 2 }
+  ]},
+  { dim: "glow", text: "如果给今天配一句旁白，你会写：", opts: [
+    { t: "「又过了一天」", s: 1 },
+    { t: "「今天的光挺好的，值得记一笔」", s: 3 },
+    { t: "「没什么可说的」", s: 0 },
+    { t: "「还行，平平稳稳」", s: 2 }
+  ]},
+
+  { dim: "echo", text: "路过一个很多年没去的地方，你：", opts: [
+    { t: "认出来了，然后继续走", s: 1 },
+    { t: "会站一会儿，把当年那天的画面过一遍", s: 3 },
+    { t: "跟新地方没什么区别", s: 0 },
+    { t: "拍张照，心里轻轻一下", s: 2 }
+  ]},
+  { dim: "echo", text: "「要是当时……」这个句式，在你心里：", opts: [
+    { t: "知道有，但很快翻篇", s: 1 },
+    { t: "常常自动接下去，能接出一整段", s: 3 },
+    { t: "不太出现，我更关心下个月", s: 0 },
+    { t: "偶尔冒出来，不拦它也不追它", s: 2 }
+  ]},
+  { dim: "echo", text: "旧物（一件衣服、一张票根），你通常：", opts: [
+    { t: "留着但不看，占个位置", s: 1 },
+    { t: "留着，而且记得它对应的那一天", s: 3 },
+    { t: "清掉，东西越少越轻", s: 0 },
+    { t: "留几件，说不清为什么", s: 2 }
+  ]},
+  { dim: "echo", text: "深夜睡不着的时候，脑子里更容易放：", opts: [
+    { t: "明天的待办", s: 1 },
+    { t: "几年前的某个片段，反复放", s: 3 },
+    { t: "没什么，空白一片", s: 0 },
+    { t: "一些旧画面，放着放着就睡了", s: 2 }
+  ]},
+  { dim: "echo", text: "对于「没走成的那条路」，你：", opts: [
+    { t: "知道有这条路，不进去", s: 1 },
+    { t: "会在心里给它盖一整栋房子", s: 3 },
+    { t: "路是走出来的，没走就不算路", s: 0 },
+    { t: "偶尔去门口看一眼", s: 2 }
+  ]},
+  { dim: "echo", text: "如果可以给过去某一年贴一张标签，你：", opts: [
+    { t: "想了想，还是不贴了", s: 1 },
+    { t: "会写很长，写不下就换一张", s: 3 },
+    { t: "我更想给明年贴", s: 0 },
+    { t: "写四个字，够了", s: 2 }
+  ]}
+,
+  { dim: "jump", text: "通勤走了三年同一条路，今天忽然想换一条。", opts: [
+    { t: "立刻拐进没走过的小巷，绕远也认了", s: 3 },
+    { t: "挑一条大致同方向的，试试看", s: 2 },
+    { t: "先查会不会迟到，再决定", s: 1 },
+    { t: "算了，熟路省心，明天再说", s: 0 }
+  ]},
+  { dim: "jump", text: "走进常去的那家店，老板照例问『老样子？』", opts: [
+    { t: "老样子，不过加个小菜", s: 1 },
+    { t: "今天换个没吃过的，您推荐一个", s: 3 },
+    { t: "老样子，谢谢", s: 0 },
+    { t: "换个口味吧，但别太离谱", s: 2 }
+  ]},
+  { dim: "jump", text: "理发师问『想怎么剪』，你：", opts: [
+    { t: "我给你看张图，一模一样就行", s: 0 },
+    { t: "比现在短一点，别的您看着来", s: 2 },
+    { t: "随便发挥，剪坏了我认", s: 3 },
+    { t: "照上次那样，稍微修修", s: 1 }
+  ]},
+  { dim: "jump", text: "听到一种没听过的口音，你第一反应是：", opts: [
+    { t: "会多听一会儿，猜猜来历", s: 2 },
+    { t: "没什么特别感觉", s: 0 },
+    { t: "想搭句话，问问那是哪儿", s: 3 },
+    { t: "觉得好听，但不会上前", s: 1 }
+  ]},
+  { dim: "jump", text: "手机地图里有一大片从没点开过的街区。", opts: [
+    { t: "挑个周末，专门去走一趟", s: 3 },
+    { t: "没想过要点开", s: 0 },
+    { t: "存个收藏，等哪天顺路", s: 1 },
+    { t: "路过时顺手拐进去看看", s: 2 }
+  ]},
+  { dim: "jump", text: "有人临时邀你参加一个完全陌生的聚会。", opts: [
+    { t: "先问清楚都有谁，再定", s: 2 },
+    { t: "得有个熟人一起去才考虑", s: 1 },
+    { t: "婉拒，回家待着更自在", s: 0 },
+    { t: "去，反正谁都不认识才轻松", s: 3 }
+  ]},
+  { dim: "jump", text: "末班车还有三分钟，目的地是个没去过的地方。", opts: [
+    { t: "目送它开走，转身回家", s: 0 },
+    { t: "上车，坐到终点再说", s: 3 },
+    { t: "坐几站，看心情再决定下不下", s: 2 },
+    { t: "先查末班返程时间，确认能回来", s: 1 }
+  ]},
+  { dim: "jump", text: "如果可以给自己加一段完全没经历过的履历，你选：", opts: [
+    { t: "在现在的路上多一段进修", s: 1 },
+    { t: "换个行当，从头学起", s: 2 },
+    { t: "在另一座城市从零开始活一年", s: 3 },
+    { t: "不必了，我挺满意这条线", s: 0 }
+  ]},
+  { dim: "jump", text: "假期第一天早上醒来，没有任何安排。", opts: [
+    { t: "出门，走到哪算哪，晚上再想住哪", s: 3 },
+    { t: "约人，看大家想去哪", s: 1 },
+    { t: "临时定个近处的地方，当天来回", s: 2 },
+    { t: "在家，把这几天也安排得清清楚楚", s: 0 }
+  ]},
+  { dim: "jump", text: "收到一个从没听过的城市寄来的包裹。", opts: [
+    { t: "大概是谁寄错了吧", s: 0 },
+    { t: "好奇一下，然后放一边", s: 1 },
+    { t: "立刻查那个地方，甚至想订票", s: 3 },
+    { t: "会翻翻地图，记下这个名字", s: 2 }
+  ]},
+  { dim: "jump", text: "衣柜换季，你翻出一件从没穿过的衣服。", opts: [
+    { t: "找个合适的日子试试", s: 2 },
+    { t: "明天就穿出门，管它合不合场合", s: 3 },
+    { t: "先挂着，等哪天有心情", s: 1 },
+    { t: "收回去，还是常穿那几件舒服", s: 0 }
+  ]},
+  { dim: "jump", text: "别人说『那边挺好的，就是得重新开始』。", opts: [
+    { t: "听听就好，动手之前得想很久", s: 1 },
+    { t: "我更想把现在这份过好", s: 0 },
+    { t: "有点心动，但会先算算代价", s: 2 },
+    { t: "『重新开始』这四个字让你心动", s: 3 }
+  ]},
+  { dim: "jump", text: "一次临时改道，你被带到一个陌生站台。", opts: [
+    { t: "有点烦，赶紧查回去的路线", s: 0 },
+    { t: "拍张站牌，记下这个地名", s: 2 },
+    { t: "等下一班，按原计划走", s: 1 },
+    { t: "干脆出站，在附近晃一圈", s: 3 }
+  ]},
+  { dim: "jump", text: "一个人吃饭，店里空位很多，你坐：", opts: [
+    { t: "靠窗，看街上的人，顺便看下一个想去的地方", s: 3 },
+    { t: "吧台，方便跟人搭句话", s: 2 },
+    { t: "老位置，每次都坐那儿", s: 0 },
+    { t: "随便找个角落，快吃完就走", s: 1 }
+  ]},
+  { dim: "jump", text: "新设备到手，第一步你会：", opts: [
+    { t: "照着引导一步步来", s: 1 },
+    { t: "直接上手乱点，设置边用边摸", s: 3 },
+    { t: "挑几个想试的功能先开", s: 2 },
+    { t: "先把所有设置调成和旧的一样", s: 0 }
+  ]},
+  { dim: "jump", text: "有个活动，报名表里没有一个人你认识。", opts: [
+    { t: "填了，但先看看能不能拉个人", s: 2 },
+    { t: "不填，人熟才自在", s: 0 },
+    { t: "收藏链接，犹豫到截止", s: 1 },
+    { t: "填了，陌生才好玩", s: 3 }
+  ]},
+  { dim: "jump", text: "有人问你『十年后想住在哪』。", opts: [
+    { t: "就这儿，我已经想好怎么布置了", s: 0 },
+    { t: "最好是个我现在还说不出名字的地方", s: 3 },
+    { t: "多半还在这儿吧", s: 1 },
+    { t: "大概会换一座城，但说不准", s: 2 }
+  ]},
+  { dim: "jump", text: "路过一家没进去过的小店，门口在排队。", opts: [
+    { t: "跟着排，进去看看卖什么", s: 3 },
+    { t: "记下店名，下次再说", s: 1 },
+    { t: "继续走，去常去那家", s: 0 },
+    { t: "先从窗外瞄一眼再决定", s: 2 }
+  ]},
+  { dim: "jump", text: "如果日子可以换一种气候，你选：", opts: [
+    { t: "完全没体验过的那种，越陌生越好", s: 3 },
+    { t: "和现在差别大一点的", s: 2 },
+    { t: "稍微变一变就行", s: 1 },
+    { t: "就现在这种，四季我都熟", s: 0 }
+  ]},
+  { dim: "jump", text: "抽屉里留着一格，你打算放什么？", opts: [
+    { t: "放常用物件，顺手就好", s: 1 },
+    { t: "留给还没发生的那些事", s: 3 },
+    { t: "放固定的几样，十年没动过", s: 0 },
+    { t: "放些随时能打包带走的小东西", s: 2 }
+  ]},
+  { dim: "jump", text: "朋友说有个地方『路不好走，但值得』。", opts: [
+    { t: "听他讲讲就好，我不太折腾", s: 0 },
+    { t: "先查攻略，挑个稳妥的时候", s: 2 },
+    { t: "问清怎么去，周末就动身", s: 3 },
+    { t: "心动，但等有人同行", s: 1 }
+  ]},
+  { dim: "jump", text: "换一份工作，你最在意的会是：", opts: [
+    { t: "会不会去一座新城市", s: 2 },
+    { t: "最好一切照旧，只是日子松一点", s: 0 },
+    { t: "是不是一件我完全没做过的事", s: 3 },
+    { t: "环境和现在差不多就行", s: 1 }
+  ]},
+  { dim: "jump", text: "如果给『另一种日子』留一个入口，你希望它是：", opts: [
+    { t: "一扇随时能推开的门", s: 3 },
+    { t: "不必留，我把这扇门关好了", s: 0 },
+    { t: "一个收藏夹", s: 1 },
+    { t: "一张没写日期的票", s: 2 }
+  ]},
+  { dim: "jump", text: "深夜听见远处有火车。", opts: [
+    { t: "会猜它开往哪座城", s: 2 },
+    { t: "听一会儿，翻个身继续睡", s: 1 },
+    { t: "早就听不见了", s: 0 },
+    { t: "会想：下一班去哪儿，我要不要也在上面", s: 3 }
+  ]},
+  { dim: "jump", text: "搬走之后，你最可能留下的是：", opts: [
+    { t: "留一整套，下次回来还认得", s: 0 },
+    { t: "什么也不留，轻装走", s: 3 },
+    { t: "只留几件能带走的", s: 2 },
+    { t: "留些给下一个住这儿的人", s: 1 }
+  ]},
+  { dim: "jump", text: "别人说『你不像会做这种事的人』，你：", opts: [
+    { t: "笑笑，心里记着这句", s: 1 },
+    { t: "有点被激起兴致，真去试了", s: 2 },
+    { t: "那正好，做给他们看", s: 3 },
+    { t: "嗯，确实不太像我", s: 0 }
+  ]},
+  { dim: "jump", text: "一次没有返程票的出发，摆在你面前。", opts: [
+    { t: "收下，返程到时候再说", s: 3 },
+    { t: "拿在手里，没敢用", s: 1 },
+    { t: "收下，但先记好怎么回来", s: 2 },
+    { t: "换一张往返票才踏实", s: 0 }
+  ]},
+  { dim: "jump", text: "到了一座新城市，第一顿饭你会：", opts: [
+    { t: "点一份和家里一样的", s: 0 },
+    { t: "找家连锁，至少不会出错", s: 1 },
+    { t: "钻进巷子里，找没见过的招牌", s: 3 },
+    { t: "挑一家本地人多的店", s: 2 }
+  ]},
+  { dim: "jump", text: "家具忽然想换个摆法。", opts: [
+    { t: "挪一次，看看顺不顺眼", s: 2 },
+    { t: "今晚就挪，连着摆三回", s: 3 },
+    { t: "想过，但懒得动", s: 1 },
+    { t: "别动，现在这样最顺手", s: 0 }
+  ]},
+  { dim: "jump", text: "如果真有另一条时间线，你最好奇的是：", opts: [
+    { t: "那个我是不是还住这儿", s: 1 },
+    { t: "不看了，我更想知道明天", s: 0 },
+    { t: "那个我换过几次活法", s: 2 },
+    { t: "那个我去了哪些我没去的地方", s: 3 }
+  ]},
+  { dim: "order", text: "钥匙进门后放在哪儿？", opts: [
+    { t: "哪儿顺手哪儿，找的时候再翻", s: 0 },
+    { t: "大致那一片，不出这个范围", s: 2 },
+    { t: "随手放，但记得住", s: 1 },
+    { t: "固定的盘子，闭着眼都摸得到", s: 3 }
+  ]},
+  { dim: "order", text: "日历上，你更习惯：", opts: [
+    { t: "每件事都有时间段，颜色还分好类", s: 3 },
+    { t: "重要的事标出来，其余留白", s: 2 },
+    { t: "基本不记，靠脑子", s: 0 },
+    { t: "只记怕忘的几件", s: 1 }
+  ]},
+  { dim: "order", text: "洗衣这件事，你：", opts: [
+    { t: "想起来才洗", s: 1 },
+    { t: "固定周几、固定程序，从不拖", s: 3 },
+    { t: "攒到差不多就洗", s: 2 },
+    { t: "没衣服穿了才洗", s: 0 }
+  ]},
+  { dim: "order", text: "去菜市场前，你：", opts: [
+    { t: "心里有个大概清单", s: 2 },
+    { t: "本来就是去逛的", s: 0 },
+    { t: "看到什么买什么", s: 1 },
+    { t: "列好单子，按摊位顺序走", s: 3 }
+  ]},
+  { dim: "order", text: "睡前最后一件事是：", opts: [
+    { t: "没有固定流程，每天不一样", s: 0 },
+    { t: "把明天要用的东西按顺序摆好", s: 3 },
+    { t: "刷会儿手机，困了就睡", s: 1 },
+    { t: "看一眼明天的安排", s: 2 }
+  ]},
+  { dim: "order", text: "闹钟，你设几个？", opts: [
+    { t: "一个，而且从不迟到", s: 3 },
+    { t: "两三个，逐个按掉", s: 1 },
+    { t: "不设，醒了算", s: 0 },
+    { t: "一个主闹，加一个备用", s: 2 }
+  ]},
+  { dim: "order", text: "书架上的书，你：", opts: [
+    { t: "按类别、按高矮，齐得舒服", s: 3 },
+    { t: "大致分个区", s: 2 },
+    { t: "看过的和没看的分开就行", s: 1 },
+    { t: "随手插，找的时候靠运气", s: 0 }
+  ]},
+  { dim: "order", text: "出门之后，你会不会回头检查门？", opts: [
+    { t: "偶尔想起，笑一下就走", s: 1 },
+    { t: "会，而且必须亲眼确认一次", s: 3 },
+    { t: "锁了就是锁了", s: 0 },
+    { t: "走到电梯口想一下，通常不回头", s: 2 }
+  ]},
+  { dim: "order", text: "一周的饭，你更愿意：", opts: [
+    { t: "想吃啥吃啥，最好每天不重样", s: 0 },
+    { t: "定个大概，留两天灵活", s: 2 },
+    { t: "提前排好，周几吃什么写清楚", s: 3 },
+    { t: "当天再想", s: 1 }
+  ]},
+  { dim: "order", text: "电脑里的文件，通常叫：", opts: [
+    { t: "带日期和项目名", s: 2 },
+    { t: "新建文件夹、新建文件夹(2)", s: 0 },
+    { t: "带日期、版本号，一眼能认", s: 3 },
+    { t: "大概能认出来就行", s: 1 }
+  ]},
+  { dim: "order", text: "家里的药箱：", opts: [
+    { t: "分格贴标，过期日期都标好", s: 3 },
+    { t: "好像有个袋子，找找看", s: 0 },
+    { t: "都在一个袋子里", s: 1 },
+    { t: "常用药放外面，其余一盒", s: 2 }
+  ]},
+  { dim: "order", text: "手机电量掉到 20%，你：", opts: [
+    { t: "顺手充上，不慌", s: 2 },
+    { t: "省着点用，回家再说", s: 1 },
+    { t: "关机也无所谓", s: 0 },
+    { t: "立刻找充电器，不能忍", s: 3 }
+  ]},
+  { dim: "order", text: "快递到了，你：", opts: [
+    { t: "堆在门口，等它自己长出一座小山", s: 0 },
+    { t: "当天拆、当天归位", s: 3 },
+    { t: "晚上有空一起拆", s: 2 },
+    { t: "放两天，想起来再拆", s: 1 }
+  ]},
+  { dim: "order", text: "周六上午，你的第一念头是：", opts: [
+    { t: "睡到自然醒，再看", s: 1 },
+    { t: "有个大概顺序，不赶", s: 2 },
+    { t: "先把那几件固定的事做完，剩下才叫休息", s: 3 },
+    { t: "空白，什么都不预设", s: 0 }
+  ]},
+  { dim: "order", text: "出门前，你会看天气预报吗？", opts: [
+    { t: "会，连降水时段都看", s: 3 },
+    { t: "想起来才看", s: 1 },
+    { t: "看一眼温度", s: 2 },
+    { t: "出门抬头看天就够了", s: 0 }
+  ]},
+  { dim: "order", text: "约在三点，你通常几点到？", opts: [
+    { t: "看情况，到了再说", s: 0 },
+    { t: "三点前后，差不多", s: 1 },
+    { t: "两点五十，宁可等", s: 3 },
+    { t: "两点五十八，刚好", s: 2 }
+  ]},
+  { dim: "order", text: "挂衣服，你按什么顺序？", opts: [
+    { t: "按类型分一分", s: 2 },
+    { t: "按颜色、按长短，方向都一致", s: 3 },
+    { t: "常穿的放前面", s: 1 },
+    { t: "哪个衣架空就挂哪", s: 0 }
+  ]},
+  { dim: "order", text: "手机通知上的小红点：", opts: [
+    { t: "攒一堆也无所谓", s: 1 },
+    { t: "我压根没关过，也没看过", s: 0 },
+    { t: "重要的先清，其余留着", s: 2 },
+    { t: "必须全部点掉才舒服", s: 3 }
+  ]},
+  { dim: "order", text: "晚上家里开几盏灯？", opts: [
+    { t: "随手，亮着哪盏算哪盏", s: 0 },
+    { t: "常开一两盏", s: 2 },
+    { t: "人在哪间开哪间", s: 1 },
+    { t: "固定那几盏，位置从不变", s: 3 }
+  ]},
+  { dim: "order", text: "旅行带回来的小东西，你：", opts: [
+    { t: "有专门的盒子，贴好地点和日期", s: 3 },
+    { t: "集中放在一个角落", s: 2 },
+    { t: "不知道塞哪儿了", s: 0 },
+    { t: "随手搁在书架、桌角", s: 1 }
+  ]},
+  { dim: "order", text: "朋友临时说『现在出来坐坐』，你：", opts: [
+    { t: "换件衣服就出门", s: 1 },
+    { t: "得看我今天的安排，改了会有点乱", s: 3 },
+    { t: "稍等，我调整一下就来", s: 2 },
+    { t: "好啊，反正本来也没事", s: 0 }
+  ]},
+  { dim: "order", text: "家里的说明书，你：", opts: [
+    { t: "塞回盒子里", s: 2 },
+    { t: "拆完就扔", s: 0 },
+    { t: "留着，但不知道在哪", s: 1 },
+    { t: "按电器分类收进一个文件袋", s: 3 }
+  ]},
+  { dim: "order", text: "一天里最怕被打断的是：", opts: [
+    { t: "没有特别怕的，打断就打断", s: 0 },
+    { t: "那段按计划推进的时间", s: 3 },
+    { t: "刚进入状态的时候", s: 1 },
+    { t: "正在收尾的时候", s: 2 }
+  ]},
+  { dim: "order", text: "排队时，你：", opts: [
+    { t: "会算大概几个、几分钟", s: 3 },
+    { t: "掏手机，轮到再说", s: 1 },
+    { t: "队伍在动就行", s: 0 },
+    { t: "看看前面，心里有数", s: 2 }
+  ]},
+  { dim: "order", text: "换季收纳，你：", opts: [
+    { t: "按清单、按箱号，写好标签", s: 3 },
+    { t: "分季装好，标个大概", s: 2 },
+    { t: "装进箱子，塞进柜子", s: 1 },
+    { t: "去年的好像还没收", s: 0 }
+  ]},
+  { dim: "order", text: "一条要回的消息，你：", opts: [
+    { t: "看到了，晚点再说", s: 1 },
+    { t: "当天回，不留在列表里", s: 3 },
+    { t: "忘了也常有的事", s: 0 },
+    { t: "记着，有空就回", s: 2 }
+  ]},
+  { dim: "order", text: "新的一年第一天，你：", opts: [
+    { t: "不过就是个日子", s: 0 },
+    { t: "列几件想做的事", s: 2 },
+    { t: "会写一份能执行的计划", s: 3 },
+    { t: "记一句心愿就够了", s: 1 }
+  ]},
+  { dim: "order", text: "家里最不能乱的角落是：", opts: [
+    { t: "厨房，乱了做不了饭", s: 2 },
+    { t: "都能乱，乱着挺好", s: 0 },
+    { t: "书桌，乱了就没法开工", s: 3 },
+    { t: "玄关，出门会慌", s: 1 }
+  ]},
+  { dim: "order", text: "一件事做到一半要停下，你：", opts: [
+    { t: "会先记下停在哪一步", s: 3 },
+    { t: "重新开始也不碍事", s: 0 },
+    { t: "回来再看，也能接上", s: 1 },
+    { t: "大概记一下", s: 2 }
+  ]},
+  { dim: "order", text: "如果日子有一张说明书，你希望它：", opts: [
+    { t: "写个大概，细节留给我", s: 2 },
+    { t: "只有一页注意事项", s: 1 },
+    { t: "不要说明书，翻到哪页算哪页", s: 0 },
+    { t: "每一步都写清楚", s: 3 }
+  ]},
+  { dim: "anchor", text: "发烧到 38 度，第一个想打给谁？", opts: [
+    { t: "睡一觉就好，谁也不惊动", s: 0 },
+    { t: "立刻拨出去，听见声音就踏实一半", s: 3 },
+    { t: "发条消息，等对方回", s: 2 },
+    { t: "自己叫个药，晚点再说", s: 1 }
+  ]},
+  { dim: "anchor", text: "群里最后一条消息停在三天前，你：", opts: [
+    { t: "看见了，没接", s: 1 },
+    { t: "点进去看看，想说点什么", s: 2 },
+    { t: "会冒个泡，把话头接起来", s: 3 },
+    { t: "没注意", s: 0 }
+  ]},
+  { dim: "anchor", text: "多出一张票，你第一个想到：", opts: [
+    { t: "叫上那个人，不去也行，一起就行", s: 3 },
+    { t: "发到群里，谁去都好", s: 1 },
+    { t: "问问谁有空", s: 2 },
+    { t: "一个人去也挺自在", s: 0 }
+  ]},
+  { dim: "anchor", text: "有人记得你不吃香菜，你：", opts: [
+    { t: "没什么，小事", s: 0 },
+    { t: "觉得对方细心", s: 1 },
+    { t: "心里一热，能记很久", s: 3 },
+    { t: "挺暖，会道声谢", s: 2 }
+  ]},
+  { dim: "anchor", text: "消息显示已读，一直没回。", opts: [
+    { t: "有点在意，过会儿就放下了", s: 2 },
+    { t: "会反复看，猜是不是哪句没说好", s: 3 },
+    { t: "哦，可能在忙", s: 1 },
+    { t: "没留意", s: 0 }
+  ]},
+  { dim: "anchor", text: "晚上回家，你希望屋里：", opts: [
+    { t: "有只猫或一盆植物等我", s: 1 },
+    { t: "安静，只有我", s: 0 },
+    { t: "有人，各自待着也行", s: 2 },
+    { t: "有人，灯亮着，饭还温着", s: 3 }
+  ]},
+  { dim: "anchor", text: "一群人合唱，你更可能：", opts: [
+    { t: "在旁边拍照，挺好", s: 0 },
+    { t: "跟着哼，挨着熟人站", s: 2 },
+    { t: "坐在边上听，偶尔跟一句", s: 1 },
+    { t: "站在中间，声音放开了唱", s: 3 }
+  ]},
+  { dim: "anchor", text: "通讯录置顶，是：", opts: [
+    { t: "好几个，都是常惦记的人", s: 3 },
+    { t: "一两个", s: 2 },
+    { t: "没设过置顶", s: 0 },
+    { t: "工作需要的几个", s: 1 }
+  ]},
+  { dim: "anchor", text: "节日那天，你更希望：", opts: [
+    { t: "照常过，但会跟人互道一声", s: 1 },
+    { t: "人齐，闹一点，碗筷多一点", s: 3 },
+    { t: "和两三个近的人吃顿饭", s: 2 },
+    { t: "一个人，清清静静", s: 0 }
+  ]},
+  { dim: "anchor", text: "一张合照里，你通常站：", opts: [
+    { t: "靠着自己人那一侧", s: 2 },
+    { t: "按快门的那个人", s: 0 },
+    { t: "边上，方便随时走", s: 1 },
+    { t: "中间，被挤着也开心", s: 3 }
+  ]},
+  { dim: "anchor", text: "搬家那天，你希望：", opts: [
+    { t: "叫车，全程自己搞定", s: 0 },
+    { t: "一屋子人，边搬边聊，乱点也热闹", s: 3 },
+    { t: "自己慢慢来，不麻烦谁", s: 1 },
+    { t: "有一两个人搭把手就够", s: 2 }
+  ]},
+  { dim: "anchor", text: "有人替你留了座，你：", opts: [
+    { t: "坐下那一刻，今天都亮了一点", s: 3 },
+    { t: "挺方便，坐了", s: 1 },
+    { t: "换个空位也无所谓", s: 0 },
+    { t: "会道谢，心里记着", s: 2 }
+  ]},
+  { dim: "anchor", text: "很久没联系的人忽然发来一句『在吗』。", opts: [
+    { t: "立刻回，还顺手问了一长串近况", s: 3 },
+    { t: "认真回，聊几句", s: 2 },
+    { t: "回一个表情，看对方怎么说", s: 1 },
+    { t: "晚点再回，或者就忘了", s: 0 }
+  ]},
+  { dim: "anchor", text: "有件好事，你第一个想告诉谁？", opts: [
+    { t: "发个动态，谁看见算谁", s: 1 },
+    { t: "名字立刻就冒出来了", s: 3 },
+    { t: "自己先高兴一会儿就够了", s: 0 },
+    { t: "会挑一个替我高兴的人", s: 2 }
+  ]},
+  { dim: "anchor", text: "一个人去医院，你：", opts: [
+    { t: "本来就该自己去", s: 0 },
+    { t: "会一路跟人报平安", s: 2 },
+    { t: "会想找个人陪，哪怕只是坐着等", s: 3 },
+    { t: "自己能搞定，回来再说", s: 1 }
+  ]},
+  { dim: "anchor", text: "饭桌上多摆了一副碗筷，没人来。", opts: [
+    { t: "收起来，心里有点空", s: 2 },
+    { t: "没摆过多余的", s: 0 },
+    { t: "会盯着那个空位愣一下", s: 3 },
+    { t: "顺手撤了", s: 1 }
+  ]},
+  { dim: "anchor", text: "有人记得你半年前随口说的一句话。", opts: [
+    { t: "会愣住，然后记很久", s: 3 },
+    { t: "对方记性真好", s: 0 },
+    { t: "挺意外，笑一下", s: 1 },
+    { t: "很惊喜，认真道谢", s: 2 }
+  ]},
+  { dim: "anchor", text: "雨里有人把伞往你这边偏了偏。", opts: [
+    { t: "会道谢，往回让一点", s: 2 },
+    { t: "嗯，挺客气的", s: 1 },
+    { t: "我自己有伞", s: 0 },
+    { t: "肩膀湿了也舍不得挪开", s: 3 }
+  ]},
+  { dim: "anchor", text: "电话那头的背景音，你：", opts: [
+    { t: "没留意过", s: 0 },
+    { t: "会听得很仔细，猜他在哪儿、跟谁在一起", s: 3 },
+    { t: "会顺口问一句在哪儿呢", s: 2 },
+    { t: "听见了，不问", s: 1 }
+  ]},
+  { dim: "anchor", text: "下班推门，你更希望迎接你的是：", opts: [
+    { t: "一盆长得很好的绿植", s: 1 },
+    { t: "一只跑过来的猫或狗", s: 2 },
+    { t: "有人从屋里应一声", s: 3 },
+    { t: "一屋子安静", s: 0 }
+  ]},
+  { dim: "anchor", text: "群聊里，你：", opts: [
+    { t: "常在，接话、起头都愿意", s: 3 },
+    { t: "大部分时间潜水", s: 1 },
+    { t: "有人 @ 才说，偶尔主动", s: 2 },
+    { t: "早设了免打扰", s: 0 }
+  ]},
+  { dim: "anchor", text: "收到一张手写卡片，你：", opts: [
+    { t: "看完就收起来了", s: 0 },
+    { t: "道谢，然后放好", s: 1 },
+    { t: "会摆很久，字看好多遍", s: 3 },
+    { t: "收进盒子里，偶尔翻", s: 2 }
+  ]},
+  { dim: "anchor", text: "闹别扭之后，通常：", opts: [
+    { t: "等一会儿，我会先递个台阶", s: 2 },
+    { t: "是我先开口，冷着比吵着难受", s: 3 },
+    { t: "谁先说都行，不急", s: 1 },
+    { t: "各自缓缓，自然会好", s: 0 }
+  ]},
+  { dim: "anchor", text: "离家前最后一句，一般是：", opts: [
+    { t: "摆摆手", s: 1 },
+    { t: "直接关门", s: 0 },
+    { t: "我出门了", s: 2 },
+    { t: "我走了啊，晚上回来吃饭，这类", s: 3 }
+  ]},
+  { dim: "anchor", text: "深夜发一条动态，你更在意：", opts: [
+    { t: "发完就睡，不看", s: 0 },
+    { t: "有没有人回一句", s: 2 },
+    { t: "有几个赞都行", s: 1 },
+    { t: "那几个人有没有看见", s: 3 }
+  ]},
+  { dim: "anchor", text: "有人顺手给你带了早餐。", opts: [
+    { t: "一整天都暖，会想着还回去", s: 3 },
+    { t: "很开心，认真说谢谢", s: 2 },
+    { t: "我自己也常带", s: 0 },
+    { t: "挺好，吃了", s: 1 }
+  ]},
+  { dim: "anchor", text: "老家的钥匙，你：", opts: [
+    { t: "好像在哪儿，不太确定", s: 1 },
+    { t: "一直带着，从不离身", s: 3 },
+    { t: "收在固定的地方", s: 2 },
+    { t: "早就不带了", s: 0 }
+  ]},
+  { dim: "anchor", text: "一段关系里，你更怕：", opts: [
+    { t: "有话不再说了", s: 2 },
+    { t: "被要求解释自己", s: 0 },
+    { t: "被安排得太满", s: 1 },
+    { t: "慢慢不联系了", s: 3 }
+  ]},
+  { dim: "anchor", text: "如果只剩最后一通电话可以打。", opts: [
+    { t: "可能谁也不打，坐着就好", s: 0 },
+    { t: "号码早就想好了", s: 3 },
+    { t: "也许打给家里", s: 1 },
+    { t: "会在两三个人里犹豫", s: 2 }
+  ]},
+  { dim: "anchor", text: "你觉得『过得不错』更像是：", opts: [
+    { t: "身边有人，随时能喊一声", s: 3 },
+    { t: "自己待得住，偶尔见人", s: 1 },
+    { t: "完全由我自己说了算", s: 0 },
+    { t: "有人惦记，也不用天天见", s: 2 }
+  ]},
+  { dim: "glow", text: "刚晒过的被子，你：", opts: [
+    { t: "会把脸埋进去，闻一下再起来", s: 3 },
+    { t: "觉得暖，多躺两分钟", s: 2 },
+    { t: "嗯，挺舒服", s: 1 },
+    { t: "被子就是被子", s: 0 }
+  ]},
+  { dim: "glow", text: "夏天第一口冰的，你：", opts: [
+    { t: "解渴", s: 1 },
+    { t: "会停一下，等那股凉走完", s: 3 },
+    { t: "一口喝完，没尝", s: 0 },
+    { t: "好喝，慢慢喝", s: 2 }
+  ]},
+  { dim: "glow", text: "雨停之后，你：", opts: [
+    { t: "收伞，继续走", s: 0 },
+    { t: "会深吸一口，觉得清爽", s: 2 },
+    { t: "会开窗，专门闻一下那股味道", s: 3 },
+    { t: "哦，停了", s: 1 }
+  ]},
+  { dim: "glow", text: "一首老歌忽然在街上响起来。", opts: [
+    { t: "会跟着哼两句", s: 2 },
+    { t: "没注意", s: 0 },
+    { t: "脚步会慢下来，听完这一段再走", s: 3 },
+    { t: "挺熟，笑一下", s: 1 }
+  ]},
+  { dim: "glow", text: "面包店刚出炉，你：", opts: [
+    { t: "会为这一炉改个路线", s: 3 },
+    { t: "没闻见", s: 0 },
+    { t: "闻着香，路过就算", s: 1 },
+    { t: "买一个，趁热吃", s: 2 }
+  ]},
+  { dim: "glow", text: "猫在窗台上打了个哈欠。", opts: [
+    { t: "看一眼，笑一下", s: 2 },
+    { t: "哦，它在睡觉", s: 1 },
+    { t: "没看见", s: 0 },
+    { t: "会停下来看完，还想拍一张", s: 3 }
+  ]},
+  { dim: "glow", text: "一张手写便签，字歪歪扭扭。", opts: [
+    { t: "内容记住就行", s: 0 },
+    { t: "会留着，比打印的珍贵多了", s: 3 },
+    { t: "看完收好", s: 2 },
+    { t: "看一眼，知道了", s: 1 }
+  ]},
+  { dim: "glow", text: "冬天第一口热汤，你：", opts: [
+    { t: "挺暖", s: 1 },
+    { t: "慢慢喝，暖到手指", s: 2 },
+    { t: "会闭一下眼，觉得今天被救了", s: 3 },
+    { t: "赶紧喝完，别凉了", s: 0 }
+  ]},
+  { dim: "glow", text: "阳台地上有一块光斑。", opts: [
+    { t: "会把椅子挪过去，坐一会儿", s: 3 },
+    { t: "注意到了", s: 1 },
+    { t: "看一会儿，觉得好看", s: 2 },
+    { t: "没留意", s: 0 }
+  ]},
+  { dim: "glow", text: "穿上新袜子，你：", opts: [
+    { t: "袜子而已", s: 0 },
+    { t: "新的，干净", s: 1 },
+    { t: "脚底那点舒服能高兴半天", s: 3 },
+    { t: "嗯，挺软的", s: 2 }
+  ]},
+  { dim: "glow", text: "剥橘子时，皮溅出一点汁。", opts: [
+    { t: "挺香", s: 2 },
+    { t: "会闻一下手指，觉得这味儿真好", s: 3 },
+    { t: "擦掉，继续剥", s: 1 },
+    { t: "没什么感觉", s: 0 }
+  ]},
+  { dim: "glow", text: "电梯里有个小孩冲你笑了一下。", opts: [
+    { t: "挺可爱", s: 1 },
+    { t: "到几楼了", s: 0 },
+    { t: "会笑回去，心里软一下", s: 2 },
+    { t: "一整天都会想起那张脸", s: 3 }
+  ]},
+  { dim: "glow", text: "杯子洗得发亮，你：", opts: [
+    { t: "放回柜子", s: 0 },
+    { t: "觉得清爽", s: 2 },
+    { t: "干净就行", s: 1 },
+    { t: "会对着光看一下，顺手摆正", s: 3 }
+  ]},
+  { dim: "glow", text: "傍晚的风刚好不冷不热。", opts: [
+    { t: "会特意多走一站再回家", s: 3 },
+    { t: "放慢点步子", s: 2 },
+    { t: "没感觉", s: 0 },
+    { t: "嗯，今天天气不错", s: 1 }
+  ]},
+  { dim: "glow", text: "排队时前面的人侧身让你先过。", opts: [
+    { t: "谢谢，然后过去", s: 1 },
+    { t: "会记着这点善意，一整天都轻", s: 3 },
+    { t: "会认真道谢", s: 2 },
+    { t: "嗯，快了些", s: 0 }
+  ]},
+  { dim: "glow", text: "咬到一颗特别甜的草莓。", opts: [
+    { t: "会跟人说这颗好甜", s: 2 },
+    { t: "吃完了", s: 0 },
+    { t: "挺甜", s: 1 },
+    { t: "会愣一下，想留到最后一颗再吃", s: 3 }
+  ]},
+  { dim: "glow", text: "关灯前的那一分钟，你：", opts: [
+    { t: "倒头就睡", s: 0 },
+    { t: "会把今天里最好的一小会儿再过一遍", s: 3 },
+    { t: "刷两眼手机", s: 1 },
+    { t: "躺好，松一口气", s: 2 }
+  ]},
+  { dim: "glow", text: "街角花店换了新花。", opts: [
+    { t: "会停下来看，记下颜色", s: 3 },
+    { t: "哦，换过了", s: 1 },
+    { t: "没注意", s: 0 },
+    { t: "会多看两眼", s: 2 }
+  ]},
+  { dim: "glow", text: "洗完澡，镜子上起了一层雾。", opts: [
+    { t: "会在上面画一笔，笑一下", s: 3 },
+    { t: "看一会儿，擦掉", s: 2 },
+    { t: "擦掉，吹头发", s: 1 },
+    { t: "直接擦掉", s: 0 }
+  ]},
+  { dim: "glow", text: "听见有人哼一首你也会的歌。", opts: [
+    { t: "挺巧", s: 1 },
+    { t: "会忍不住跟着接下半句", s: 3 },
+    { t: "没听见", s: 0 },
+    { t: "心里跟着哼", s: 2 }
+  ]},
+  { dim: "glow", text: "一顿没人催的早饭。", opts: [
+    { t: "十分钟解决", s: 0 },
+    { t: "会坐久一点", s: 2 },
+    { t: "能吃到阳光挪过桌角才起身", s: 3 },
+    { t: "照常吃完", s: 1 }
+  ]},
+  { dim: "glow", text: "手机刚好满电，你：", opts: [
+    { t: "挺安心", s: 2 },
+    { t: "没看", s: 0 },
+    { t: "莫名觉得今天诸事顺遂", s: 3 },
+    { t: "嗯，充满了", s: 1 }
+  ]},
+  { dim: "glow", text: "楼道里飘着邻居家的饭香。", opts: [
+    { t: "会猜今天谁家做了什么，觉得日子很实", s: 3 },
+    { t: "关门进屋", s: 0 },
+    { t: "有点饿", s: 1 },
+    { t: "会深吸一下", s: 2 }
+  ]},
+  { dim: "glow", text: "今年第一片叶子落下来。", opts: [
+    { t: "会停下来看一会儿", s: 2 },
+    { t: "哦，秋天了", s: 1 },
+    { t: "该换季了", s: 0 },
+    { t: "会捡起来，夹进书里", s: 3 }
+  ]},
+  { dim: "glow", text: "杯底留下一圈水痕。", opts: [
+    { t: "没看见", s: 0 },
+    { t: "会觉得它像个小印记，看了两秒", s: 3 },
+    { t: "顺手擦掉，不觉得烦", s: 2 },
+    { t: "擦掉", s: 1 }
+  ]},
+  { dim: "glow", text: "陌生人一句『慢走』。", opts: [
+    { t: "点头", s: 1 },
+    { t: "会回头笑一下", s: 2 },
+    { t: "走出几步还暖着", s: 3 },
+    { t: "嗯", s: 0 }
+  ]},
+  { dim: "glow", text: "枕头翻过来，凉的那一面。", opts: [
+    { t: "这一下能把一整天收好", s: 3 },
+    { t: "挺凉", s: 1 },
+    { t: "舒服，翻个身", s: 2 },
+    { t: "没分别", s: 0 }
+  ]},
+  { dim: "glow", text: "把一件很小的高兴事讲给别人听。", opts: [
+    { t: "没什么好讲的", s: 0 },
+    { t: "想说，但觉得太小了", s: 1 },
+    { t: "讲的时候又高兴了一遍", s: 3 },
+    { t: "会顺口提一句", s: 2 }
+  ]},
+  { dim: "glow", text: "水烧开，壶盖轻轻响。", opts: [
+    { t: "听着挺安心", s: 2 },
+    { t: "会觉得这一声很像到家了", s: 3 },
+    { t: "水开了", s: 1 },
+    { t: "去关火", s: 0 }
+  ]},
+  { dim: "glow", text: "如果给今天存一件东西，你选：", opts: [
+    { t: "一句记下来的话", s: 1 },
+    { t: "不用存，过了就过了", s: 0 },
+    { t: "一张随手拍的照片", s: 2 },
+    { t: "一小段光，或者一阵味道", s: 3 }
+  ]},
+  { dim: "echo", text: "一首歌忽然把你带回某一年。", opts: [
+    { t: "换下一首", s: 0 },
+    { t: "会听完，愣一会儿", s: 2 },
+    { t: "哦，那年听过", s: 1 },
+    { t: "会顺着想很久，连那天的天气都想起来", s: 3 }
+  ]},
+  { dim: "echo", text: "老同学群里有人发了张旧照。", opts: [
+    { t: "会点开放大，一个个认过去", s: 3 },
+    { t: "会看一会儿，笑一下", s: 2 },
+    { t: "划过去", s: 0 },
+    { t: "点开看一眼", s: 1 }
+  ]},
+  { dim: "echo", text: "一个早就不用的旧账号，你：", opts: [
+    { t: "知道有，没再打开", s: 1 },
+    { t: "偶尔还会登进去翻翻", s: 3 },
+    { t: "留着，密码还记得", s: 2 },
+    { t: "早忘了，或者注销了", s: 0 }
+  ]},
+  { dim: "echo", text: "毕业照从书里掉出来。", opts: [
+    { t: "会看一会儿", s: 2 },
+    { t: "夹回去，继续看书", s: 0 },
+    { t: "哦，这个啊", s: 1 },
+    { t: "会坐下来，把名字一个个点过去", s: 3 }
+  ]},
+  { dim: "echo", text: "曾经很熟、现在不联系的人，你：", opts: [
+    { t: "很少想起", s: 0 },
+    { t: "常常想起，还会在心里跟他说两句", s: 3 },
+    { t: "想起来也就一下", s: 1 },
+    { t: "偶尔想起，猜他现在怎么样", s: 2 }
+  ]},
+  { dim: "echo", text: "有一种气味，一闻就回到某段日子。", opts: [
+    { t: "会站着不动，让它多留一会儿", s: 3 },
+    { t: "嗯，有点熟", s: 1 },
+    { t: "没注意", s: 0 },
+    { t: "会停一下", s: 2 }
+  ]},
+  { dim: "echo", text: "以前常走的那条路改了样。", opts: [
+    { t: "会有点怅然，特地走完最后一遍", s: 3 },
+    { t: "会站一会儿再走", s: 2 },
+    { t: "哦，变了", s: 1 },
+    { t: "新路挺好走", s: 0 }
+  ]},
+  { dim: "echo", text: "翻到几年前的备忘录。", opts: [
+    { t: "看两行就关了", s: 1 },
+    { t: "会一条条读完，读到自己都笑了", s: 3 },
+    { t: "顺手删掉", s: 0 },
+    { t: "会翻几页，合上", s: 2 }
+  ]},
+  { dim: "echo", text: "饭桌上有人起了个头：『当年要是……』", opts: [
+    { t: "换个话题", s: 0 },
+    { t: "会跟着聊两句", s: 2 },
+    { t: "你会接下去，接得比谁都长", s: 3 },
+    { t: "听着，笑一下", s: 1 }
+  ]},
+  { dim: "echo", text: "一件旧衣服，还合身吗？", opts: [
+    { t: "会拿出来看看再收好", s: 2 },
+    { t: "早清掉了", s: 0 },
+    { t: "会试一下，穿上舍不得脱", s: 3 },
+    { t: "大概穿不上了", s: 1 }
+  ]},
+  { dim: "echo", text: "某个季节特别容易想起一个人。", opts: [
+    { t: "每年到这时候，都会完整地过一遍", s: 3 },
+    { t: "没有这种季节", s: 0 },
+    { t: "偶尔", s: 1 },
+    { t: "会忽然想起一下", s: 2 }
+  ]},
+  { dim: "echo", text: "常去的老店关门了。", opts: [
+    { t: "会有点可惜，拍张照", s: 2 },
+    { t: "哦，关了", s: 1 },
+    { t: "换一家就好", s: 0 },
+    { t: "会在门口站一会儿，像少了块东西", s: 3 }
+  ]},
+  { dim: "echo", text: "以前用过的签名、发过的状态。", opts: [
+    { t: "早删干净了", s: 0 },
+    { t: "会翻出来，觉得那个自己既陌生又近", s: 3 },
+    { t: "会看几条，笑一下", s: 2 },
+    { t: "有点不好意思", s: 1 }
+  ]},
+  { dim: "echo", text: "一条写好却没发出去的消息。", opts: [
+    { t: "好像有过，忘了", s: 1 },
+    { t: "还在草稿里", s: 2 },
+    { t: "还留着，偶尔点开看看", s: 3 },
+    { t: "没写过", s: 0 }
+  ]},
+  { dim: "echo", text: "重复梦见同一个地方。", opts: [
+    { t: "醒来会躺很久，想在里面多待会儿", s: 3 },
+    { t: "哦，又梦见了", s: 1 },
+    { t: "会回想一下梦", s: 2 },
+    { t: "醒了就忘了", s: 0 }
+  ]},
+  { dim: "echo", text: "搬家时翻出一个没标日期的盒子。", opts: [
+    { t: "直接搬走，不打开", s: 0 },
+    { t: "看一眼，原样封回去", s: 1 },
+    { t: "会一件件拿出来，坐一下午", s: 3 },
+    { t: "会翻翻，挑几件留下", s: 2 }
+  ]},
+  { dim: "echo", text: "很久没听的歌单。", opts: [
+    { t: "会挑两首听听", s: 2 },
+    { t: "点开能听一整晚", s: 3 },
+    { t: "哦，还在", s: 1 },
+    { t: "早清空了", s: 0 }
+  ]},
+  { dim: "echo", text: "和旧人重逢，寒暄之后。", opts: [
+    { t: "挺巧的", s: 1 },
+    { t: "然后就各走各的", s: 0 },
+    { t: "会想一会儿", s: 2 },
+    { t: "回家路上会把当年那段从头放一遍", s: 3 }
+  ]},
+  { dim: "echo", text: "以前常点的那道菜还在菜单上。", opts: [
+    { t: "换个新菜试试", s: 0 },
+    { t: "会犹豫一下，还是点了", s: 2 },
+    { t: "哦，还有这个", s: 1 },
+    { t: "会点它，吃的是那几年", s: 3 }
+  ]},
+  { dim: "echo", text: "老照片里的人，现在都在哪儿？", opts: [
+    { t: "会一个个数过去，想挨个问一声", s: 3 },
+    { t: "会想起几个", s: 2 },
+    { t: "没想过", s: 0 },
+    { t: "大概都不联系了", s: 1 }
+  ]},
+  { dim: "echo", text: "一年里，你最容易回头看的是：", opts: [
+    { t: "偶尔，没什么规律", s: 1 },
+    { t: "好几个日子，一到就自动开始", s: 3 },
+    { t: "年底那几天", s: 2 },
+    { t: "不回头，只看下个月", s: 0 }
+  ]},
+  { dim: "echo", text: "给过去留不留位置？", opts: [
+    { t: "留个小角落", s: 2 },
+    { t: "不留，屋子要通透", s: 0 },
+    { t: "留个盒子，不常开", s: 1 },
+    { t: "留着一整间，常常进去坐", s: 3 }
+  ]},
+  { dim: "echo", text: "一张旧车票、一张旧地图。", opts: [
+    { t: "早扔了", s: 0 },
+    { t: "会记得那天的车厢和窗外的光", s: 3 },
+    { t: "夹在书里，忘了", s: 1 },
+    { t: "收着，偶尔翻到", s: 2 }
+  ]},
+  { dim: "echo", text: "曾经答应过自己的事，没做到。", opts: [
+    { t: "会常常想起，还会跟自己解释一遍", s: 3 },
+    { t: "记得有这回事", s: 1 },
+    { t: "翻篇了，重新许一个", s: 0 },
+    { t: "偶尔记起，有点遗憾", s: 2 }
+  ]},
+  { dim: "echo", text: "忽然听见一个很久没听过的名字。", opts: [
+    { t: "心里会空一下，半天回不来", s: 3 },
+    { t: "会愣一下", s: 2 },
+    { t: "有点耳熟", s: 1 },
+    { t: "没什么反应", s: 0 }
+  ]},
+  { dim: "echo", text: "重看一部很多年前看过的片子。", opts: [
+    { t: "剧情都还记得", s: 1 },
+    { t: "看的是当年坐在旁边的那些人", s: 3 },
+    { t: "当新片看", s: 0 },
+    { t: "会想起那时候的自己", s: 2 }
+  ]},
+  { dim: "echo", text: "小时候的物件，忽然出现在眼前。", opts: [
+    { t: "不认得了", s: 0 },
+    { t: "会摸一下，笑一笑", s: 2 },
+    { t: "会拿在手里，半天舍不得放", s: 3 },
+    { t: "哦，这个还在", s: 1 }
+  ]},
+  { dim: "echo", text: "走错路，拐进一个熟悉的岔口。", opts: [
+    { t: "会慢下来看看", s: 2 },
+    { t: "掉头，找对的路", s: 0 },
+    { t: "会干脆走完，把当年那条路重走一遍", s: 3 },
+    { t: "哦，来过", s: 1 }
+  ]},
+  { dim: "echo", text: "如果只能带一件旧东西走。", opts: [
+    { t: "会挑很久，每件都连着一整段", s: 3 },
+    { t: "什么都不带", s: 0 },
+    { t: "随便拿一件", s: 1 },
+    { t: "会挑一件最要紧的", s: 2 }
+  ]},
+  { dim: "echo", text: "你怎么称呼『那时候』？", opts: [
+    { t: "以前，语气会软一点", s: 2 },
+    { t: "那几年，平平的", s: 1 },
+    { t: "过去，翻过去了", s: 0 },
+    { t: "还没走岔的时候，说起来会停一下", s: 3 }
+  ]}
+];
+/* =========================================================
+   二、九种可能的生活形态
+   由「跃迁 / 微光 / 秩序」三轴相对高低决定，另设均衡型
+   ========================================================= */
 const TYPES = {
-  A:{
-    name:"「成事大满贯」",
-    line:"你的大结果不是运气，是「事情到我手里能落地」的手感。",
-    story:{
-      full:"别人的大结果写在工资条上，你的大结果写在交付记录里。你有一种稀缺的能力：把「想做」翻译成「做完了」。别人还在立项会上打转，你已经默默干完第二轮了。",
-      high:"这份手感在你身上已经相当稳定——你不缺结果，缺的只是回头确认一眼。",
-      mid:"这份手感你已有积累，偶尔发凉，多数时候稳得很。",
-      low:"这份手感正在生长，别急，你已经比上个月的自己多了几块砖。"
-    },
-    advice:[
-      ["留一件「没人验收」的作品","每周给一件纯粹因为喜欢而做的事留 2 小时，不打卡、不发圈，做完自己知道就行。"],
-      ["把大怪兽切成小拼图","遇到难事别硬顶，先花 10 分钟把它切成三块能开工的小块，一旦启动就顺了。"],
-      ["给自己发一次「确认」","季度末回头数一数自己完成的事，写下来。你缺的不是能力，是回头看一眼的习惯。"]
+  "111": {
+    no: "TYPE 01",
+    name: "航线设计师",
+    en: "The Flight Planner",
+    tagline: "你连私奔都做了一份预算表。",
+    keywords: ["把浪漫落地", "稳中有野", "长期主义"],
+    scene: [
+      "平行时空下的你，住在一间有暖气的公寓里。桌上摊着一张手绘地图，标着下一站、下下一站，和一堆只有他自己看得懂的符号。",
+      "他把咖啡喝完，起身把窗推开一条缝，让冷风进来。他喜欢这种感觉：一切都可计算，除了心动。",
+      "而心动那部分，他通常也会在第二天早上，安静地排进日程。"
     ],
-    quote:"潮起潮落，但「我能做成事」这件事，一直长在你身上。",
-    quoteSub:"—— 你把日子过成了作品，只是还没签名",
-    lowHint:"你的「成事手感」还比较安静：先挑一件 10 分钟能完成的小事做掉。手感是做出来的，不是等出来的。"
+    strengths: ["能把浪漫翻译成日程，说到的事大多真的会发生", "情绪稳定，是朋友圈里那个「有事可以找他」的人"],
+    shadows: ["行程排得很妥帖，留一行空白会更有趣", "把浪漫写成日程的你，也可以偶尔不写日期"],
+    advice: [
+      { h: "每周留一段没有安排的两小时", p: "如果到了周六下午两点，那就出门，不带目的地走二十分钟。留一点不安排的时间，是给惊喜留门。" },
+      { h: "把「完成度 100%」改成 70% 就很棒", p: "如果一件事做到七成还没收尾，那就先交付。剩下的三成，交给真实的反馈，慢慢补就好。" },
+      { h: "给「想做的事」设一个月度最小配额", p: "如果这个月还没做过一件纯粹为了开心的事，那就从清单里挑最便宜的一件，这个周末做掉。" }
+    ],
+    letter: "我这边一切都好，行程排到明年三月，地图又添了两个新点。\n唯一想提醒你的是：那张表上，记得留一行空白。\n那一行，才是我最想到达的地方。",
+    share: "平行时空下的我，可能活成【航线设计师】——连私奔都做了预算表。"
   },
-  B:{
-    name:"「被爱收藏家」",
-    line:"你的大结果是：有人稳稳懂着你，且你敢开口。",
-    story:{
-      full:"你以为自己没什么大结果，其实你手里握着一份很稀缺的存在：一个深夜能拨出去的号码，和几个记得你不吃香菜的人。这种「被懂着」，不声不响，却经得起岁月。",
-      high:"你的关系磁场已经很好——不是认识的人多，是每一段都真的在。",
-      mid:"你的关系里有稳定的暖，平时不显山露水，关键时刻一直都在。",
-      low:"你的关系正在悄悄升温，别小看今天随口的一句「最近咋样」。"
-    },
-    advice:[
-      ["主动发起一次「没用」的联系","给一个许久没聊的人发条不含请求、不带目的的消息，纯叙旧的情谊经得起岁月。"],
-      ["练习说真话的三成","下次被问「还好吗」，试着说一句真实的近况，被接住一次，心就宽一次。"],
-      ["记一本「别人小事账」","把朋友的忌口、大日子、在焦虑的事记下来，在对的时刻提一嘴，你就是别人的深夜号码。"]
+
+  "110": {
+    no: "TYPE 02",
+    name: "星际流浪诗人",
+    en: "The Wandering Poet",
+    tagline: "你的行李永远半开着，像随时准备出发。",
+    keywords: ["劲头很足", "把陌生过成家", "先跳再说"],
+    scene: [
+      "平行时空下的你，在一个没有名字的海边小镇替人画船。钱不多，认识的人很多，谁家煮了鱼都会喊他一声。",
+      "晚上他把桌子搬到门口，就着路灯写一些没人看的句子。他知道自己随时会走，所以每一顿饭都吃得很认真。",
+      "他不存钱，存天气。哪天的云好看，他记得比日期清楚。"
     ],
-    quote:"成年人的珍贵，不在通讯录的长度，在「深夜敢拨、对方会接」。",
-    quoteSub:"—— 你被好好爱着，这件事值得被你自己知道",
-    lowHint:"你的「被人懂着」还比较安静：这周找一位还算安心的人，说一句真话试试。心与心的距离，从开口那一刻开始变近。"
+    strengths: ["兴致很高，能把任何陌生地方过出人气", "对世界保持真诚的好奇，什么都愿意多看一眼"],
+    shadows: ["兴致一起就出发，留一件做满的小事会很有成就感", "新鲜事太多，随手记下答应过的小约定就好"],
+    advice: [
+      { h: "想到就记下来，隔天再看一眼", p: "如果有个念头很亮，那就先记进备忘录，明天中午再看一眼。还想去，就出发；换了想法，也是多认识了自己一点。" },
+      { h: "选一件小事做满 30 天", p: "如果某天跳过了，那第二天接上就好。慢慢来，日子长着呢。" },
+      { h: "给热爱排个顺序", p: "如果同时想做好几件，那就先挑三件这周试试，其余的留着慢慢来。有先有后，反倒更尽兴。" }
+    ],
+    letter: "我又换了个地方，窗外是海，房东的狗很黏人。\n我走到哪儿，热闹就长到哪儿，你放心。\n倒是你，想做的事随时可以开个头，不用等「以后」。",
+    share: "平行时空下的我，可能活成【星际流浪诗人】——行李永远半开着，像随时准备出发。"
   },
-  C:{
-    name:"「情绪自由通」",
-    line:"你的大结果是：风吹浪打，先吃口热饭再说。",
-    story:{
-      full:"别人追头衔，你已经练出了自己的定力：被否定会难过，但不内耗过夜；别人上头，你还在原地。你不是没脾气，你是情绪来得快、放得下。",
-      high:"你的内核稳得像老楼的承重墙——不是没晃过，是晃两下就能归位。",
-      mid:"你的内核底盘不错，偶尔晃一下，多数时候能自己扶稳自己。",
-      low:"你的内核正在打地基，今天能接住一件事，就比昨天多了一分承重。"
-    },
-    advice:[
-      ["给情绪设一个「下班时间」","难受可以有，但给它一个截止点：到点了就去洗漱、出门走一圈，让身体先带脑子下班。"],
-      ["备一句自己的口头禅","提前写一句能让自己站住的话，比如「先吃饭，天塌不下来」，情绪上头时直接调用。"],
-      ["做一次「破防复盘」","下次冷静后回看：刚才真正触动我的是什么？看清一次，下次它的火力就弱一分。"]
+
+  "101": {
+    no: "TYPE 03",
+    name: "深空测绘员",
+    en: "The Surveyor",
+    tagline: "你不喊口号，你只是把坐标一个个标下来。",
+    keywords: ["冷静远行", "长期主义", "沉默的执行力"],
+    scene: [
+      "平行时空下的你，在一间灯光偏冷的房间里，把一张巨大的星图钉在墙上。图上的点还很稀疏，但每一个都是真的去过的。",
+      "他不太说话，也不发朋友圈。他知道自己要去哪里，只是不急着让任何人知道。",
+      "有人以为他偏爱安静。他只是觉得，慢一点，坐标会标得更准。"
     ],
-    quote:"真正的从容，是事情砸过来时，你还能决定自己的下一个动作。",
-    quoteSub:"—— 风浪一直有，而你一直接得住",
-    lowHint:"你的「情绪自由」还在充电：先从照顾好身体开始——睡够、吃热乎的。电量足了，风浪自然显得小。"
+    strengths: ["在变化里能迅速找到结构，越忙越稳", "耐得住长期，不靠情绪驱动也能推进"],
+    shadows: ["习惯安静地推进，偶尔说说近况，步子会更轻", "你很能沉住气，也可以把「还不错」多讲给一个人听"],
+    advice: [
+      { h: "每周给自己写三行", p: "如果到了周日晚上，那就写三行：今天最喜欢的、最想记下的、最期待的。不比较，只记录。" },
+      { h: "找一个人，每月好好聊一次", p: "如果这个月还没跟谁好好聊过，那就约一次饭。不汇报近况，说说你最近在琢磨什么就好。" },
+      { h: "把「庆祝」补上", p: "如果一件事做成了，那就在当天做一件身体能感觉到的事：吃顿好的、走很远的路、睡到自然醒。别只在心里打个勾。" }
+    ],
+    letter: "星图快画完了，还差东南角那一块。\n我这边很安静，安静得能听见自己在想什么。\n你的那一份，画到哪儿了？",
+    share: "平行时空下的我，可能活成【深空测绘员】——不喊口号，只把坐标一个个标下来。"
   },
-  D:{
-    name:"「越活越开阔」",
-    line:"你的大结果是：世界一直在变大，你也一直在变大。",
-    story:{
-      full:"别人攒履历，你在攒世界。你会为毫无用处的东西着迷，会认真听对手说话，还敢承认「这我不会」。这种越活越开阔的曲线，是好日子里很稳的一条。",
-      high:"你的世界地图已经摊得很开，而且还在往外画——这份开阔，会一直陪着你。",
-      mid:"你的地图在稳步扩边，偶尔停下歇脚，但方向一直没丢。",
-      low:"你的地图刚翻新一角，别嫌慢，每一条新画的线都算数。"
-    },
-    advice:[
-      ["养一个「无用爱好」","给它固定预算和固定时间，不为变现、不发朋友圈，只为让世界多开一扇窗。"],
-      ["每月听一个「对面」的观点","找一个你不同意立场的内容认真听完，能复述出对方三条理由才算数。"],
-      ["把「我不知道」说出口","下次聊天时大方承认一次不知道，你会发现这句话常常换来别人愿意教你。"]
+
+  "100": {
+    no: "TYPE 04",
+    name: "低温漂流瓶",
+    en: "The Drifter",
+    tagline: "你把日子过成一路向前的风景。",
+    keywords: ["自由优先", "轻装上路", "一路都有新风景"],
+    scene: [
+      "平行时空下的你，在深夜的国道上搭车。副驾的人换了三个，每个人都有自己的故事，没人问他的。",
+      "他很少讲自己的事，但每个人都记得他——那个安静、笑着听大家说话的人。",
+      "他没急着给这趟路取名字，只是喜欢窗外一直在换。往前开着，把好看的都记在心里。"
     ],
-    quote:"有人用头衔丈量世界，你用好奇心——后者的地图，永远画不完。",
-    quoteSub:"—— 你的世界比你以为的要大",
-    lowHint:"你的「越活越开阔」还在起步：本周挑一件一直好奇但没动手的事，给它 30 分钟。地图是画出来的，不是等出来的。"
+    strengths: ["适应力惊人，到哪儿都能把日子过起来", "不被身份绑住，随时都能开个好头"],
+    shadows: ["一路向前很自在，偶尔停一停会看见更多", "走过的路很多，随手记下最喜欢的三处就好"],
+    advice: [
+      { h: "留一周给自己：慢慢走、慢慢看", p: "如果这一周里有哪处风景特别喜欢，那就写下一句话留给以后。慢慢看，景会自己留下来。" },
+      { h: "给自己留一个可以返回的港口", p: "如果还没定，那就选一个人、一个地方、一件固定的小事，每月回去一次。有一处惦记，路上就更踏实。" },
+      { h: "每周和人分享一件小事", p: "如果到了周五还没跟人聊过，那就发一条消息，就分享今天看到的一片云。" }
+    ],
+    letter: "我在一个很热闹的青旅写这张纸条，隔壁有人在弹吉他。\n一路都有新风景，挺好的。\n你要是哪天路过，随时停下来坐坐，我们交换一段故事。",
+    share: "平行时空下的我，可能活成【低温漂流瓶】——把日子过成一路向前的风景。"
   },
-  E:{
-    name:"「和解舒服搭」",
-    line:"你的大结果是：终于不跟自己打架了。",
-    story:{
-      full:"别人卷进度条，你已经坐在了自己的舒服搭上：计划乱了能改道，别人开花你不慌，独处不心慌，犯错能翻篇。这份和自己讲和的功夫，是日常里的稀罕物。",
-      high:"你已经把「自我攻击」这只后台程序关掉了——省下来的力气，全用来好好生活。",
-      mid:"你大体上已经跟自己讲和，只是偶尔还会旧病复发地较劲两下。",
-      low:"你正在学着跟自己讲和，虽然还会拌嘴，但冷战的时间越来越短了。"
-    },
-    advice:[
-      ["给犯错定一个「三句上限」","自责可以，但数着说，超过三句就强制换台：起身倒杯水，让批评广播停一停。"],
-      ["把「别人的时刻表」静音","刷到同龄人的高光时，练习补一句：那是他的路线图，不是我的考卷。"],
-      ["每周留一段「不填充的安静」","20 分钟不看手机地待着——散步、发呆、擦桌子都行，让安静从敌人变回朋友。"]
+
+  "011": {
+    no: "TYPE 05",
+    name: "恒温舱主理人",
+    en: "The Keeper",
+    tagline: "你的宇宙不大，但恒温、有光、有人。",
+    keywords: ["把日子过热", "可靠", "以人为坐标"],
+    scene: [
+      "平行时空下的你，在同一座城市、同一间厨房，把一锅汤炖了三个小时。窗台上的绿萝活得很好，因为它从不被忘记浇水。",
+      "他见过很多种「远方」，最后选了这一种：明天早上，还有人会来吃早饭。",
+      "他挺喜欢这样。把「宏大」拆成很多顿具体的饭，每一顿都踏实。"
     ],
-    quote:"头衔让人抬头看你，掌声让人围过来，而和自己和解，让你终于睡得着。",
-    quoteSub:"—— 你和自己，处得比想象中好",
-    lowHint:"你的「和自己和解」还在路上：今天先从一件小事放过自己——那件翻来覆去的旧账，试着让它过夜即翻篇。"
+    strengths: ["把普通日子过热的能力，是一种稀有的天赋", "可靠，是身边人最稳的那根柱子"],
+    shadows: ["把身边人照顾得很好，也记得给自己留一份", "熟悉的日子很稳，偶尔换个小花样也挺有意思"],
+    advice: [
+      { h: "每季度做一件「不像你」的小事", p: "如果新的一季开始了，那就换一条路回家、点一道没吃过的菜、学一节没什么用的课。让身体记得：变化也可以很轻快。" },
+      { h: "一周回答一次「我想要什么」", p: "如果又被问「你想吃什么」时说了「都行」，那就停下来想三秒，给一个具体的答案。从小处开始，很自然。" },
+      { h: "也给自己留一份体贴", p: "如果哪天顺手给自己也炖一碗，那就更好了。照顾好自己，本来就是这锅汤的一部分。" }
+    ],
+    letter: "汤在锅里，火关小了，再炖十分钟就好。\n我这边没什么大事，就是每天都挺具体的。\n你要是想来坐坐，随时回来——这儿的灯一直亮着，汤也一直温着。",
+    share: "平行时空下的我，可能活成【恒温舱主理人】——宇宙不大，但恒温、有光、有人。"
+  },
+
+  "010": {
+    no: "TYPE 06",
+    name: "此处开花的人",
+    en: "The Bloomer",
+    tagline: "你不去远方，你让远方自己找过来。",
+    keywords: ["当下感极强", "天然的亲近感", "不急也刚好"],
+    scene: [
+      "平行时空下的你，在小城的旧书店兼咖啡馆里认识半条街的人。椅子是捡来的，花是别人送的。",
+      "他没什么计划，但每天都有点小事值得笑——比如今天的糖放多了，比如猫又睡在收银台上。",
+      "有人问他会不会想去更远的地方。他说：我这儿挺好，走到哪儿，哪儿就开花。"
+    ],
+    strengths: ["极强的当下感，快乐来得比别人容易", "天然的亲近感，人和事都愿意靠近你"],
+    shadows: ["很会把当下过好，也可以给三年后的自己留个小礼物", "说「看情况」的时候，先定一个再改也同样轻松"],
+    advice: [
+      { h: "选一件三年后才见效的事，先做三个月", p: "如果不知道选什么，那就选小到很轻松的那种：一周存一百块、一周写三百字。小，才能久。" },
+      { h: "每月问自己一次：我想添点什么", p: "如果想到一件想试的小事，那就把它拆成一件本周能做的动作。往外走一小步，风景常会自己迎上来。" },
+      { h: "把「看情况」改成「我先定一个，再改」", p: "如果下次想说「看情况吧」，那就先给一个具体方案。定了再改，也很轻快。" }
+    ],
+    letter: "我在门口晒太阳，猫睡在脚边，隔壁在放很老的歌。\n这里没什么新闻可讲。\n你要不要也试试，有一天什么都不做，只把这一天好好过完？",
+    share: "平行时空下的我，可能活成【此处开花的人】——不去远方，让远方自己找过来。"
+  },
+
+  "001": {
+    no: "TYPE 07",
+    name: "守塔人",
+    en: "The Lighthouse Keeper",
+    tagline: "灯一直亮着，也一直有人记得这盏灯。",
+    keywords: ["耐得住", "自我秩序", "把日子守得稳"],
+    scene: [
+      "平行时空下的你，住在灯塔下的房子里。每天同一时间上塔、擦镜片、记录风向，字迹一年比一年稳。",
+      "海很吵，你很静。有人问起，你说：这里能听见很远的东西，挺好的。",
+      "你很享受这份稳。偶尔有人上塔来坐坐，添杯热茶，也挺好。"
+    ],
+    strengths: ["稳定、可靠、耐得住，是长期关系的底", "自己定的节奏，稳稳地就能走下去"],
+    shadows: ["一个人也能把事做得很稳，偶尔搭把手会很暖", "你说「不用啦」的时候，也可以试试说「好呀」"],
+    advice: [
+      { h: "每周接受一次别人的帮助", p: "如果有人说「要不要我帮你」，那就说「好，帮我带杯咖啡」。让别人有机会靠近你，是一种能力。" },
+      { h: "给生活加一点无用之物", p: "如果这周的生活只有必要的部分，那就加一盆花、一首歌、一条绕远的路。无用之物，是给日子留的一点余裕。" },
+      { h: "把「我挺好的」多说一句", p: "如果下次有人问你怎么样，那就多说一句具体的：今天风不大，汤炖得刚好。分享近况，也是让灯更亮一点。" }
+    ],
+    letter: "今晚风大，我把窗关紧了，灯油添过了。\n这边一切都好，海上的光很稳。\n你要是有空，写两句给我，随便什么都好。",
+    share: "平行时空下的我，可能活成【守塔人】——灯一直亮着，也一直有人记得。"
+  },
+
+  "000": {
+    no: "TYPE 08",
+    name: "静默观测站",
+    en: "The Observatory",
+    tagline: "你坐在窗边，把热闹都看得很清楚。",
+    keywords: ["看得通透", "自在的节奏", "安静也有好风景"],
+    scene: [
+      "平行时空下的你，在一间只有一张桌子的房间里，看着窗外的人来人往。楼下有人在聊天，对面在搬家，世界一直很热闹。",
+      "他不急着成为谁，也不急着去哪儿。窗外的热闹看久了，他会给自己泡杯茶，慢慢接着看。",
+      "他管这叫「自己的节奏」。想出门的时候，门一直没锁。"
+    ],
+    strengths: ["清醒、不随波逐流，看事情比同龄人透", "节奏稳、心很定，热闹里也能守住自己的步子"],
+    shadows: ["看得清楚是一种本事，偶尔入场也会有好风景", "安静是你的节奏，想加入时随时可以推门"],
+    advice: [
+      { h: "每周做一件「有反馈」的事", p: "如果这周还没跟世界交换过什么，那就发一条动态、回一条消息、约一次饭。回音不必多，有就很暖。" },
+      { h: "给身体一点阳光，二十分钟就够", p: "如果想给今天添点颜色，那就出门走路、晒会儿太阳。动一动，心情常会跟着亮起来。" },
+      { h: "挑一件「说不出理由但有点想」的事", p: "如果想不出理由，那就别找理由。做了再说，意义是事后长出来的。" }
+    ],
+    letter: "我这儿很安静，安静到能听见楼上小孩在练琴。\n我不太会讲漂亮话，就说一句：\n窗开着，风是暖的，你想出来走走的时候随时都好。",
+    share: "平行时空下的我，可能活成【静默观测站】——坐在窗边，把热闹都看得很清楚。"
+  },
+
+  "ferryman": {
+    no: "TYPE 09",
+    name: "时空摆渡人",
+    en: "The Ferryman",
+    tagline: "你哪边都去得，哪边都留得住。",
+    keywords: ["平衡感", "高适应", "两边都好"],
+    scene: [
+      "平行时空下的你，在两个世界之间来回摆渡。在陌生城市能活得很好，回熟悉的小屋也能把日子过热。",
+      "你不太走极端，每条路都走过一小段，所以知道各自的好。",
+      "轮到你选的时候，你常常笑着说「都行」——两边都好，选哪边都不亏。"
+    ],
+    strengths: ["平衡感极好，能在完全不同的环境里自处", "共情与适应力强，很少被单一标准绑住"],
+    shadows: ["两边都照顾得很好，先说一个更想要的会更省事", "你很会平衡，也可以让身边人知道你偏爱哪一边"],
+    advice: [
+      { h: "选一个「这半年最重要」的方向", p: "如果什么都想试试，那就先挑一件这周先做，其余的排在后面慢慢来。有先有后，日子就有形状了。" },
+      { h: "每季度记一记喜欢的事", p: "如果到了季末，那就写两列：这季最喜欢的、下季想接着做的。看看记下的，会更清楚自己偏爱什么。" },
+      { h: "允许自己偏一点", p: "如果下次你又要说「都可以」，那就先说一个你更想要的。说得具体，身边人就更好靠近你。" }
+    ],
+    letter: "我这边挺好的，两头都跑，两边都有人给我留饭。\n要说一句的话：先说一个你更想要的，也很好。\n你说得具体，大家就更好靠近你。",
+    share: "平行时空下的我，可能活成【时空摆渡人】——哪边都去得，哪边都留得住。"
   }
 };
+/* =========================================================
+   三、交互 · 计分 · 渲染
+   ========================================================= */
+(function () {
+  "use strict";
 
-/* 档位：按排名首位的维度分数 */
-const LEVELS = [
-  {min:85, label:"🌟 这份大结果，早就稳稳在你手里"},
-  {min:70, label:"💛 已经到手，记得常拿出来看看"},
-  {min:50, label:"🌱 悄悄成形中，别错过它的长势"},
-  {min:0,  label:"🌰 种子已经埋下，正在发芽"}
-];
+  var TOTAL = 20; // 每维固定抽 4 题 × 5 维
+  var KEYS = ["A", "B", "C", "D"];
+  var state = { questions: [], answers: new Array(TOTAL).fill(null), idx: 0, code: "" };
 
-/* ---------- 状态 ---------- */
-let QUESTIONS = [];                     // 本轮抽中的 20 题
-let answers = [];                       // 0 = 未答
-let cur = 0;
-let navToken = 0; // 手动导航会使其自增，从而取消未决的自动跳题
-let code = "";      // 当前入场验证码
-
-function cancelAutoAdvance(){ navToken++; }
-
-function shuffle(arr){
-  for(let i=arr.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [arr[i],arr[j]] = [arr[j],arr[i]];
-  }
-  return arr;
-}
-/* 每次开测：每维随机抽 4 题，打乱顺序 */
-function drawQuestions(){
-  const picked = [];
-  Object.keys(DIMS).forEach(k=>{
-    const pool = shuffle(BANK.filter(q=>q.dim===k).slice());
-    picked.push(...pool.slice(0,4));
-  });
-  return shuffle(picked);
-}
-
-/* ---------- 入场验证码 ---------- */
-const CAP_COLORS = ["#E8705F","#C9963F","#6E8B74","#5E8A8C","#D66C7C"];
-function newCode(){
-  code = String(Math.floor(1000 + Math.random()*9000));
-  renderCaptcha();
-  document.getElementById("code-input").value = "";
-}
-function renderCaptcha(){
-  const box = document.getElementById("captcha");
-  box.innerHTML = "";
-  // 干扰点
-  for(let i=0;i<6;i++){
-    const n = document.createElement("span");
-    n.className = "noise";
-    const s = 4 + Math.random()*6;
-    n.style.cssText = "width:"+s+"px;height:"+s+"px;left:"+(Math.random()*92+2)+"%;top:"+(Math.random()*76+8)+"%;";
-    box.appendChild(n);
-  }
-  // 数字：随机倾斜、偏移、配色
-  code.split("").forEach(d=>{
-    const el = document.createElement("span");
-    el.className = "cap-digit";
-    el.textContent = d;
-    el.style.setProperty("--r", (Math.random()*14-7).toFixed(1)+"deg");
-    el.style.setProperty("--y", (Math.random()*10-5).toFixed(1)+"px");
-    el.style.color = CAP_COLORS[Math.floor(Math.random()*CAP_COLORS.length)];
-    box.appendChild(el);
-  });
-}
-function tryEnter(){
-  const val = document.getElementById("code-input").value.trim();
-  if(val !== code){
-    const card = document.getElementById("verify-card");
-    card.classList.remove("shake");
-    void card.offsetWidth; // 重置动画
-    card.classList.add("shake");
-    toast(val ? "验证码没对上，换一张再来～" : "先输入 4 位验证码哦～");
-    newCode();
-    document.getElementById("code-input").focus();
-    return;
-  }
-  startNewRound();
-}
-
-/* ---------- 页面切换 ---------- */
-function show(page){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById("page-"+page).classList.add("active");
-  window.scrollTo({top:0,behavior:"instant"});
-}
-
-/* ---------- 答题页渲染 ---------- */
-function renderDots(){
-  const box = document.getElementById("dots");
-  box.innerHTML = "";
-  QUESTIONS.forEach((q,i)=>{
-    const b = document.createElement("button");
-    b.className = "dot" + (answers[i] ? " answered":"") + (i===cur ? " current":"");
-    b.textContent = i+1;
-    b.title = "第"+(i+1)+"题" + (answers[i] ? "（已答）":"（未答）");
-    b.onclick = ()=>{ cancelAutoAdvance(); cur = i; renderQuiz(); };
-    box.appendChild(b);
-  });
-}
-function renderQuiz(){
-  if(cur < 0) cur = 0;
-  if(cur > QUESTIONS.length-1) cur = QUESTIONS.length-1;
-  const q = QUESTIONS[cur];
-  document.getElementById("q-cur").textContent = cur+1;
-  document.getElementById("q-total").textContent = QUESTIONS.length;
-  document.getElementById("q-done").textContent = answers.filter(a=>a>0).length;
-  document.getElementById("q-bar").style.width = (answers.filter(a=>a>0).length/QUESTIONS.length*100)+"%";
-  document.getElementById("q-num").textContent = "QUESTION " + String(cur+1).padStart(2,"0");
-  document.getElementById("q-text").textContent = q.text;
-
-  const box = document.getElementById("q-opts");
-  box.innerHTML = "";
-  LIKERT.forEach(o=>{
-    const b = document.createElement("button");
-    b.className = "opt" + (answers[cur]===o.v ? " picked":"");
-    b.innerHTML = '<span class="radio"></span><span class="idx">'+o.v+'</span><span>'+o.label+'</span>';
-    b.onclick = ()=>{
-      answers[cur] = o.v;
-      renderQuiz(); renderDots();
-      if(cur < QUESTIONS.length-1){
-        const token = ++navToken, from = cur;
-        setTimeout(()=>{
-          // 仅当期间未发生任何手动导航、仍停留在本题时才自动进入下一题
-          if(token === navToken && cur === from){
-            cancelAutoAdvance();
-            cur++; renderQuiz();
-          }
-        }, 320);
-      }
-    };
-    box.appendChild(b);
-  });
-
-  document.getElementById("btn-prev").style.visibility = cur===0 ? "hidden":"visible";
-  const nextBtn = document.getElementById("btn-next");
-  if(cur === QUESTIONS.length-1){
-    nextBtn.textContent = "查看我的大结果 ✦";
-  }else{
-    nextBtn.textContent = "下一题 →";
-  }
-  renderDots();
-}
-
-document.getElementById("btn-prev").onclick = ()=>{ cancelAutoAdvance(); if(cur>0){ cur--; renderQuiz(); } };
-document.getElementById("btn-next").onclick = ()=>{
-  cancelAutoAdvance();
-  if(cur < QUESTIONS.length-1){
-    if(!answers[cur]) toast("这道题还没选哦，凭直觉选一个就好～");
-    else { cur++; renderQuiz(); }
-  }else{
-    submitAnswers();
-  }
-};
-
-/* ---------- 未答提醒 ---------- */
-function firstUnanswered(){
-  for(let i=0;i<answers.length;i++){ if(!answers[i]) return i; }
-  return -1;
-}
-function submitAnswers(){
-  const miss = firstUnanswered();
-  if(miss !== -1){
-    cur = miss;
-    renderQuiz();
-    renderDots();
-    const dots = document.querySelectorAll("#dots .dot");
-    dots.forEach((d,i)=>{ if(!answers[i]) d.classList.add("warn"); });
-    toast("还有 " + answers.filter(a=>!a).length + " 题没答，先用荧光标记帮你指路～");
-    document.getElementById("page-quiz").scrollIntoView({behavior:"smooth"});
-    return;
-  }
-  buildResult();
-  show("result");
-  animateResult();
-}
-
-/* ---------- 计分（不随机） ---------- */
-function calcScores(){
-  const raw = {A:0,B:0,C:0,D:0,E:0};
-  QUESTIONS.forEach((q,i)=>{ raw[q.dim] += answers[i]; });
-  const pct = {};
-  Object.keys(raw).forEach(k=>{ pct[k] = Math.round(raw[k]/20*100); });
-  return pct;
-}
-
-/* ---------- 结果渲染 ---------- */
-let lastType = null, lastScores = null, lastLevel = null;
-
-function buildResult(){
-  const pct = calcScores();
-  const keys = Object.keys(pct);
-  const sorted = keys.slice().sort((a,b)=> pct[b]-pct[a]);
-  const top = sorted[0];
-  const T = TYPES[top];
-
-  /* 并列提示：第二高分与榜首分差 ≤ 4 */
-  const tie = document.getElementById("tie-note");
-  if(pct[sorted[1]] - pct[top] >= -4 && pct[sorted[1]] > 0){
-    tie.style.display = "block";
-    tie.textContent = "别急，你的「" + DIMS[sorted[1]].name + "」和榜首只差 " + (pct[top]-pct[sorted[1]]) + " 分，妥妥的双料大结果选手。";
-  }else{
-    tie.style.display = "none";
-  }
-
-  const total = Math.round(keys.reduce((s,k)=>s+pct[k],0)/keys.length);
-  const level = LEVELS.find(l=>pct[top]>=l.min).label;
-
-  /* 主题色 */
-  const c = DIMS[top].color;
-  document.documentElement.style.setProperty("--type", c);
-
-  document.getElementById("type-badge").innerHTML = badgeSVG(top);
-  document.getElementById("type-name").textContent = T.name;
-  document.getElementById("type-line").textContent = T.line;
-  document.getElementById("level-pill").textContent = level;
-
-  /* 综合指数 */
-  const bigEl = document.getElementById("balance-total");
-  bigEl.dataset.target = total;
-  bigEl.textContent = "0";
-
-  /* 维度条 */
-  const bars = document.getElementById("dim-bars");
-  bars.innerHTML = "";
-  sorted.forEach(k=>{
-    const row = document.createElement("div");
-    row.className = "dim-row";
-    row.innerHTML =
-      '<div class="dim-head"><span class="name">'+DIMS[k].name+'</span><span class="score">'+pct[k]+' 分</span></div>'+
-      '<div class="dim-bar"><i data-w="'+pct[k]+'" style="background:'+DIMS[k].color+'"></i></div>';
-    bars.appendChild(row);
-  });
-
-  /* 解读 */
-  const story = document.getElementById("type-story");
-  const tier = pct[top]>=85 ? "high" : (pct[top]>=50 ? "mid" : "low");
-  story.innerHTML =
-    '<p class="lead">'+T.line+'</p>'+
-    '<p>'+T.story.full+'</p>'+
-    '<p>'+T.story[tier]+'</p>';
-
-  /* 建议 */
-  const adv = document.getElementById("type-advice");
-  adv.innerHTML = "";
-  T.advice.forEach((a,i)=>{
-    const li = document.createElement("li");
-    li.innerHTML = '<span class="no">'+(i+1)+'</span><span><b>'+a[0]+'</b> · '+a[1]+'</span>';
-    adv.appendChild(li);
-  });
-
-  /* 相对安静维度的提示 */
-  const low = sorted[sorted.length-1];
-  const lowEl = document.getElementById("low-hint");
-  if(pct[low] < 60){
-    lowEl.style.display = "block";
-    document.getElementById("low-tag").textContent = "还没被你注意到的大结果：" + DIMS[low].name;
-    document.getElementById("low-text").textContent = TYPES[low].lowHint;
-  }else{
-    lowEl.style.display = "none";
-  }
-
-  /* 语录卡 */
-  document.getElementById("qc-main").textContent = T.quote;
-  document.getElementById("qc-sub").textContent = T.quoteSub;
-
-  lastType = top; lastScores = pct; lastLevel = level;
-}
-
-function badgeSVG(key){
-  const c = DIMS[key].color;
-  const icons = {
-    A:'<path d="M50 20 l8 17 19 2.5 -14 13 3.6 18.5 -16.6 -9.3 -16.6 9.3 3.6 -18.5 -14 -13 19 -2.5 z" fill="'+c+'" stroke="#3A3630" stroke-width="3" stroke-linejoin="round"/>',
-    B:'<rect x="26" y="30" width="48" height="36" rx="6" fill="'+c+'" stroke="#3A3630" stroke-width="3"/><path d="M26 36 l24 18 24 -18" fill="none" stroke="#3A3630" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 22 l2.6 7 7 2.6 -7 2.6 -2.6 7 -2.6 -7 -7 -2.6 7 -2.6 z" fill="#C9963F"/>',
-    C:'<path d="M22 62 c8 -8 14 8 22 0 s14 8 22 0 s10 6 12 4" fill="none" stroke="'+c+'" stroke-width="4" stroke-linecap="round"/><path d="M50 18 c-8 10 -10 16 -2 22 c8 -6 8 -14 2 -22 z" fill="'+c+'" stroke="#3A3630" stroke-width="3" stroke-linejoin="round"/>',
-    D:'<rect x="40" y="42" width="14" height="20" rx="3" transform="rotate(-30 47 52)" fill="'+c+'" stroke="#3A3630" stroke-width="3"/><rect x="46" y="34" width="14" height="20" rx="3" transform="rotate(-30 53 44)" fill="#FFFDF6" stroke="#3A3630" stroke-width="3"/><path d="M30 66 h40" stroke="#3A3630" stroke-width="3" stroke-linecap="round"/><path d="M70 24 l2.6 7 7 2.6 -7 2.6 -2.6 7 -2.6 -7 -7 -2.6 7 -2.6 z" fill="#6E8B74"/>',
-    E:'<path d="M60 54 a18 18 0 1 1 -8 -30 a14 14 0 1 0 8 30 z" fill="'+c+'" stroke="#3A3630" stroke-width="3" stroke-linejoin="round"/><path d="M26 22 l2.2 5.8 5.8 2.2 -5.8 2.2 -2.2 5.8 -2.2 -5.8 -5.8 -2.2 5.8 -2.2 z" fill="#C9963F"/><path d="M68 60 l1.8 4.6 4.6 1.8 -4.6 1.8 -1.8 4.6 -1.8 -4.6 -4.6 -1.8 4.6 -1.8 z" fill="#5E8A8C"/>'
+  var el = {
+    home: document.getElementById("view-home"),
+    quiz: document.getElementById("view-quiz"),
+    result: document.getElementById("view-result"),
+    resultRoot: document.getElementById("result-root"),
+    qDim: document.getElementById("q-dim"),
+    qText: document.getElementById("q-text"),
+    options: document.getElementById("options"),
+    qIndex: document.getElementById("q-index"),
+    bar: document.getElementById("bar"),
+    progress: document.getElementById("progress"),
+    qcard: document.getElementById("qcard"),
+    prev: document.getElementById("btn-prev"),
+    next: document.getElementById("btn-next"),
+    panel: document.getElementById("qcard-panel"),
+    grid: document.getElementById("qgrid"),
+    cardBtn: document.getElementById("btn-card"),
+    toast: document.getElementById("toast"),
+    pool: document.getElementById("q-pool")
   };
-  return '<svg viewBox="0 0 100 84" xmlns="http://www.w3.org/2000/svg">'+
-    '<circle cx="50" cy="46" r="40" fill="#FBEAE6" opacity=".6"/>'+
-    icons[key]+'</svg>';
-}
 
-/* ---------- 结果动画 ---------- */
-function animateResult(){
-  const bigEl = document.getElementById("balance-total");
-  const target = parseInt(bigEl.dataset.target,10) || 0;
-  const t0 = performance.now(), dur = 900;
-  function step(t){
-    const p = Math.min((t-t0)/dur, 1);
-    bigEl.textContent = Math.round(target * (1-Math.pow(1-p,3)));
-    if(p<1) requestAnimationFrame(step);
+  /* ---------- 小工具 ---------- */
+  var toastTimer = null;
+  function toast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { el.toast.classList.remove("show"); }, 2400);
   }
-  requestAnimationFrame(step);
-  setTimeout(()=>{
-    document.querySelectorAll("#dim-bars .dim-bar i").forEach(el=>{
-      el.style.width = el.dataset.w + "%";
+  function toTop() { window.scrollTo({ top: 0, left: 0, behavior: "auto" }); }
+  function showView(target) {
+    [el.home, el.quiz, el.result].forEach(function (v) { v.classList.remove("is-active"); });
+    target.classList.add("is-active");
+    toTop();
+  }
+  function answeredCount() {
+    return state.answers.filter(function (a) { return a !== null; }).length;
+  }
+
+  /* ---------- 抽题：每次按维度各抽 4 题，再打乱全局顺序 ---------- */
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  /* 近期去重：本机只记题目编号，不记答案；浏览器不允许存储时自动降级为内存 */
+  var RECENT_KEY = "parallel_me_recent_v2";
+  var recent = { jump: [], order: [], anchor: [], glow: [], echo: [] };
+  try {
+    var saved = JSON.parse(localStorage.getItem(RECENT_KEY) || "null");
+    if (saved && typeof saved === "object") {
+      Object.keys(recent).forEach(function (k) {
+        if (Array.isArray(saved[k])) {
+          recent[k] = saved[k].filter(function (n) { return typeof n === "number"; }).slice(0, 24);
+        }
+      });
+    }
+  } catch (e) {}
+  function saveRecent() {
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(recent)); } catch (e) {}
+  }
+
+  /* 每维记最近 24 题（约 6 轮），优先抽没答过的；池子不足才回补 */
+  function drawQuestions(record) {
+    var groups = {};
+    Object.keys(DIMS).forEach(function (k) { groups[k] = []; });
+    QUESTION_BANK.forEach(function (q, i) { groups[q.dim].push({ q: q, i: i }); });
+
+    var picked = [];
+    Object.keys(groups).forEach(function (k) {
+      var all = shuffle(groups[k]);
+      var used = recent[k] || [];
+      var fresh = all.filter(function (o) { return used.indexOf(o.i) === -1; });
+      var take = fresh.slice(0, 4);
+      if (take.length < 4) {
+        var rest = shuffle(all.filter(function (o) { return take.indexOf(o) === -1; }));
+        take = take.concat(rest.slice(0, 4 - take.length));
+      }
+      picked = picked.concat(take);
+      if (record) recent[k] = take.map(function (o) { return o.i; }).concat(used).slice(0, 24);
     });
-  }, 120);
-}
-
-/* ---------- 开始 / 重新测试 ---------- */
-function startNewRound(){
-  cancelAutoAdvance();
-  QUESTIONS = drawQuestions();
-  answers = new Array(QUESTIONS.length).fill(0);
-  cur = 0;
-  renderQuiz();
-  show("quiz");
-}
-document.getElementById("btn-start").onclick = tryEnter;
-document.getElementById("btn-refresh-code").onclick = ()=>{ newCode(); document.getElementById("code-input").focus(); };
-document.getElementById("code-input").addEventListener("input", function(){
-  this.value = this.value.replace(/\D/g,"").slice(0,4);
-  if(this.value.length === 4){ tryEnter(); }
-});
-document.getElementById("code-input").addEventListener("keydown", function(e){
-  if(e.key === "Enter"){ tryEnter(); }
-});
-document.getElementById("btn-retake").onclick = ()=>{
-  startNewRound();
-  toast("已换一批新题，重新认领一次～");
-};
-
-/* ---------- 复制战报 ---------- */
-document.getElementById("btn-copy").onclick = ()=>{
-  if(!lastType || !lastScores) return;
-  const s = lastScores, top = lastType;
-  const lines = [
-    "🪙 我的大结果盘点出来了！",
-    "",
-    "我的大结果是：" + TYPES[top].name,
-    TYPES[top].line,
-    "当前状态：" + lastLevel,
-    "",
-    "📊 五维拥有指数：",
-    ...Object.keys(DIMS).map(k=> "· " + DIMS[k].name + "：" + s[k] + " 分"),
-    "",
-    "大结果不一定是加薪和升职，也可以是这些悄悄陪着你、只是还没被你注意到的东西。",
-  ].join("\n");
-  const done = ()=> toast("战报已复制，想发的时候随你用～");
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(lines).then(done).catch(()=>{ fallbackCopy(lines); done(); });
-  }else{
-    fallbackCopy(lines); done();
+    if (record) saveRecent();
+    return shuffle(picked.map(function (o) { return o.q; }));
   }
-};
-function fallbackCopy(text){
-  const ta = document.createElement("textarea");
-  ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
-  document.body.appendChild(ta); ta.select();
-  try{ document.execCommand("copy"); }catch(e){}
-  document.body.removeChild(ta);
-}
+  function groupCode(qs) {
+    var h = 7;
+    qs.forEach(function (q) { h = (h * 31 + QUESTION_BANK.indexOf(q) + 1) % 65536; });
+    return h.toString(16).toUpperCase().padStart(4, "0");
+  }
+  function startFresh() {
+    state.questions = drawQuestions(true);
+    state.answers = new Array(TOTAL).fill(null);
+    state.idx = 0;
+    state.code = groupCode(state.questions);
+    el.pool.textContent = "题组 #" + state.code + " · 每次不同";
+    el.panel.hidden = true;
+    el.cardBtn.setAttribute("aria-expanded", "false");
+    el.cardBtn.textContent = "答题卡";
+    renderQuestion();
+    showView(el.quiz);
+  }
 
-/* ---------- Toast ---------- */
-let toastTimer = null;
-function toast(msg){
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>t.classList.remove("show"), 2600);
-}
+  /* ---------- 渲染题目 ---------- */
+  function renderQuestion() {
+    var q = state.questions[state.idx];
+    el.qDim.textContent = "生活切片 · " + DIMS[q.dim].label;
+    el.qText.textContent = q.text;
 
-/* ---------- 启动：生成验证码 ---------- */
-newCode();
+    el.qcard.classList.remove("shake");
+    el.options.innerHTML = "";
+    q.opts.forEach(function (o, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "opt";
+      b.setAttribute("role", "radio");
+      b.setAttribute("aria-checked", state.answers[state.idx] === i ? "true" : "false");
+      var k = document.createElement("span");
+      k.className = "k";
+      k.textContent = KEYS[i];
+      var t = document.createElement("span");
+      t.className = "t";
+      t.textContent = o.t;
+      b.appendChild(k);
+      b.appendChild(t);
+      b.addEventListener("click", function () { choose(i); });
+      el.options.appendChild(b);
+    });
+
+    el.next.textContent = state.idx === TOTAL - 1 ? "看看结果" : "下一题";
+    el.prev.disabled = state.idx === 0;
+    updateMeta();
+  }
+
+  function updateMeta() {
+    var done = answeredCount();
+    el.qIndex.innerHTML = "第 <b>" + (state.idx + 1) + "</b> / " + TOTAL + " 题";
+    el.bar.style.width = (done / TOTAL * 100) + "%";
+    el.progress.setAttribute("aria-valuenow", String(done));
+    el.progress.setAttribute("aria-label", "已答 " + done + " / " + TOTAL + " 题");
+    buildGrid();
+  }
+
+  function buildGrid() {
+    el.grid.innerHTML = "";
+    for (var i = 0; i < TOTAL; i++) {
+      (function (n) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.textContent = String(n + 1);
+        b.setAttribute("aria-label", "第 " + (n + 1) + " 题" + (state.answers[n] !== null ? "，已作答" : "，未作答"));
+        if (state.answers[n] !== null) b.classList.add("done");
+        if (n === state.idx) b.classList.add("now");
+        b.addEventListener("click", function () {
+          state.idx = n;
+          renderQuestion();
+          toTop();
+          toast(n === TOTAL - 1 ? "最后一题了" : "跳到第 " + (n + 1) + " 题");
+        });
+        el.grid.appendChild(b);
+      })(i);
+    }
+  }
+
+  function choose(i) {
+    state.answers[state.idx] = i;
+    var btns = el.options.querySelectorAll(".opt");
+    for (var n = 0; n < btns.length; n++) {
+      btns[n].setAttribute("aria-checked", n === i ? "true" : "false");
+    }
+    updateMeta();
+  }
+
+  function shakeCard() {
+    el.qcard.classList.remove("shake");
+    void el.qcard.offsetWidth;
+    el.qcard.classList.add("shake");
+  }
+
+  function goNext() {
+    if (state.answers[state.idx] === null) {
+      shakeCard();
+      toast("这题还没选 —— 随便认领一句都行");
+      return;
+    }
+    var miss = state.answers.indexOf(null);
+    if (state.idx === TOTAL - 1) {
+      if (miss >= 0) {
+        state.idx = miss;
+        renderQuestion();
+        toTop();
+        toast("第 " + (miss + 1) + " 题还空着，我们回去补一下");
+        return;
+      }
+      finish();
+      return;
+    }
+    state.idx += 1;
+    renderQuestion();
+    toTop();
+  }
+
+  function goPrev() {
+    if (state.idx === 0) return;
+    state.idx -= 1;
+    renderQuestion();
+    toTop();
+  }
+
+  /* ---------- 计分 ---------- */
+  function compute() {
+    var raw = { jump: 0, order: 0, anchor: 0, glow: 0, echo: 0 };
+    state.questions.forEach(function (q, i) {
+      var a = state.answers[i];
+      if (a === null) return;
+      raw[q.dim] += q.opts[a].s;
+    });
+
+    var pct = {};
+    Object.keys(DIMS).forEach(function (k) {
+      pct[k] = Math.round(raw[k] / 12 * 100); // 每维 4 题 × 最高 3 分
+    });
+
+    // 三轴相对定位：与自己三轴均值比较，保证结果稳定可复现
+    var key;
+    var trio = [pct.jump, pct.glow, pct.order];
+    var spread = Math.max.apply(null, trio) - Math.min.apply(null, trio);
+    if (spread <= 8) {
+      key = "ferryman";
+    } else {
+      var mean = (pct.jump + pct.glow + pct.order) / 3;
+      key = [pct.jump > mean, pct.glow > mean, pct.order > mean]
+        .map(function (b) { return b ? "1" : "0"; }).join("");
+      if (!TYPES[key]) key = "ferryman";
+    }
+
+    return { raw: raw, pct: pct, key: key, type: TYPES[key] };
+  }
+
+  /* ---------- 雷达图 ---------- */
+  function radarSVG(pct) {
+    var axes = [
+      { k: "jump", t: "跃迁" },
+      { k: "glow", t: "微光" },
+      { k: "anchor", t: "引力" },
+      { k: "echo", t: "回声" },
+      { k: "order", t: "秩序" }
+    ];
+    var cx = 150, cy = 152, R = 86;
+
+    function pt(i, r) {
+      var a = (-90 + i * 72) * Math.PI / 180;
+      return [cx + Math.cos(a) * r, cy + Math.sin(a) * r];
+    }
+    function poly(f) {
+      return axes.map(function (_, i) {
+        var p = pt(i, R * f);
+        return p[0].toFixed(1) + "," + p[1].toFixed(1);
+      }).join(" ");
+    }
+
+    var s = '<svg class="radar" viewBox="0 0 300 300" role="img" aria-label="五维坐标雷达图：跃迁 ' + pct.jump + '、微光 ' + pct.glow + '、引力 ' + pct.anchor + '、回声 ' + pct.echo + '、秩序 ' + pct.order + '">';
+    s += '<defs><linearGradient id="rFill" x1="0" y1="0" x2="1" y2="1">'
+      + '<stop stop-color="#e9c79b" stop-opacity=".34"/><stop offset="1" stop-color="#a99bff" stop-opacity=".24"/>'
+      + '</linearGradient></defs>';
+
+    [0.25, 0.5, 0.75, 1].forEach(function (f) {
+      s += '<polygon points="' + poly(f) + '" fill="none" stroke="rgba(255,255,255,' + (f === 1 ? ".16" : ".075") + ')" stroke-width="1"/>';
+    });
+    axes.forEach(function (a, i) {
+      var p = pt(i, R);
+      s += '<line x1="' + cx + '" y1="' + cy + '" x2="' + p[0].toFixed(1) + '" y2="' + p[1].toFixed(1) + '" stroke="rgba(255,255,255,.075)"/>';
+    });
+
+    var dataPts = axes.map(function (a, i) {
+      var v = Math.max(8, Math.min(100, pct[a.k]));
+      return pt(i, R * v / 100);
+    });
+    s += '<polygon points="' + dataPts.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" ")
+      + '" fill="url(#rFill)" stroke="#e9c79b" stroke-width="1.5" stroke-linejoin="round"/>';
+    dataPts.forEach(function (p) {
+      s += '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="2.6" fill="#f6e0c0"/>';
+    });
+
+    axes.forEach(function (a, i) {
+      var ang = (-90 + i * 72) * Math.PI / 180;
+      var lx = cx + Math.cos(ang) * (R + 24);
+      var ly = cy + Math.sin(ang) * (R + 24) + 4;
+      var anchor = Math.abs(Math.cos(ang)) < 0.25 ? "middle" : (Math.cos(ang) > 0 ? "start" : "end");
+      s += '<text x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="' + anchor
+        + '" fill="#bcc5d8" font-size="11.5" font-family="system-ui,sans-serif" letter-spacing="1">'
+        + a.t + '<tspan fill="#e9c79b" dx="4">' + pct[a.k] + '</tspan></text>';
+    });
+
+    s += '</svg>';
+    return s;
+  }
+
+  /* ---------- 结果页 ---------- */
+  function levelOf(v) { return v >= 62 ? "high" : (v <= 38 ? "low" : "mid"); }
+
+  function renderResult(res) {
+    var pct = res.pct, type = res.type;
+
+    var dimRows = Object.keys(DIMS).map(function (k) {
+      var d = DIMS[k];
+      return '<div class="dim-row">'
+        + '<div class="dim-top"><span class="dim-name">' + d.label + '</span>'
+        + '<span class="dim-val">' + pct[k] + '</span></div>'
+        + '<p class="dim-read">' + d.read[levelOf(pct[k])] + '</p></div>';
+    }).join("");
+
+    var care = "";
+    if (pct.glow <= 33) {
+      care += '<div class="care"><b>多留一点给自己 · </b>你的步子稳，节奏也清楚。'
+        + '要是哪天想慢一点，就给自己留一段什么都不安排的时光——发会儿呆、晒会儿太阳，都算好好过了这一天。</div>';
+    }
+    if (pct.echo >= 84) {
+      care += '<div class="care"><b>给回忆留个位置 · </b>你把过去记得很认真，这是很温柔的事。'
+        + '要是愿意，也可以把那些片段写下来，留成一页好看的纪念。</div>';
+    }
+
+    var html = ''
+      + '<p class="result-disclaimer">原创趣味自评 · 文学想象 · 不构成心理诊断、治疗或医疗建议</p>'
+      + '<div class="result-head">'
+      +   '<span class="type-no">' + type.no + ' / 09 · 一种可能的生活</span>'
+      +   '<h1 class="type-name" id="type-name" tabindex="-1">' + type.name + '</h1>'
+      +   '<p class="type-en">' + type.en + '</p>'
+      +   '<p class="type-tagline">' + type.tagline + '</p>'
+      +   '<div class="tags">' + type.keywords.map(function (k) { return '<span class="tag">' + k + '</span>'; }).join("") + '</div>'
+      + '</div>'
+
+      + '<div class="sec">'
+      +   '<h2 class="sec-label">平行时空下的你，可能这样生活</h2>'
+      +   '<div class="card scene">' + type.scene.map(function (p) { return '<p>' + p + '</p>'; }).join("") + '</div>'
+      + '</div>'
+
+      + '<div class="sec">'
+      +   '<h2 class="sec-label">你此刻的五维生活坐标</h2>'
+      +   '<div class="card radar-wrap">' + radarSVG(pct) + '<div class="dims">' + dimRows + '</div></div>'
+      + '</div>'
+
+      + '<div class="sec">'
+      +   '<h2 class="sec-label">这种生活里的好，与可以再添一点的地方</h2>'
+      +   '<div class="two">'
+      +     '<div class="card"><p class="mini-h">你身上的好东西</p><ul class="list">'
+      +       type.strengths.map(function (s) { return '<li>' + s + '</li>'; }).join("")
+      +     '</ul></div>'
+      +     '<div class="card"><p class="mini-h">还能再添一点的小事</p><ul class="list muted">'
+      +       type.shadows.map(function (s) { return '<li>' + s + '</li>'; }).join("")
+      +     '</ul></div>'
+      +   '</div>'
+      + '</div>'
+
+      + '<div class="sec">'
+      +   '<h2 class="sec-label">回到此刻，可以先做这三件事</h2>'
+      +   '<div class="advice">'
+      +     type.advice.map(function (a, i) {
+              return '<div class="advice-item"><span class="n">0' + (i + 1) + '</span><div><h4>' + a.h + '</h4><p>' + a.p + '</p></div></div>';
+            }).join("")
+      +   '</div>'
+      + '</div>'
+
+      + '<div class="sec">'
+      +   '<h2 class="sec-label">那条时间线上的你，想对你说</h2>'
+      +   '<div class="letter"><p>' + type.letter.replace(/\n/g, "<br>") + '</p><p class="sign">— 那条时间线上的你</p></div>'
+      +   care
+      + '</div>'
+
+      + '<div class="sec">'
+      +   '<h2 class="sec-label">带走一句话</h2>'
+      +   '<div class="share-box"><div class="share-text" id="share-text">' + type.share + '</div>'
+      +   '<button class="btn btn-ghost" id="btn-copy" style="flex:0 0 auto">复制文案</button></div>'
+      +   '<div class="actions">'
+      +     '<button class="btn btn-primary" id="btn-retest">换一套题再测</button>'
+      +     '<button class="btn btn-ghost" id="btn-edit">回去改答案</button>'
+      +   '</div>'
+      +   '<p class="footnote">怎么读这份结果：所有时空场景都属于文学想象，不是对真实未来的描述。五个维度都是「你自己跟自己比」的相对坐标，不是与他人比的分数，也不存在高低好坏。'
+      +   '三轴（跃迁 / 微光 / 秩序）的相对高低决定了你落进哪一种生活形态 —— 同一份答案，永远得到同一个结果。<br>'
+      +   '每次作答会从 200 道生活题里重新抽 20 道，并尽量避开最近答过的题；但每个维度固定 4 题、计分口径不变，结果只由你的选择决定，不随机。'
+      +   '换个心情重测，坐标可能会移动，那也很正常，人本来就在变。<br>'
+      +   '本页为原创趣味自评与文学想象，不属于专业心理测评，不构成心理诊断、心理评估、治疗或医疗建议，也不作为任何现实决策的依据；'
+      +   '本页及制作者不对依据本页内容所作的判断、选择或行动承担责任。若你需要专业支持，请咨询具备资质的机构或人士。<br>'
+      +   '愿你带着一点好心情离开这页，把此刻的日子也过成喜欢的样子。</p>'
+      + '</div>';
+
+    el.resultRoot.innerHTML = html;
+    bindResult();
+    showView(el.result);
+    var h = document.getElementById("type-name");
+    if (h) h.focus({ preventScroll: true });
+  }
+
+  function bindResult() {
+    var res = compute();
+    var copyBtn = document.getElementById("btn-copy");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        copyText(res.type.share + " 你的是哪一种？");
+      });
+    }
+    var retest = document.getElementById("btn-retest");
+    if (retest) {
+      retest.addEventListener("click", function () {
+        startFresh();
+        toast("换好了一套新题，慢慢来");
+      });
+    }
+    var edit = document.getElementById("btn-edit");
+    if (edit) {
+      edit.addEventListener("click", function () {
+        state.idx = 0;
+        renderQuestion();
+        showView(el.quiz);
+        toast("答案都还在，改完再点一次「看看结果」");
+      });
+    }
+  }
+
+  function copyText(text) {
+    function legacy() {
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.top = "-1000px";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        return ok;
+      } catch (e) { return false; }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        toast("文案已复制，去发吧");
+      }).catch(function () {
+        toast(legacy() ? "文案已复制，去发吧" : "复制没成功，长按选中文案手动复制");
+      });
+    } else {
+      toast(legacy() ? "文案已复制，去发吧" : "复制没成功，长按选中文案手动复制");
+    }
+  }
+
+  function finish() {
+    var res = compute();
+    renderResult(res);
+  }
+
+  /* ---------- 事件绑定 ---------- */
+  document.getElementById("btn-start").addEventListener("click", startFresh);
+  var redraw = document.getElementById("btn-redraw");
+  if (redraw) redraw.addEventListener("click", function () {
+    startFresh();
+    toast("换好了一套新题，慢慢来");
+  });
+  el.next.addEventListener("click", goNext);
+  el.prev.addEventListener("click", goPrev);
+
+  el.cardBtn.addEventListener("click", function () {
+    var open = el.panel.hidden;
+    el.panel.hidden = !open;
+    el.cardBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    el.cardBtn.textContent = open ? "收起答题卡" : "答题卡";
+    if (open) buildGrid();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (!el.quiz.classList.contains("is-active")) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "ArrowRight") { e.preventDefault(); goNext(); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); goPrev(); }
+    else if (["1", "2", "3", "4"].indexOf(e.key) > -1) {
+      var i = parseInt(e.key, 10) - 1;
+      var opts = el.options.querySelectorAll(".opt");
+      if (opts[i]) { e.preventDefault(); choose(i); }
+    }
+  });
+
+  /* 初始：先抽一套题备用，首页不显示 */
+  state.questions = drawQuestions(false);
+  state.code = groupCode(state.questions);
+  el.pool.textContent = "题组 #" + state.code + " · 每次不同";
+  renderQuestion();
+})();
 </script>
 </body>
 </html>
