@@ -227,14 +227,39 @@
     .wall-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
     .sp-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   }
+  /* ---- 访问门禁页 ---- */
+  .gate-card{max-width:420px;margin:6vh auto 0;text-align:center;padding:34px 26px 26px;position:relative}
+  .gate-paw{margin:0 auto 4px;display:block;opacity:.9}
+  .gate-card h2{font-size:1.3rem;margin:4px 0 6px;color:var(--primary-deep)}
+  .gate-tip{font-size:.86rem;color:#8C7B6C;line-height:1.6;margin-bottom:16px}
+  .gate-code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:2.6rem;font-weight:800;letter-spacing:.35em;text-indent:.35em;color:var(--primary-deep);background:var(--soft-2);border:1.5px dashed var(--primary);border-radius:16px;padding:14px 0 12px;margin:0 8px 16px;user-select:none}
+  .gate-input{width:100%;max-width:240px;text-align:center;font-size:1.4rem;font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.3em;padding:12px 10px;border:2px solid var(--line);border-radius:14px;outline:none;background:#fff;color:#4A3B2F;margin-bottom:4px;transition:border-color .2s}
+  .gate-input:focus{border-color:var(--primary)}
+  .gate-new{display:block;margin:12px auto 0;background:none;border:none;color:#A08D7C;font-size:.8rem;text-decoration:underline;cursor:pointer;font-family:inherit;padding:8px}
+  .gate-note{font-size:.72rem;color:#B3A08E;margin-top:12px;line-height:1.5}
+
   @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
+  <!-- ==================== 访问门禁 ==================== -->
+  <section id="gate" class="hidden">
+    <div class="card gate-card" id="gateCard">
+      <svg class="gate-paw" viewBox="0 0 100 100" style="width:64px"><g fill="#FF8A5C"><ellipse cx="50" cy="66" rx="22" ry="18"/><ellipse cx="26" cy="42" rx="10" ry="13"/><ellipse cx="45" cy="30" rx="10" ry="13"/><ellipse cx="66" cy="34" rx="10" ry="13"/><ellipse cx="80" cy="50" rx="9" ry="12"/></g></svg>
+      <h2>🐾 访问口令</h2>
+      <p class="gate-tip">本页面仅限受邀的铲屎官进入<br>请把下面的 4 位数字输入到框里，完成「接头暗号」</p>
+      <div class="gate-code" id="gateCode">····</div>
+      <input id="gateInput" class="gate-input" type="text" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="输入 4 位数字" aria-label="输入页面口令">
+      <button class="btn" id="gateBtn">对上暗号，开始测试 🔓</button>
+      <button class="gate-new" id="gateNew">看不清？换一个口令</button>
+      <p class="gate-note">口令为每次打开自动生成 · 同一次浏览中无需重复输入</p>
+    </div>
+  </section>
+
   <!-- ==================== 首页 ==================== -->
-  <section id="home">
+  <section id="home" class="hidden">
     <div class="card hero">
       <svg class="deco-paw" style="top:-14px;right:-12px;width:92px" viewBox="0 0 100 100"><g fill="#FF8A5C"><ellipse cx="50" cy="66" rx="22" ry="18"/><ellipse cx="26" cy="42" rx="10" ry="13"/><ellipse cx="45" cy="30" rx="10" ry="13"/><ellipse cx="66" cy="34" rx="10" ry="13"/><ellipse cx="80" cy="50" rx="9" ry="12"/></g></svg>
       <svg class="deco-paw" style="bottom:4px;left:-16px;width:74px" viewBox="0 0 100 100"><g fill="#63B8AB"><ellipse cx="50" cy="66" rx="22" ry="18"/><ellipse cx="26" cy="42" rx="10" ry="13"/><ellipse cx="45" cy="30" rx="10" ry="13"/><ellipse cx="66" cy="34" rx="10" ry="13"/><ellipse cx="80" cy="50" rx="9" ry="12"/></g></svg>
@@ -1305,13 +1330,51 @@ function loadState(){
 function clearState(){ try{ localStorage.removeItem(STORE_KEY); }catch(e){} }
 
 function show(id){
-  ["home","species","species2","quiz","result"].forEach(function(s){ $(s).classList.add("hidden"); });
+  ["gate","home","species","species2","quiz","result"].forEach(function(s){ $(s).classList.add("hidden"); });
   $(id).classList.remove("hidden");
   window.scrollTo({top:0, behavior:"smooth"});
 }
 function showToast(msg){
   var t = $("toast"); t.textContent = msg; t.classList.add("show");
   clearTimeout(t._t); t._t = setTimeout(function(){ t.classList.remove("show"); }, 1900);
+}
+
+/* ---- 访问门禁：4 位随机口令 ---- */
+var GATE_KEY = "petGate_ok";
+var gateCode = "";
+function gateInit(){
+  var ok = false;
+  try{ ok = sessionStorage.getItem(GATE_KEY) === "1"; }catch(e){}
+  if(ok){ show("home"); return; }
+  newGateCode();
+  show("gate");
+  setTimeout(function(){ var gi = $("gateInput"); if(gi && gi.focus) gi.focus(); }, 400);
+}
+function newGateCode(){
+  gateCode = String(1000 + Math.floor(Math.random() * 9000));
+  $("gateCode").textContent = gateCode;
+  $("gateInput").value = "";
+}
+function shakeGate(){
+  var c = $("gateCard");
+  c.classList.remove("shake"); void c.offsetWidth; c.classList.add("shake");
+}
+function gateCheck(){
+  var v = ($("gateInput").value || "").replace(/\D/g, "");
+  if(v.length !== 4){
+    showToast("请输入完整的 4 位数字哦");
+    shakeGate();
+    return;
+  }
+  if(v !== gateCode){
+    showToast("数字不对，再看看上面的口令～");
+    shakeGate();
+    newGateCode();
+    return;
+  }
+  try{ sessionStorage.setItem(GATE_KEY, "1"); }catch(e){}
+  show("home");
+  showToast("暗号对上了，欢迎光临 🐾");
 }
 function answeredCount(){
   return state.answers.filter(function(x){ return x !== null && x !== undefined; }).length;
@@ -1625,6 +1688,13 @@ if(typeof document !== "undefined" && document.getElementById("startBtn")){
   $("retryBtn").addEventListener("click", function(){ beginQuiz(state.species || "cat"); });
   $("switchBtn").addEventListener("click", function(){ show("species"); });
   $("copyBtn").addEventListener("click", copyResult);
+
+  /* ---- 门禁绑定 ---- */
+  $("gateBtn").addEventListener("click", gateCheck);
+  $("gateNew").addEventListener("click", function(){ newGateCode(); showToast("已换一个新口令"); });
+  $("gateInput").addEventListener("input", function(){ this.value = (this.value || "").replace(/\D/g, "").slice(0, 4); });
+  $("gateInput").addEventListener("keydown", function(e){ if(e.key === "Enter") gateCheck(); });
+  gateInit();
 }
 </script>
 </body>
